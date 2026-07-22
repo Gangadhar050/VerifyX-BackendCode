@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/User/Downloads/VerifyX_Backend-main/VerifyX_Backend-main" value="3GcKbuHrWzG9fEIcm3Je74texrc" />
+      <entry key="_C:/Users/User/Downloads/VerifyX_Backend_fixed" value="3Gke2BJPDv3DFYWn6heiewuNddz" />
+    </persistenceIdMap>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="207" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Gangadhar050/VerifyX-BackendCode.git",
+    "accountId": "2bc9ddaa-51e0-4579-b737-bc1446d86cab"
+  }
+}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/AdminRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/UserRepository.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateServiceImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.000000000000064" />
+      <entry key="M2" value="1.0000003533109225" />
+      <entry key="M5" value="1.0047599315175142" />
+      <entry key="M10" value="1.1182027488578277" />
+      <entry key="M15" value="1.3466972610634986" />
+      <entry key="M30" value="2.0340828235693214" />
+      <entry key="H1" value="3.0000713513226445" />
+      <entry key="H2" value="5.036312126927322" />
+      <entry key="H4" value="9.625528221776733" />
+      <entry key="D1" value="23.92908556497961" />
+      <entry key="W1" value="29.020847959816592" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="3.540536986596494E-182" />
+      <entry key="S60" value="2.660696067739517E-91" />
+      <entry key="M2" value="7.294559217813854E-46" />
+      <entry key="M5" value="1.3360243102725168E-18" />
+      <entry key="M10" value="1.634749264116917E-9" />
+      <entry key="M15" value="1.7539629137141783E-6" />
+      <entry key="M30" value="0.0021621525887975594" />
+      <entry key="H1" value="0.12974718248795453" />
+      <entry key="H2" value="1.429664466007627" />
+      <entry key="H4" value="5.1968805763946895" />
+      <entry key="D1" value="15.912183235708227" />
+      <entry key="W1" value="19.355303518951747" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="6.857640994814438E-4" />
+      <entry key="MS500" value="0.23293510732619324" />
+      <entry key="S2" value="0.694718297179424" />
+      <entry key="S5" value="0.8644173893059977" />
+      <entry key="S10" value="0.9297404956793038" />
+      <entry key="S30" value="0.9760092099146395" />
+      <entry key="S60" value="0.9879317840391436" />
+      <entry key="M2" value="0.9939479276333343" />
+      <entry key="M5" value="1.0023195305242107" />
+      <entry key="M10" value="1.1167774904484515" />
+      <entry key="M15" value="1.3454591270086562" />
+      <entry key="M30" value="2.035170853227281" />
+      <entry key="H1" value="3.1288540782293324" />
+      <entry key="H2" value="6.464701881308141" />
+      <entry key="H4" value="14.820806037346472" />
+      <entry key="D1" value="39.84055278472977" />
+      <entry key="W1" value="48.37602827620477" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3GcKbuHrWzG9fEIcm3Je74texrc" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.verifyX.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="CORS_ALLOWED_ORIGINS" value="http://localhost:3000" />
+        <env name="DB_PASSWORD" value="test" />
+        <env name="DB_POOL_SIZE" value="10" />
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/verify-x1" />
+        <env name="DB_USERNAME" value="root" />
+        <env name="GCP_API_KEY" value="AQ.Ab8RN6Lt5nRrh7aKg_Gf-RhWtzzIOE9-YE3KpjrkBW1ktyVqPw" />
+        <env name="JWT_EXPIRATION_MS" value="3600000" />
+        <env name="JWT_SECRET" value="MySuperSecretKeyForOfferVerificationProject2026!!" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UnknownPolicyInFreeMode" />
+      <module name="verify-x" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.verify_x.verifyX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.verify_x.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.verifyX" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="" />
+      <created>1784265493439</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1784265493439</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
