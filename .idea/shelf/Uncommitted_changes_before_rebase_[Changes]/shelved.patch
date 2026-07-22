@@ -1,0 +1,66 @@
+Index: VerifyX-BackendCode
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/VerifyX-BackendCode b/VerifyX-BackendCode
+deleted file mode 100644
+--- a/VerifyX-BackendCode	(revision ae0616d8c1b46f1eff26cf5100f040b7506810aa)
++++ /dev/null	(revision ae0616d8c1b46f1eff26cf5100f040b7506810aa)
+@@ -1,22 +0,0 @@
+-tree af77f3ff69946b9b8b91382dd09156ae004139ff
+-author Gangadhar050 <156682716+Gangadhar050@users.noreply.github.com> 1784193071 +0530
+-committer GitHub <noreply@github.com> 1784193071 +0530
+-gpgsig -----BEGIN PGP SIGNATURE-----
+- 
+- wsFcBAABCAAQBQJqWKAvCRC1aQ7uu5UhlAAATrEQAEPnwVzph2jSSJ7H5NC8fKkD
+- 0BSiX1Zze/PQkvYjIT6fNpC0Cx3PCZmq+Uq1dj/wqv94LEwSds57H3+5Xj0U641y
+- RzpWTzRdNvFFNz/G3oIjjGmsh5xiyiC/jRP0LQJIoAI5eADT+DKQzNbcc9ESn1nN
+- DHAhqTSvqfGtH/TvFRb3jLRzWCGKuXzyIvFMrw6h7KXqOeXxRQtdrgg0cBMqj9Rl
+- M7TQ29xv18FAYHZaAjWPXVCvN9ZO7ar2LW4CRwmPTwg1oObZ2jXWBZEmbDU16FYo
+- Uc9gzuyijz64HTOlPQwSz1ng2Jg5YZ1uPb2fBgwpXdi6scS+Z2P7hg/KYkWPA94J
+- B1KpY9hZL8e+66YnjXS6uWxB5heWN7/w4OehXkqaqR0OkpLel2paYy16VXHEzDoQ
+- RmQ/7FUC7s6cYQGNpJS+hyFNu45xAcT8yOvknh2YU5ftSPqxPoIIRmhKjV1ee69J
+- TGiEutNQcUfwlYpplmu8ghQfmu1PCWqrsI/o6Nj6Iru1uqR2XDmgk7HAXIg368aI
+- iLAw9Dc1PL9I9SYVBxvbQEGVTWSelIuDDJUr7WD8hiZGDhbhR2McQYxrzU8nY9dC
+- gewnVU62RHqz+usHh5sPms0gI338xwUfJ9Ulv7eykYVbhHPxqocQrYdPyJz6q2xJ
+- mQ2IBXhIhh8KJLIZ+/GL
+- =OxuB
+- -----END PGP SIGNATURE-----
+- 
+-
+-Initial commit
+\ No newline at end of file
+Index: VerifyX-BackendCode
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/VerifyX-BackendCode b/VerifyX-BackendCode
+deleted file mode 100644
+--- a/VerifyX-BackendCode	(revision ae0616d8c1b46f1eff26cf5100f040b7506810aa)
++++ /dev/null	(revision ae0616d8c1b46f1eff26cf5100f040b7506810aa)
+@@ -1,22 +0,0 @@
+-tree af77f3ff69946b9b8b91382dd09156ae004139ff
+-author Gangadhar050 <156682716+Gangadhar050@users.noreply.github.com> 1784193071 +0530
+-committer GitHub <noreply@github.com> 1784193071 +0530
+-gpgsig -----BEGIN PGP SIGNATURE-----
+- 
+- wsFcBAABCAAQBQJqWKAvCRC1aQ7uu5UhlAAATrEQAEPnwVzph2jSSJ7H5NC8fKkD
+- 0BSiX1Zze/PQkvYjIT6fNpC0Cx3PCZmq+Uq1dj/wqv94LEwSds57H3+5Xj0U641y
+- RzpWTzRdNvFFNz/G3oIjjGmsh5xiyiC/jRP0LQJIoAI5eADT+DKQzNbcc9ESn1nN
+- DHAhqTSvqfGtH/TvFRb3jLRzWCGKuXzyIvFMrw6h7KXqOeXxRQtdrgg0cBMqj9Rl
+- M7TQ29xv18FAYHZaAjWPXVCvN9ZO7ar2LW4CRwmPTwg1oObZ2jXWBZEmbDU16FYo
+- Uc9gzuyijz64HTOlPQwSz1ng2Jg5YZ1uPb2fBgwpXdi6scS+Z2P7hg/KYkWPA94J
+- B1KpY9hZL8e+66YnjXS6uWxB5heWN7/w4OehXkqaqR0OkpLel2paYy16VXHEzDoQ
+- RmQ/7FUC7s6cYQGNpJS+hyFNu45xAcT8yOvknh2YU5ftSPqxPoIIRmhKjV1ee69J
+- TGiEutNQcUfwlYpplmu8ghQfmu1PCWqrsI/o6Nj6Iru1uqR2XDmgk7HAXIg368aI
+- iLAw9Dc1PL9I9SYVBxvbQEGVTWSelIuDDJUr7WD8hiZGDhbhR2McQYxrzU8nY9dC
+- gewnVU62RHqz+usHh5sPms0gI338xwUfJ9Ulv7eykYVbhHPxqocQrYdPyJz6q2xJ
+- mQ2IBXhIhh8KJLIZ+/GL
+- =OxuB
+- -----END PGP SIGNATURE-----
+- 
+-
+-Initial commit
+\ No newline at end of file

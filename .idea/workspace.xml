@@ -7,7 +7,9 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="" />
+    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,14 +34,55 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Gangadhar050/VerifyX-BackendCode.git",
-    "accountId": "2bc9ddaa-51e0-4579-b737-bc1446d86cab"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Gangadhar050&quot;
   }
-}]]></component>
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="develop1" />
+                    <option name="lastUsedInstant" value="1784694077" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1784693933" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1784693899" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Gangadhar050/VerifyX-BackendCode.git&quot;,
+    &quot;accountId&quot;: &quot;2bc9ddaa-51e0-4579-b737-bc1446d86cab&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/AdminRepository.java" root0="SKIP_INSPECTION" />
@@ -56,21 +99,21 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.000000000000064" />
-      <entry key="M2" value="1.0000003533109225" />
-      <entry key="M5" value="1.0047599315175142" />
-      <entry key="M10" value="1.1182027488578277" />
-      <entry key="M15" value="1.3466972610634986" />
-      <entry key="M30" value="2.0340828235693214" />
-      <entry key="H1" value="3.0000713513226445" />
-      <entry key="H2" value="5.036312126927322" />
-      <entry key="H4" value="9.625528221776733" />
-      <entry key="D1" value="23.92908556497961" />
-      <entry key="W1" value="29.020847959816592" />
+      <entry key="S2" value="1.000101396876657" />
+      <entry key="S5" value="1.097421608154886" />
+      <entry key="S10" value="2.229389316453367" />
+      <entry key="S30" value="10.780873709124034" />
+      <entry key="S60" value="20.90802352044039" />
+      <entry key="M2" value="34.858630000817364" />
+      <entry key="M5" value="53.77242437482935" />
+      <entry key="M10" value="63.952785629113826" />
+      <entry key="M15" value="68.13771925918525" />
+      <entry key="M30" value="73.14633411057257" />
+      <entry key="H1" value="76.44518756770688" />
+      <entry key="H2" value="79.68473309471173" />
+      <entry key="H4" value="84.87823389324979" />
+      <entry key="D1" value="99.76859203717557" />
+      <entry key="W1" value="104.99610136810652" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -78,37 +121,37 @@
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
       <entry key="S10" value="0.0" />
-      <entry key="S30" value="3.540536986596494E-182" />
-      <entry key="S60" value="2.660696067739517E-91" />
-      <entry key="M2" value="7.294559217813854E-46" />
-      <entry key="M5" value="1.3360243102725168E-18" />
-      <entry key="M10" value="1.634749264116917E-9" />
-      <entry key="M15" value="1.7539629137141783E-6" />
-      <entry key="M30" value="0.0021621525887975594" />
-      <entry key="H1" value="0.12974718248795453" />
-      <entry key="H2" value="1.429664466007627" />
-      <entry key="H4" value="5.1968805763946895" />
-      <entry key="D1" value="15.912183235708227" />
-      <entry key="W1" value="19.355303518951747" />
+      <entry key="S30" value="2.85862056601108E-185" />
+      <entry key="S60" value="7.560298743338627E-93" />
+      <entry key="M2" value="1.2296199445043481E-46" />
+      <entry key="M5" value="6.554251444399383E-19" />
+      <entry key="M10" value="1.1450000864018877E-9" />
+      <entry key="M15" value="1.3833221114408925E-6" />
+      <entry key="M30" value="0.0019201616708411648" />
+      <entry key="H1" value="0.12227105624430634" />
+      <entry key="H2" value="1.387864244179377" />
+      <entry key="H4" value="5.120344351242699" />
+      <entry key="D1" value="15.872884030277138" />
+      <entry key="W1" value="19.34846729800021" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.857640994814438E-4" />
-      <entry key="MS500" value="0.23293510732619324" />
-      <entry key="S2" value="0.694718297179424" />
-      <entry key="S5" value="0.8644173893059977" />
-      <entry key="S10" value="0.9297404956793038" />
-      <entry key="S30" value="0.9760092099146395" />
-      <entry key="S60" value="0.9879317840391436" />
-      <entry key="M2" value="0.9939479276333343" />
-      <entry key="M5" value="1.0023195305242107" />
-      <entry key="M10" value="1.1167774904484515" />
-      <entry key="M15" value="1.3454591270086562" />
-      <entry key="M30" value="2.035170853227281" />
-      <entry key="H1" value="3.1288540782293324" />
-      <entry key="H2" value="6.464701881308141" />
-      <entry key="H4" value="14.820806037346472" />
-      <entry key="D1" value="39.84055278472977" />
-      <entry key="W1" value="48.37602827620477" />
+      <entry key="MS100" value="0.9460576467255959" />
+      <entry key="MS500" value="0.9889709163809315" />
+      <entry key="S2" value="0.9973319940485813" />
+      <entry key="S5" value="1.0960616647658543" />
+      <entry key="S10" value="2.2273016834739368" />
+      <entry key="S30" value="10.776676171333733" />
+      <entry key="S60" value="20.903247471463434" />
+      <entry key="M2" value="34.85335117093166" />
+      <entry key="M5" value="53.76822535290486" />
+      <entry key="M10" value="63.94991434287162" />
+      <entry key="M15" value="68.13539369511821" />
+      <entry key="M30" value="73.1465703642483" />
+      <entry key="H1" value="76.56616979172999" />
+      <entry key="H2" value="81.0711660415102" />
+      <entry key="H4" value="89.9969011715529" />
+      <entry key="D1" value="115.64074536152856" />
+      <entry key="W1" value="124.3444431524414" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -135,31 +178,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.verifyX.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "master",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.verifyX.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop1&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>
@@ -226,5 +270,28 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
