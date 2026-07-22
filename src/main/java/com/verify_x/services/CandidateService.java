@@ -2,7 +2,7 @@ package com.verify_x.services;
 
 import com.verify_x.dto.CandidateEducationDto;
 import com.verify_x.dto.CandidateProfileDto;
-import com.verify_x.entity.User;
+import com.verify_x.entity.Candidate;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface CandidateService {
     CandidateProfileDto updateCandidateProfile(Long userId,
                                                CandidateProfileDto dto);
 
-    void saveCandidateProfile(User savedUser);
+    void saveCandidateProfile(Candidate savedUser);
 
 
     // Education

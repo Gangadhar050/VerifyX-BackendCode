@@ -40,17 +40,12 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/v3/api-docs",
                                 "/v3/api-docs/swagger-config",
-                                "/api/auth/userRegister",
-                                "/api/auth/login",
+                                "/api/auth/candidateRegister",
+                                "/api/auth/candidateLogin",
+                                "/api/auth/candidateLogout",
                                 "/api/auth/adminLogin"
                                 ).permitAll()
-                        // FIX: every /api/admin/** route (AdminController,
-                        // AdminOfferLetterController, AdminResumeController,
-                        // AdminSalarySlipsController, AdminUANController,
-                        // AdminRelievingLetterController) previously fell through to
-                        // plain .authenticated(), so any logged-in CANDIDATE could call
-                        // admin approve/reject endpoints. Restrict by role.
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/auth/hrLogin","/api/auth/hrLogout").hasRole("ADMIN")
                         .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
                         .requestMatchers("/api/screening/**",
                                 "/api/employment/**",

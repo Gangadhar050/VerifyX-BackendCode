@@ -1,7 +1,7 @@
 package com.verify_x.entity;
 
-import com.verify_x.enums.Language;
-import com.verify_x.enums.SoftSkill;
+import com.verify_x.enums.CandidateType;
+import com.verify_x.enums.Role;
 import com.verify_x.enums.TechnicalSkill;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,20 +19,33 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Candidate {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false, unique = true)
-    private User user;
+    @Column(nullable = false,length = 100)
+    private String username;
 
-    private String name;
-
+    @Column(nullable = false,unique = true)
     private String email;
 
+    @Column(nullable = false,unique = true,length = 10)
     private String phoneNumber;
+
+    @Column(nullable = false)
+    private String password;
+
+
+    @Column(nullable = false)
+    private String appliedRole;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private CandidateType candidateType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
 
     @Column(length = 500)
     private String address;
@@ -71,27 +84,6 @@ public class Candidate {
     @Enumerated(EnumType.STRING)
     private List<TechnicalSkill> technicalSkills;
 
-
-// Soft Skills
-
-    @ElementCollection(fetch = FetchType.EAGER, targetClass = SoftSkill.class)
-    @CollectionTable(
-            name = "candidate_soft_skills",
-            joinColumns = @JoinColumn(name = "candidate_id")
-    )
-    @Enumerated(EnumType.STRING)
-    private List<SoftSkill> softSkills;
-
-
-// Languages
-
-    @ElementCollection(fetch = FetchType.EAGER, targetClass = Language.class)
-    @CollectionTable(
-            name = "candidate_languages",
-            joinColumns = @JoinColumn(name = "candidate_id")
-    )
-    @Enumerated(EnumType.STRING)
-    private List<Language> languages;
 
 
 //Emplyment details

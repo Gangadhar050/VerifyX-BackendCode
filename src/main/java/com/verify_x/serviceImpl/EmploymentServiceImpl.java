@@ -3,14 +3,14 @@ package com.verify_x.serviceImpl;
 import com.verify_x.dto.EmploymentDetailsDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.Employment;
-import com.verify_x.entity.User;
+
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.EmploymentStatus;
 import com.verify_x.enums.OfferLetterStatus;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.CandidateRepository;
 import com.verify_x.repository.EmploymentRepository;
-import com.verify_x.repository.UserRepository;
+
 import com.verify_x.services.EmploymentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class EmploymentServiceImpl implements EmploymentService {
 
     private final EmploymentRepository employmentRepository;
     private final CandidateRepository candidateRepository;
-    private final UserRepository userRepository;
+
 
     private EmploymentDetailsDto mapToDto(Employment employment){
 
@@ -55,7 +55,6 @@ public class EmploymentServiceImpl implements EmploymentService {
 
                 .build();
     }
-
     @Override
     public void saveEmploymentDetails(EmploymentDetailsDto dto) {
 
@@ -65,15 +64,11 @@ public class EmploymentServiceImpl implements EmploymentService {
         UserPrincipal principal =
                 (UserPrincipal) authentication.getPrincipal();
 
-        User user = userRepository.findById(principal.getUserId())
+        Candidate candidate = candidateRepository.findById(principal.getUserId())
                 .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found"));
+                        new UsernameNotFoundException("Candidate not found"));
 
-        validateEmploymentDetails(user, dto);
-
-        Candidate candidate = candidateRepository.findByUser(user)
-                .orElseThrow(() ->
-                        new RuntimeException("Candidate profile not found"));
+        validateEmploymentDetails(candidate, dto);
 
         Employment employment = employmentRepository
                 .findByCandidate(candidate)
@@ -81,10 +76,11 @@ public class EmploymentServiceImpl implements EmploymentService {
 
         employment.setCandidate(candidate);
 
+        // ===========================
+        // Candidate Type
+        // ===========================
 
-//       Experienced Candidate
-
-        if(user.getCandidateType() == CandidateType.EXPERIENCED){
+        if (candidate.getCandidateType() == CandidateType.EXPERIENCED) {
 
             employment.setPreviousCompanyName(dto.getPreviousCompanyName());
             employment.setPreviousDesignation(dto.getPreviousDesignation());
@@ -95,47 +91,64 @@ public class EmploymentServiceImpl implements EmploymentService {
 
             employment.setEmploymentStatus(dto.getEmploymentStatus());
 
-            if(dto.getEmploymentStatus() == EmploymentStatus.CURRENTLY_EMPLOYED){
+            if (dto.getEmploymentStatus() == EmploymentStatus.CURRENTLY_EMPLOYED) {
 
                 employment.setCurrentCompany(dto.getCurrentCompany());
                 employment.setCurrentDesignation(dto.getCurrentDesignation());
                 employment.setCurrentCTC(dto.getCurrentCTC());
                 employment.setNoticePeriod(dto.getNoticePeriod());
 
-            }else{
+            } else {
 
                 employment.setCurrentCompany(null);
                 employment.setCurrentDesignation(null);
-                employment.setCurrentCTC(null);
+                employment.setCurrentCTC(0.0);
                 employment.setNoticePeriod(null);
-
             }
 
+        } else {
+
+            // Fresher
+
+            employment.setPreviousCompanyName(null);
+            employment.setPreviousDesignation(null);
+            employment.setTotalExperience(null);
+            employment.setLastCTC(null);
+            employment.setLastWorkingDay(null);
+            employment.setUanNumber(null);
+
+            employment.setEmploymentStatus(null);
+
+            employment.setCurrentCompany(null);
+            employment.setCurrentDesignation(null);
+            employment.setCurrentCTC(null);
+            employment.setNoticePeriod(null);
         }
 
-        //   Offer Letter
+        // ===========================
+        // Offer Letter
+        // ===========================
 
         employment.setOfferLetterStatus(dto.getOfferLetterStatus());
 
-        if(dto.getOfferLetterStatus() == OfferLetterStatus.HOLDING_OFFER_LETTER){
+        if (dto.getOfferLetterStatus() == OfferLetterStatus.HOLDING_OFFER_LETTER) {
 
             employment.setOfferCompanyName(dto.getOfferCompanyName());
             employment.setOfferedCTC(dto.getOfferedCTC());
             employment.setJoiningDate(dto.getJoiningDate());
             employment.setOfferReferenceNumber(dto.getOfferReferenceNumber());
 
-        }else{
+        } else {
 
             employment.setOfferCompanyName(null);
             employment.setOfferedCTC(null);
             employment.setJoiningDate(null);
             employment.setOfferReferenceNumber(null);
-
         }
 
         employmentRepository.save(employment);
-
     }
+
     @Override
     public void updateEmploymentDetails(EmploymentDetailsDto dto) {
 
@@ -156,8 +169,7 @@ public class EmploymentServiceImpl implements EmploymentService {
     @Override
     public EmploymentDetailsDto getEmploymentDetailsByEmail(String email) {
 
-        Candidate candidate = candidateRepository.findByUserEmail(email)
-                .orElseThrow(() ->
+        Candidate candidate = candidateRepository.findByEmail(email)                .orElseThrow(() ->
                         new RuntimeException("Candidate not found"));
 
         Employment employment = employmentRepository.findByCandidate(candidate)
@@ -171,7 +183,7 @@ public class EmploymentServiceImpl implements EmploymentService {
     public List<EmploymentDetailsDto> searchEmploymentDetails(String keyword) {
 
         return candidateRepository
-                .findByUserUsernameContainingIgnoreCaseOrUserEmailContainingIgnoreCase(
+                .findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(
                         keyword,
                         keyword
                 )
@@ -193,14 +205,14 @@ public class EmploymentServiceImpl implements EmploymentService {
         employmentRepository.delete(employment);
     }
 
-    private void validateEmploymentDetails(User user,
+    private void validateEmploymentDetails(Candidate candidate,
                                            EmploymentDetailsDto dto) {
 
 
 
         //  Experienced Candidate Validation
 
-        if (user.getCandidateType() == CandidateType.EXPERIENCED) {
+        if (candidate.getCandidateType() == CandidateType.EXPERIENCED) {
 
             if (dto.getPreviousCompanyName() == null ||
                     dto.getPreviousCompanyName().isBlank()) {

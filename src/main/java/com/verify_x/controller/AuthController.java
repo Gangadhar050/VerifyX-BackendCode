@@ -22,7 +22,7 @@ public class AuthController {
     /**
      * Candidate Registration
      */
-    @PostMapping("/userRegister")
+    @PostMapping("candidateRegister")
     public ResponseEntity<ApiResponse<String>> registerUser(
             @Valid @RequestBody UserRegistrationDto registrationDto) {
 
@@ -39,7 +39,7 @@ public class AuthController {
     /**
      * User Login
      */
-    @PostMapping("/login")
+    @PostMapping("/candidateLogin")
     public ResponseEntity<ApiResponse<LoginResponseDto>> login(
             @Valid @RequestBody LoginRequestDto loginRequestDto) {
 
@@ -70,7 +70,7 @@ public class AuthController {
      * Logout
      * JWT logout is handled by blacklisting the token.
      */
-    @PostMapping("/logout")
+    @PostMapping("/candidateLogout")
     public ResponseEntity<ApiResponse<String>> logout(
             @RequestHeader("Authorization") String authHeader) {
 
@@ -86,7 +86,7 @@ public class AuthController {
                         .build()
         );
     }
-    @PostMapping("/adminLogin")
+    @PostMapping("/hrLogin")
     public ResponseEntity<ApiResponse<LoginResponseDto>> adminLogin(
             @Valid @RequestBody AdminLoginRequestDto request) {
 
@@ -98,7 +98,7 @@ public class AuthController {
                         .build()
         );
     }
-    @PostMapping("/adminLogout")
+    @PostMapping("/hrLogout")
     public ResponseEntity<ApiResponse<String>> adminLogout(
             @RequestHeader("Authorization") String authHeader) {
 

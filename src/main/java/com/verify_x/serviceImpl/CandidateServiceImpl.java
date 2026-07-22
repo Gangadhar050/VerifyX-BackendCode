@@ -4,10 +4,9 @@ package com.verify_x.serviceImpl;
 import com.verify_x.dto.CandidateEducationDto;
 import com.verify_x.dto.CandidateProfileDto;
 import com.verify_x.entity.Candidate;
-import com.verify_x.entity.User;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.CandidateRepository;
-import com.verify_x.repository.UserRepository;
+//import com.verify_x.repository.UserRepository;
 import com.verify_x.services.CandidateService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +26,7 @@ import java.util.List;
 public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
-    private final UserRepository userRepository;
+    // private final UserRepository userRepository;
 
     private CandidateEducationDto mapToEducationDto(Candidate candidate) {
 
@@ -37,17 +36,17 @@ public class CandidateServiceImpl implements CandidateService {
                 .passingYear(candidate.getPassingYear())
                 .percentage(candidate.getPercentage())
                 .technicalSkills(new ArrayList<>(candidate.getTechnicalSkills()))
-                .softSkills(new ArrayList<>(candidate.getSoftSkills()))
-                .languages(new ArrayList<>(candidate.getLanguages()))
+//                .softSkills(new ArrayList<>(candidate.getSoftSkills()))
+//                .languages(new ArrayList<>(candidate.getLanguages()))
                 .build();
     }
     @Override
     public CandidateProfileDto getCandidateProfile(Long userId) {
 
-        User user = userRepository.findById(userId)
+        Candidate user = candidateRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        Candidate candidate = candidateRepository.findByUserId(userId)
+        Candidate candidate = candidateRepository.findById(userId)
                 .orElse(new Candidate());
 
         return CandidateProfileDto.builder()
@@ -66,7 +65,7 @@ public class CandidateServiceImpl implements CandidateService {
     public CandidateProfileDto saveCandidateProfile(Long userId,
                                                     CandidateProfileDto dto) {
 
-        User user = userRepository.findById(userId)
+        Candidate user = candidateRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (candidateRepository.existsByPanNumber(dto.getPanNumber())) {
@@ -83,16 +82,15 @@ public class CandidateServiceImpl implements CandidateService {
         user.setAppliedRole(dto.getAppliedRole());
         user.setCandidateType(dto.getCandidateType());
 
-        userRepository.save(user);
+        candidateRepository.save(user);
 
-        Candidate candidate = Candidate.builder()
-                .user(user)
-                .address(dto.getAddress())
-                .panNumber(dto.getPanNumber())
-                .aadhaarNumber(dto.getAadhaarNumber())
-                .build();
+        Candidate candidate = Candidate.builder().build();
+        user.setAddress(dto.getAddress());
+        user.setPanNumber(dto.getPanNumber());
+        user.setAadhaarNumber(dto.getAadhaarNumber());
 
-        candidateRepository.save(candidate);
+        candidateRepository.save(user);
+
 
         log.info("Candidate profile created for User ID : {}", userId);
 
@@ -103,10 +101,10 @@ public class CandidateServiceImpl implements CandidateService {
     public CandidateProfileDto updateCandidateProfile(Long userId,
                                                       CandidateProfileDto dto) {
 
-        User user = userRepository.findById(userId)
+        Candidate user = candidateRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        Candidate candidate = candidateRepository.findByUserId(userId)
+        Candidate candidate = candidateRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Candidate not found"));
 
         user.setUsername(dto.getUsername());
@@ -115,7 +113,7 @@ public class CandidateServiceImpl implements CandidateService {
         user.setAppliedRole(dto.getAppliedRole());
         user.setCandidateType(dto.getCandidateType());
 
-        userRepository.save(user);
+        candidateRepository.save(user);
 
         candidate.setAddress(dto.getAddress());
         candidate.setPanNumber(dto.getPanNumber());
@@ -129,18 +127,11 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public void saveCandidateProfile(User savedUser) {
-
-        Candidate candidate = Candidate.builder()
-                .user(savedUser)
-                .name(savedUser.getUsername())
-                .email(savedUser.getEmail())
-                .phoneNumber(savedUser.getPhoneNumber())
-                .build();
+    public void saveCandidateProfile(Candidate candidate) {
 
         candidateRepository.save(candidate);
 
-        log.info("Candidate profile created for User ID : {}", savedUser.getId());
+        log.info("Candidate profile created for User ID : {}", candidate.getId());
     }
 
 
@@ -155,13 +146,13 @@ public class CandidateServiceImpl implements CandidateService {
         UserPrincipal principal =
                 (UserPrincipal) authentication.getPrincipal();
 
-        User user = userRepository.findById(principal.getUserId())
+        Candidate user = candidateRepository.findById(principal.getUserId())
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
 
-        Candidate candidate = candidateRepository.findByUser(user)
+        Candidate candidate = candidateRepository.findById(user.getId())
                 .orElseThrow(() ->
-                        new RuntimeException("Candidate profile not found"));
+                        new RuntimeException("Candidate not found"));
 
         candidate.setHighestEducation(dto.getHighestEducation());
         candidate.setCollege(dto.getCollege());
@@ -170,9 +161,9 @@ public class CandidateServiceImpl implements CandidateService {
 
         candidate.setTechnicalSkills(dto.getTechnicalSkills());
 
-        candidate.setSoftSkills(dto.getSoftSkills());
-
-        candidate.setLanguages(dto.getLanguages());
+//        candidate.setSoftSkills(dto.getSoftSkills());
+//
+//        candidate.setLanguages(dto.getLanguages());
 
         candidateRepository.save(candidate);
     }
@@ -184,13 +175,13 @@ public class CandidateServiceImpl implements CandidateService {
 
         UserPrincipal principal = (UserPrincipal) authentication.getPrincipal();
 
-        User user = userRepository.findById(principal.getUserId())
+        Candidate user = candidateRepository.findById(principal.getUserId())
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
 
-        Candidate candidate = candidateRepository.findByUser(user)
+        Candidate candidate = candidateRepository.findById(user.getId())
                 .orElseThrow(() ->
-                        new RuntimeException("Candidate profile not found"));
+                        new RuntimeException("Candidate not found"));
 
         candidate.setHighestEducation(dto.getHighestEducation());
         candidate.setCollege(dto.getCollege());
@@ -198,8 +189,8 @@ public class CandidateServiceImpl implements CandidateService {
         candidate.setPercentage(dto.getPercentage());
 
         candidate.setTechnicalSkills(dto.getTechnicalSkills());
-        candidate.setSoftSkills(dto.getSoftSkills());
-        candidate.setLanguages(dto.getLanguages());
+//        candidate.setSoftSkills(dto.getSoftSkills());
+//        candidate.setLanguages(dto.getLanguages());
 
         candidateRepository.save(candidate);
     }
@@ -216,7 +207,7 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public CandidateEducationDto getEducationByEmail(String email) {
 
-        Candidate candidate = candidateRepository.findByUserEmail(email)
+        Candidate candidate = candidateRepository.findByEmail(email)
                 .orElseThrow(() ->
                         new RuntimeException("Candidate not found"));
 
@@ -226,7 +217,7 @@ public class CandidateServiceImpl implements CandidateService {
     public List<CandidateEducationDto> searchEducation(String keyword) {
 
         return candidateRepository
-                .findByUserUsernameContainingIgnoreCaseOrUserEmailContainingIgnoreCase(
+                .findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(
                         keyword,
                         keyword
                 )
@@ -247,8 +238,8 @@ public class CandidateServiceImpl implements CandidateService {
         candidate.setPercentage(null);
 
         candidate.setTechnicalSkills(new ArrayList<>());
-        candidate.setSoftSkills(new ArrayList<>());
-        candidate.setLanguages(new ArrayList<>());
+//        candidate.setSoftSkills(new ArrayList<>());
+//        candidate.setLanguages(new ArrayList<>());
 
         candidateRepository.save(candidate);
     }

@@ -1,7 +1,7 @@
 package com.verify_x.dto;
 
-import com.verify_x.enums.Language;
-import com.verify_x.enums.SoftSkill;
+//import com.verify_x.enums.Language;
+//import com.verify_x.enums.SoftSkill;
 import com.verify_x.enums.TechnicalSkill;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +25,8 @@ public class CandidateEducationDto {
     private Double percentage;
 
     private List<TechnicalSkill> technicalSkills;
-
-    private List<SoftSkill> softSkills;
-
-    private List<Language> languages;
+//
+//    private List<SoftSkill> softSkills;
+//
+//    private List<Language> languages;
 }

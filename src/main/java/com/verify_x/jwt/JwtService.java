@@ -1,7 +1,8 @@
 package com.verify_x.jwt;
 
 import com.verify_x.entity.Admin;
-import com.verify_x.entity.User;
+import com.verify_x.entity.Candidate;
+//import com.verify_x.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -52,7 +53,7 @@ public class JwtService {
         return null;
     }
 
-    public String generateToken(User user) {
+    public String generateToken(Candidate user) {
 
         return Jwts.builder()
                 .subject(user.getEmail())
@@ -122,4 +123,6 @@ public class JwtService {
                 .getExpiration()
                 .getTime();
     }
+
+
 }

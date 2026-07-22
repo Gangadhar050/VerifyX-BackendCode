@@ -1,9 +1,10 @@
 package com.verify_x.jwt;
 
 import com.verify_x.entity.Admin;
-import com.verify_x.entity.User;
+import com.verify_x.entity.Candidate;
+
 import com.verify_x.repository.AdminRepository;
-import com.verify_x.repository.UserRepository;
+import com.verify_x.repository.CandidateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,8 +19,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
     private final AdminRepository adminRepository;
+    private final CandidateRepository candidateRepository;
 
     @Override
     public UserDetails loadUserByUsername(@NonNull String email)
@@ -37,7 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         // Check Candidate/User
-        User user = userRepository.findByEmail(email)
+        Candidate user = candidateRepository.findByEmail(email)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found: " + email));
 
