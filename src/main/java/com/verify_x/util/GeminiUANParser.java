@@ -1,0 +1,73 @@
+package com.verify_x.util;
+
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.stereotype.Component;
+
+@Component
+public class GeminiUANParser {
+
+    private final ChatClient chatClient;
+
+    public GeminiUANParser(ChatClient chatClient) {
+        this.chatClient = chatClient;
+    }
+
+    public String parseUAN(String uanText) {
+
+        String prompt = """
+You are an AI that extracts information from EPF Passbook, UAN documents, EPF screenshots, or manually entered UAN details.
+
+Return ONLY a valid JSON object.
+
+Rules:
+
+1. Do NOT return markdown.
+2. Do NOT return ```json.
+3. Do NOT explain anything.
+4. Return ONLY JSON.
+5. If any field is not available, return an empty string "".
+6. Do NOT return arrays.
+
+Extract the following fields:
+
+{
+  "employeeName":"",
+  "uanNumber":""
+}
+
+Document:
+
+""" + uanText;
+
+        try {
+
+            String response = chatClient.prompt()
+                    .user(prompt)
+                    .call()
+                    .content();
+
+            if (response == null) {
+                throw new RuntimeException(
+                        "Gemini returned null response.");
+            }
+
+            response = response
+                    .replace("```json", "")
+                    .replace("```", "")
+                    .trim();
+
+            System.out.println("========== GEMINI UAN RESPONSE ==========");
+            System.out.println(response);
+
+            return response;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            throw new RuntimeException(
+                    "Failed to parse UAN Details using Gemini : "
+                            + e.getMessage(), e);
+        }
+    }
+}
