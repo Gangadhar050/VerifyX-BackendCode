@@ -265,6 +265,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
             // Logged-in candidate
             Candidate candidate = getLoggedInCandidate();
+
             // Validate document type based on candidate type
             Set<DocumentType> allowedDocuments =
                     candidate.getCandidateType() == CandidateType.FRESHER

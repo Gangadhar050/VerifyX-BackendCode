@@ -11,7 +11,6 @@ public enum DocumentType {
     RELIEVING_LETTER,
 
     EXPERIENCE_LETTER,
-
     PAN_CARD,
 
     UAN_PROOF
