@@ -36,4 +36,8 @@ public class Admin {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+    
+    
+    
+    
 }
