@@ -3,6 +3,7 @@ package com.verify_x.serviceImpl;
 import com.verify_x.dto.CandidateDocumentDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
+import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.DocumentStatus;
 import com.verify_x.enums.DocumentType;
 import com.verify_x.jwt.UserPrincipal;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -52,6 +54,21 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                     "image/jpg"
 
             );
+
+    private static final Set<DocumentType> FRESHER_DOCUMENTS = Set.of(
+            DocumentType.RESUME,
+            DocumentType.PAN_CARD
+    );
+
+    private static final Set<DocumentType> EXPERIENCED_DOCUMENTS = Set.of(
+            DocumentType.RESUME,
+            DocumentType.OFFER_LETTER,
+            DocumentType.SALARY_SLIP,
+            DocumentType.RELIEVING_LETTER,
+            DocumentType.EXPERIENCE_LETTER,
+            DocumentType.PAN_CARD,
+            DocumentType.UAN_PROOF
+    );
 
     // DTO Mapper
     private CandidateDocumentDto mapToDto(CandidateDocument document) {
@@ -161,6 +178,21 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             // Logged-in candidate
             Candidate candidate = getLoggedInCandidate();
 
+            // Validate document type based on candidate type
+            Set<DocumentType> allowedDocuments =
+                    candidate.getCandidateType() == CandidateType.FRESHER
+                            ? FRESHER_DOCUMENTS
+                            : EXPERIENCED_DOCUMENTS;
+
+            if (!allowedDocuments.contains(documentType)) {
+
+                throw new RuntimeException(
+                        documentType + " is not allowed for "
+                                + candidate.getCandidateType()
+                                + " candidates."
+                );
+
+            }
             // Check whether the document already exists
             CandidateDocument existingDocument =
                     candidateDocumentRepository
@@ -233,6 +265,22 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
             // Logged-in candidate
             Candidate candidate = getLoggedInCandidate();
+            // Validate document type based on candidate type
+            Set<DocumentType> allowedDocuments =
+                    candidate.getCandidateType() == CandidateType.FRESHER
+                            ? FRESHER_DOCUMENTS
+                            : EXPERIENCED_DOCUMENTS;
+
+            if (!allowedDocuments.contains(documentType)) {
+
+                throw new RuntimeException(
+                        documentType + " is not allowed for "
+                                + candidate.getCandidateType()
+                                + " candidates."
+                );
+
+            }
+
 
             // Find existing document
             CandidateDocument document =

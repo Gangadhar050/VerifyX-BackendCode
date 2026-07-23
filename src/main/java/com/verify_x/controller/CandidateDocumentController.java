@@ -15,13 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping( value = "/upload",  consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+@RequestMapping( "/upload")
 @RequiredArgsConstructor
 public class CandidateDocumentController {
 
     private final CandidateDocumentService candidateDocumentService;
 
-    @PostMapping("/upload")
+    @PostMapping(value="/upload",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<String>> uploadDocument(
 
             @RequestParam ("File")MultipartFile file,
@@ -40,7 +40,7 @@ public class CandidateDocumentController {
                 ));
     }
 
-    @PutMapping("/re-upload")
+    @PutMapping(value="/re-upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ApiResponse<String>> reUploadDocument(
 
             @RequestParam MultipartFile file,
@@ -60,7 +60,8 @@ public class CandidateDocumentController {
         );
     }
 
-    @GetMapping("/my-documents")
+//    @GetMapping(value="/my-documents")
+       @GetMapping("/my-documents")
     public ResponseEntity<ApiResponse<List<CandidateDocumentDto>>> getMyDocuments() {
 
         return ResponseEntity.ok(
