@@ -7,6 +7,7 @@ import com.verify_x.payload.ApiResponse;
 import com.verify_x.services.CandidateDocumentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/documents")
+@RequestMapping( value = "/upload",  consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 @RequiredArgsConstructor
 public class CandidateDocumentController {
 
@@ -23,7 +24,7 @@ public class CandidateDocumentController {
     @PostMapping("/upload")
     public ResponseEntity<ApiResponse<String>> uploadDocument(
 
-            @RequestParam MultipartFile file,
+            @RequestParam ("File")MultipartFile file,
 
             @RequestParam DocumentType documentType
 

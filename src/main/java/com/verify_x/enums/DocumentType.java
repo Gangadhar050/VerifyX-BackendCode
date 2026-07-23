@@ -14,7 +14,5 @@ public enum DocumentType {
 
     PAN_CARD,
 
-    AADHAAR_CARD,
-
     UAN_PROOF
 }
