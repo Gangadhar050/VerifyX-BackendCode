@@ -44,4 +44,7 @@ public interface CandidateDocumentRepository extends JpaRepository<CandidateDocu
             Candidate candidate,
             DocumentType documentType
     );
+
+    // Reports Dashboard
+    long countByStatus(DocumentStatus status);
 }

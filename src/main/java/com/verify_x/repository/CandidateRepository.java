@@ -1,6 +1,7 @@
 package com.verify_x.repository;
 
 import com.verify_x.entity.Candidate;
+import com.verify_x.enums.CandidateType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -30,4 +31,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
             String username,
             String email
     );
+
+    // Reports Dashboard
+    long countByCandidateType(CandidateType candidateType);
 }
