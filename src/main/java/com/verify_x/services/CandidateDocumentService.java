@@ -1,6 +1,7 @@
 package com.verify_x.services;
 
 import com.verify_x.dto.CandidateDocumentDto;
+import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.DocumentType;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,8 +28,8 @@ public interface CandidateDocumentService {
     List<CandidateDocumentDto> getDocumentsByCandidateId(Long candidateId);
 
     // Download candidate document.
-    CandidateDocumentDto getDocument(Long documentId);
-
+//    CandidateDocumentDto getDocument(Long documentId);
+  CandidateDocument getDocument(Long documentId);
     // Candidate deletes a document.
     void deleteDocument(Long documentId);
 

@@ -19,7 +19,7 @@ public class CandidateDocumentDto {
 
     private String fileName;
 
-    private String filePath;
+    private String contentType;
 
     private DocumentStatus status;
 

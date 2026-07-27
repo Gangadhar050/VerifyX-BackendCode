@@ -6,6 +6,7 @@ import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.DocumentStatus;
 import com.verify_x.enums.DocumentType;
+import com.verify_x.exception.ResourceNotFoundException;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.CandidateDocumentRepository;
 import com.verify_x.repository.CandidateRepository;
@@ -20,11 +21,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.*;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -35,25 +33,14 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
     private final CandidateRepository candidateRepository;
     private final CandidateDocumentRepository candidateDocumentRepository;
 
-    // Upload Folder
-    private static final String UPLOAD_DIR = "uploads/documents/";
-
-    // File Size
     private static final long MAX_FILE_SIZE = 5 * 1024 * 1024;
 
-    // Allowed File Types
-    private static final List<String> ALLOWED_TYPES =
-            List.of(
-
-                    "application/pdf",
-
-                    "image/png",
-
-                    "image/jpeg",
-
-                    "image/jpg"
-
-            );
+    private static final List<String> ALLOWED_TYPES = List.of(
+            "application/pdf",
+            "image/png",
+            "image/jpeg",
+            "image/jpg"
+    );
 
     private static final Set<DocumentType> FRESHER_DOCUMENTS = Set.of(
             DocumentType.RESUME,
@@ -70,32 +57,28 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             DocumentType.UAN_PROOF
     );
 
+    // ==========================================================
     // DTO Mapper
+    // ==========================================================
+
     private CandidateDocumentDto mapToDto(CandidateDocument document) {
 
         return CandidateDocumentDto.builder()
-
                 .id(document.getId())
-
                 .documentType(document.getDocumentType())
-
                 .fileName(document.getFileName())
-
-                .filePath(document.getFilePath())
-
+                .contentType(document.getContentType())
                 .status(document.getStatus())
-
                 .rejectionReason(document.getRejectionReason())
-
                 .uploadedAt(document.getUploadedAt())
-
                 .updatedAt(document.getUpdatedAt())
-
                 .build();
-
     }
 
-    //LoggedIn-Candidate
+    // ==========================================================
+    // Logged In Candidate
+    // ==========================================================
+
     private Candidate getLoggedInCandidate() {
 
         Authentication authentication =
@@ -104,153 +87,129 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         UserPrincipal principal =
                 (UserPrincipal) authentication.getPrincipal();
 
-        return candidateRepository.findById(
-                        principal.getUserId())
+        return candidateRepository.findById(principal.getUserId())
                 .orElseThrow(() ->
-                        new UsernameNotFoundException(
-                                "Candidate not found"));
-
+                        new UsernameNotFoundException("Candidate not found"));
     }
 
+    // ==========================================================
     // Validate File
+    // ==========================================================
+
     private void validateFile(MultipartFile file) {
 
         if (file == null || file.isEmpty()) {
-
-            throw new RuntimeException(
-                    "Please upload a document.");
+            throw new RuntimeException("Please upload a document.");
         }
 
         if (file.getSize() > MAX_FILE_SIZE) {
-
-            throw new RuntimeException(
-                    "Maximum file size is 5 MB.");
+            throw new RuntimeException("Maximum file size is 5 MB.");
         }
 
         if (!ALLOWED_TYPES.contains(file.getContentType())) {
-
             throw new RuntimeException(
                     "Only PDF, PNG, JPG and JPEG files are allowed."
             );
         }
     }
 
+    // ==========================================================
+    // Validate Candidate Document Type
+    // ==========================================================
 
-    // Create Upload Folder
-    private void createUploadDirectory()
-            throws IOException {
+    private void validateDocumentType(
+            Candidate candidate,
+            DocumentType documentType
+    ) {
 
-        Path path = Paths.get(UPLOAD_DIR);
+        Set<DocumentType> allowedDocuments =
+                candidate.getCandidateType() == CandidateType.FRESHER
+                        ? FRESHER_DOCUMENTS
+                        : EXPERIENCED_DOCUMENTS;
 
-        if (!Files.exists(path)) {
-            Files.createDirectories(path);
+        if (!allowedDocuments.contains(documentType)) {
+
+            throw new RuntimeException(
+                    documentType +
+                            " is not allowed for " +
+                            candidate.getCandidateType() +
+                            " candidates."
+            );
         }
     }
 
-    // Save File
-    private String saveFile(MultipartFile file) throws IOException {
-
-        createUploadDirectory();
-
-        String fileName =
-                UUID.randomUUID()
-                        + "_"
-                        + file.getOriginalFilename();
-        Path path =
-                Paths.get(UPLOAD_DIR, fileName);
-
-        Files.copy(
-                file.getInputStream(),
-                path,
-                StandardCopyOption.REPLACE_EXISTING);
-        return path.toString();
-
-    }
+    // ==========================================================
+    // Upload Document
+    // ==========================================================
 
     @Override
-    public void uploadDocument(MultipartFile file, DocumentType documentType) {
+    public void uploadDocument(
+            MultipartFile file,
+            DocumentType documentType
+    ) {
 
         try {
 
-            // Validate uploaded file
             validateFile(file);
 
-            // Logged-in candidate
             Candidate candidate = getLoggedInCandidate();
 
-            // Validate document type based on candidate type
-            Set<DocumentType> allowedDocuments =
-                    candidate.getCandidateType() == CandidateType.FRESHER
-                            ? FRESHER_DOCUMENTS
-                            : EXPERIENCED_DOCUMENTS;
+            validateDocumentType(candidate, documentType);
 
-            if (!allowedDocuments.contains(documentType)) {
-
-                throw new RuntimeException(
-                        documentType + " is not allowed for "
-                                + candidate.getCandidateType()
-                                + " candidates."
-                );
-
-            }
-            // Check whether the document already exists
-            CandidateDocument existingDocument =
+            CandidateDocument existing =
                     candidateDocumentRepository
-                            .findByCandidateAndDocumentType(candidate, documentType)
+                            .findByCandidateAndDocumentType(
+                                    candidate,
+                                    documentType
+                            )
                             .orElse(null);
 
-            if (existingDocument != null) {
+            if (existing != null) {
 
                 throw new RuntimeException(
-                        documentType + " already uploaded. " +
-                                "Use Re-Upload if HR rejected this document."
+                        documentType +
+                                " already uploaded. Use Re-Upload if rejected."
                 );
-
             }
 
-            // Save file to local storage
-            String savedPath = saveFile(file);
+            CandidateDocument document =
+                    CandidateDocument.builder()
 
-            // Create new document
-            CandidateDocument document = CandidateDocument.builder()
+                            .candidate(candidate)
 
-                    .candidate(candidate)
+                            .documentType(documentType)
 
-                    .documentType(documentType)
+                            .fileName(file.getOriginalFilename())
 
-                    .fileName(file.getOriginalFilename())
+                            .contentType(file.getContentType())
 
-                    .filePath(savedPath)
+                            .documentData(file.getBytes())
 
-                    .status(DocumentStatus.PENDING)
+                            .status(DocumentStatus.PENDING)
 
-                    .rejectionReason(null)
+                            .rejectionReason(null)
 
-                    .uploadedAt(LocalDateTime.now())
-
-                    .updatedAt(LocalDateTime.now())
-
-                    .build();
+                            .build();
 
             candidateDocumentRepository.save(document);
 
-            log.info(
-                    "{} uploaded successfully by {}",
+            log.info("{} uploaded by {}",
                     documentType,
-                    candidate.getEmail()
-            );
+                    candidate.getEmail());
 
-        } catch (IOException e) {
+        } catch (IOException ex) {
 
-            log.error("File upload failed", e);
+            log.error("File upload failed", ex);
 
             throw new RuntimeException(
                     "Unable to upload document."
             );
-
         }
-
     }
+
+    // ==========================================================
+    // Re Upload
+    // ==========================================================
 
     @Override
     public void reUploadDocument(
@@ -260,96 +219,59 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
         try {
 
-            // Validate uploaded file
             validateFile(file);
 
-            // Logged-in candidate
             Candidate candidate = getLoggedInCandidate();
 
-            // Validate document type based on candidate type
-            Set<DocumentType> allowedDocuments =
-                    candidate.getCandidateType() == CandidateType.FRESHER
-                            ? FRESHER_DOCUMENTS
-                            : EXPERIENCED_DOCUMENTS;
+            validateDocumentType(candidate, documentType);
 
-            if (!allowedDocuments.contains(documentType)) {
-
-                throw new RuntimeException(
-                        documentType + " is not allowed for "
-                                + candidate.getCandidateType()
-                                + " candidates."
-                );
-
-            }
-
-
-            // Find existing document
             CandidateDocument document =
                     candidateDocumentRepository
-                            .findByCandidateAndDocumentType(candidate, documentType)
+                            .findByCandidateAndDocumentType(
+                                    candidate,
+                                    documentType
+                            )
                             .orElseThrow(() ->
                                     new RuntimeException(
-                                            documentType + " not found."
+                                            documentType +
+                                                    " not found."
                                     ));
 
-            // Only rejected documents can be re-uploaded
             if (document.getStatus() != DocumentStatus.REJECTED) {
 
                 throw new RuntimeException(
                         "Only rejected documents can be re-uploaded."
                 );
-
             }
 
-            // Delete old file if it exists
-            try {
-
-                Path oldFile = Paths.get(document.getFilePath());
-
-                if (Files.exists(oldFile)) {
-
-                    Files.delete(oldFile);
-
-                }
-
-            } catch (IOException ex) {
-
-                log.warn("Unable to delete old document : {}",
-                        document.getFilePath());
-
-            }
-
-            // Save new file
-            String savedPath = saveFile(file);
-
-            // Update document details
             document.setFileName(file.getOriginalFilename());
 
-            document.setFilePath(savedPath);
+            document.setContentType(file.getContentType());
+
+            document.setDocumentData(file.getBytes());
 
             document.setStatus(DocumentStatus.PENDING);
 
             document.setRejectionReason(null);
 
-            document.setUpdatedAt(LocalDateTime.now());
-
             candidateDocumentRepository.save(document);
 
-            log.info(
-                    "{} re-uploaded successfully by {}",
+            log.info("{} re-uploaded by {}",
                     documentType,
-                    candidate.getEmail()
-            );
+                    candidate.getEmail());
 
-        } catch (IOException e) {
+        } catch (IOException ex) {
 
-            log.error("Document re-upload failed", e);
+            log.error("Document re-upload failed", ex);
 
             throw new RuntimeException(
                     "Unable to re-upload document."
             );
         }
     }
+    // ==========================================================
+    // Get Logged-In Candidate Documents
+    // ==========================================================
 
     @Override
     public List<CandidateDocumentDto> getMyDocuments() {
@@ -361,8 +283,11 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 .stream()
                 .map(this::mapToDto)
                 .toList();
-
     }
+
+    // ==========================================================
+    // Get Documents By Candidate Id (HR/Admin)
+    // ==========================================================
 
     @Override
     public List<CandidateDocumentDto> getDocumentsByCandidateId(
@@ -372,39 +297,36 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         Candidate candidate = candidateRepository
                 .findById(candidateId)
                 .orElseThrow(() ->
-                        new RuntimeException(
-                                "Candidate not found."
-                        ));
+                        new RuntimeException("Candidate not found."));
 
         return candidateDocumentRepository
                 .findByCandidate(candidate)
                 .stream()
                 .map(this::mapToDto)
                 .toList();
-
     }
 
+    // ==========================================================
+    // View Document
+    // ==========================================================
     @Override
-    public CandidateDocumentDto getDocument(
-            Long documentId
-    ) {
+    public CandidateDocument getDocument(Long documentId) {
 
         CandidateDocument document =
                 candidateDocumentRepository
                         .findById(documentId)
                         .orElseThrow(() ->
-                                new RuntimeException(
-                                        "Document not found."
-                                ));
+                                new RuntimeException("Document not found."));
 
-        return mapToDto(document);
-
+        return document;
     }
 
+    // ==========================================================
+    // Delete Document
+    // ==========================================================
+
     @Override
-    public void deleteDocument(
-            Long documentId
-    ) {
+    public void deleteDocument(Long documentId) {
 
         Candidate candidate = getLoggedInCandidate();
 
@@ -412,66 +334,47 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 candidateDocumentRepository
                         .findById(documentId)
                         .orElseThrow(() ->
-                                new RuntimeException(
-                                        "Document not found."
-                                ));
+                                new RuntimeException("Document not found."));
 
-        if (!document.getCandidate().getId()
-                .equals(candidate.getId())) {
-
+        if (!document.getCandidate().getId().equals(candidate.getId())) {
             throw new RuntimeException(
                     "You are not allowed to delete this document."
             );
-
-        }
-
-        try {
-
-            Path file = Paths.get(document.getFilePath());
-
-            if (Files.exists(file)) {
-
-                Files.delete(file);
-
-            }
-
-        } catch (IOException e) {
-
-            log.warn("Unable to delete file : {}", document.getFilePath());
-
         }
 
         candidateDocumentRepository.delete(document);
 
-        log.info("Document deleted successfully.");
-
+        log.info("{} deleted by {}",
+                document.getDocumentType(),
+                candidate.getEmail());
     }
 
+    // ==========================================================
+    // Verify Document (HR/Admin)
+    // ==========================================================
+
     @Override
-    public void verifyDocument(
-            Long documentId
-    ) {
+    public void verifyDocument(Long documentId) {
 
         CandidateDocument document =
                 candidateDocumentRepository
                         .findById(documentId)
                         .orElseThrow(() ->
-                                new RuntimeException(
-                                        "Document not found."
-                                ));
+                                new RuntimeException("Document not found."));
 
         document.setStatus(DocumentStatus.VERIFIED);
 
         document.setRejectionReason(null);
 
-        document.setUpdatedAt(LocalDateTime.now());
-
         candidateDocumentRepository.save(document);
 
         log.info("{} verified successfully.",
                 document.getDocumentType());
-
     }
+
+    // ==========================================================
+    // Reject Document (HR/Admin)
+    // ==========================================================
 
     @Override
     public void rejectDocument(
@@ -483,21 +386,16 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 candidateDocumentRepository
                         .findById(documentId)
                         .orElseThrow(() ->
-                                new RuntimeException(
-                                        "Document not found."
-                                ));
+                                new RuntimeException("Document not found."));
 
         document.setStatus(DocumentStatus.REJECTED);
 
         document.setRejectionReason(rejectionReason);
 
-        document.setUpdatedAt(LocalDateTime.now());
-
         candidateDocumentRepository.save(document);
 
         log.info("{} rejected.",
                 document.getDocumentType());
-
     }
 
 }

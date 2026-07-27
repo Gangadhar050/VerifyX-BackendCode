@@ -3,6 +3,7 @@ package com.verify_x.payload;
 import com.verify_x.dto.CandidateDocumentDto;
 import com.verify_x.dto.CandidateEducationDto;
 import com.verify_x.dto.CandidateProfileDto;
+import com.verify_x.entity.CandidateDocument;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -28,6 +29,9 @@ public class ApiResponse<T> {
     public ApiResponse(boolean b, String s, CandidateDocumentDto document) {
     }
 
+    public ApiResponse(boolean b, String s, CandidateDocument document) {
+    }
+
     public static ApiResponse<Void> error(String message) {
         return ApiResponse.<Void>builder()
                 .success(false)
@@ -41,4 +45,5 @@ public class ApiResponse<T> {
                 .data(data)
                 .build();
     }
+
 }

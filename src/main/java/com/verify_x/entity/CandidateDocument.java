@@ -34,9 +34,11 @@ public class CandidateDocument {
     @Column(nullable = false)
     private String fileName;
 
-    // Saved location
-    @Column(nullable = false, length = 500)
-    private String filePath;
+    private String contentType;
+
+    @Lob
+    @Column(name = "document_data", columnDefinition = "LONGBLOB")
+    private byte[] documentData;
 
     // Verification Status
     @Enumerated(EnumType.STRING)
