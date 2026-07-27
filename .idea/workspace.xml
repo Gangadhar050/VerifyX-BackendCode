@@ -7,7 +7,20 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="" />
+    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/exception/UnauthorizedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/payload/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateDocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDocumentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDocumentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/CandidateDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/CandidateDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/enums/DocumentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/enums/DocumentType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/jwt/UserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/jwt/UserPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/payload/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/payload/ApiResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +33,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="207" />
+    <option name="cachedIndexableFilesCount" value="114" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,20 +45,64 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Gangadhar050/VerifyX-BackendCode.git",
-    "accountId": "2bc9ddaa-51e0-4579-b737-bc1446d86cab"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Gangadhar050&quot;
   }
-}]]></component>
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="develop1" />
+                    <option name="lastUsedInstant" value="1784694077" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1784693933" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1784693899" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Gangadhar050/VerifyX-BackendCode.git&quot;,
+    &quot;accountId&quot;: &quot;2bc9ddaa-51e0-4579-b737-bc1446d86cab&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/AdminRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/UserRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateServiceImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/DocumentParserService.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/EmploymentServiceImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="SKIP_INSPECTION" />
   </component>
   <component name="McpProjectServerCommands">
@@ -54,61 +111,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.000000000000064" />
-      <entry key="M2" value="1.0000003533109225" />
-      <entry key="M5" value="1.0047599315175142" />
-      <entry key="M10" value="1.1182027488578277" />
-      <entry key="M15" value="1.3466972610634986" />
-      <entry key="M30" value="2.0340828235693214" />
-      <entry key="H1" value="3.0000713513226445" />
-      <entry key="H2" value="5.036312126927322" />
-      <entry key="H4" value="9.625528221776733" />
-      <entry key="D1" value="23.92908556497961" />
-      <entry key="W1" value="29.020847959816592" />
+      <entry key="MS100" value="1.0000006885190942" />
+      <entry key="MS500" value="1.0585575904295266" />
+      <entry key="S2" value="1.4919214944718662" />
+      <entry key="S5" value="1.7529364460642924" />
+      <entry key="S10" value="1.8677191055083968" />
+      <entry key="S30" value="1.9538052750033943" />
+      <entry key="S60" value="1.9766295548177855" />
+      <entry key="M2" value="1.9883822930184873" />
+      <entry key="M5" value="2.050242869629112" />
+      <entry key="M10" value="2.483249773142429" />
+      <entry key="M15" value="3.7181583350224243" />
+      <entry key="M30" value="14.369846295175662" />
+      <entry key="H1" value="41.42397199190528" />
+      <entry key="H2" value="77.46680991421158" />
+      <entry key="H4" value="120.94817379452552" />
+      <entry key="D1" value="231.99581259730368" />
+      <entry key="W1" value="272.946692673917" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="3.540536986596494E-182" />
-      <entry key="S60" value="2.660696067739517E-91" />
-      <entry key="M2" value="7.294559217813854E-46" />
-      <entry key="M5" value="1.3360243102725168E-18" />
-      <entry key="M10" value="1.634749264116917E-9" />
-      <entry key="M15" value="1.7539629137141783E-6" />
-      <entry key="M30" value="0.0021621525887975594" />
-      <entry key="H1" value="0.12974718248795453" />
-      <entry key="H2" value="1.429664466007627" />
-      <entry key="H4" value="5.1968805763946895" />
-      <entry key="D1" value="15.912183235708227" />
-      <entry key="W1" value="19.355303518951747" />
+      <entry key="S2" value="1.836665568381886E-263" />
+      <entry key="S5" value="8.046592975644653E-106" />
+      <entry key="S10" value="2.836651719130259E-53" />
+      <entry key="S30" value="3.049781125252056E-18" />
+      <entry key="S60" value="1.746362254874989E-9" />
+      <entry key="M2" value="4.1789499338005876E-5" />
+      <entry key="M5" value="0.017720299420201598" />
+      <entry key="M10" value="0.1357974190351127" />
+      <entry key="M15" value="0.2916786339858574" />
+      <entry key="M30" value="0.8933921980803081" />
+      <entry key="H1" value="2.3979429830443255" />
+      <entry key="H2" value="6.5925268976991465" />
+      <entry key="H4" value="15.839285609481763" />
+      <entry key="D1" value="47.28239221192595" />
+      <entry key="W1" value="60.36064658524309" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.857640994814438E-4" />
-      <entry key="MS500" value="0.23293510732619324" />
-      <entry key="S2" value="0.694718297179424" />
-      <entry key="S5" value="0.8644173893059977" />
-      <entry key="S10" value="0.9297404956793038" />
-      <entry key="S30" value="0.9760092099146395" />
-      <entry key="S60" value="0.9879317840391436" />
-      <entry key="M2" value="0.9939479276333343" />
-      <entry key="M5" value="1.0023195305242107" />
-      <entry key="M10" value="1.1167774904484515" />
-      <entry key="M15" value="1.3454591270086562" />
-      <entry key="M30" value="2.035170853227281" />
-      <entry key="H1" value="3.1288540782293324" />
-      <entry key="H2" value="6.464701881308141" />
-      <entry key="H4" value="14.820806037346472" />
-      <entry key="D1" value="39.84055278472977" />
-      <entry key="W1" value="48.37602827620477" />
+      <entry key="MS100" value="6.885190984643833E-7" />
+      <entry key="MS500" value="0.05989161411776332" />
+      <entry key="S2" value="0.6830347829097426" />
+      <entry key="S5" value="1.2687780357149718" />
+      <entry key="S10" value="1.585940234166333" />
+      <entry key="S30" value="1.8493474820254523" />
+      <entry key="S60" value="1.9229604746721558" />
+      <entry key="M2" value="1.9612168104889207" />
+      <entry key="M5" value="2.056551272808555" />
+      <entry key="M10" value="2.61190373288575" />
+      <entry key="M15" value="4.003980055564418" />
+      <entry key="M30" value="15.258928160920766" />
+      <entry key="H1" value="43.81849560667176" />
+      <entry key="H2" value="84.05585730668632" />
+      <entry key="H4" value="136.78367940953973" />
+      <entry key="D1" value="279.276348893311" />
+      <entry key="W1" value="333.3069988488527" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -140,12 +197,14 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.verifyX.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "develop1",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -222,9 +281,53 @@
       <option name="presentableId" value="Default" />
       <updated>1784265493439</updated>
     </task>
+    <task id="LOCAL-00001" summary="updated Doc">
+      <option name="closed" value="true" />
+      <created>1784726485984</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1784726485985</updated>
+    </task>
+    <task id="LOCAL-00002" summary="updated Doc">
+      <option name="closed" value="true" />
+      <created>1784726597474</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1784726597474</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated Doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated Doc" />
   </component>
 </project>

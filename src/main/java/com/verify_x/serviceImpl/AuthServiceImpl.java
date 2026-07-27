@@ -2,7 +2,7 @@ package com.verify_x.serviceImpl;
 
 import com.verify_x.dto.*;
 import com.verify_x.entity.Admin;
-import com.verify_x.entity.User;
+import com.verify_x.entity.Candidate;
 import com.verify_x.enums.Role;
 import com.verify_x.exception.EmailAlreadyExistsException;
 import com.verify_x.exception.UserAlreadyExistsException;
@@ -11,7 +11,6 @@ import com.verify_x.jwt.TokenBlacklist;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.AdminRepository;
 import com.verify_x.repository.CandidateRepository;
-import com.verify_x.repository.UserRepository;
 import com.verify_x.services.AuthService;
 //import com.verify_x.services.UserProfileService;
 import com.verify_x.services.CandidateService;
@@ -33,7 +32,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AuthServiceImpl implements AuthService {
 
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
+    private final CandidateRepository candidateRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
@@ -47,19 +47,19 @@ public class AuthServiceImpl implements AuthService {
 
         log.info("Registering user : {}", dto.getEmail());
 
-        if (userRepository.existsByEmail(dto.getEmail())) {
+        if (candidateRepository.existsByEmail(dto.getEmail())) {
             throw new EmailAlreadyExistsException("Email already exists.");
         }
 
-        if (userRepository.existsByPhoneNumber(dto.getPhoneNumber())) {
+        if (candidateRepository.existsByPhoneNumber(dto.getPhoneNumber())) {
             throw new UserAlreadyExistsException("Phone number already exists.");
         }
 
-        if (userRepository.existsByUsername(dto.getUsername())) {
-            throw new UserAlreadyExistsException("Username already exists.");
-        }
+//        if (userRepository.existsByUsername(dto.getUsername())) {
+//            throw new UserAlreadyExistsException("Username already exists.");
+//        }
 
-        User user = User.builder()
+        Candidate user = Candidate.builder()
                 .username(dto.getUsername())
                 .email(dto.getEmail())
                 .phoneNumber(dto.getPhoneNumber())
@@ -69,7 +69,7 @@ public class AuthServiceImpl implements AuthService {
                 .role(Role.CANDIDATE)
                 .build();
 
-        User savedUser = userRepository.save(user);
+        Candidate savedUser = candidateRepository.save(user);
 
 //         Uncomment when implemented
 //         userProfileService.createDefaultProfile(savedUser);
@@ -89,9 +89,8 @@ public class AuthServiceImpl implements AuthService {
                 )
         );
 
-        User user = userRepository.findByEmail(dto.getEmail())
-                .orElseThrow(() ->
-                        new UsernameNotFoundException("User not found"));
+        Candidate user = candidateRepository.findByEmail(dto.getEmail())
+                .orElseThrow();
 
         String token = jwtService.generateToken(user);
 
@@ -124,7 +123,7 @@ public class AuthServiceImpl implements AuthService {
 
         Long userId = principal.getUserId();
 
-        User user = userRepository.findById(userId)
+        Candidate user = candidateRepository.findById(userId)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found"));
 
