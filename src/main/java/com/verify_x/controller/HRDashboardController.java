@@ -1,7 +1,7 @@
 package com.verify_x.controller;
 
+import com.verify_x.dto.HRCandidateDashboardDto;
 import com.verify_x.dto.HRDashboardResponseDto;
-import com.verify_x.entity.Candidate;
 import com.verify_x.services.HRDashboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +34,10 @@ public class HRDashboardController {
      * GET : /api/hr/dashboard/candidates
      */
     @GetMapping("/candidates")
-    public ResponseEntity<List<Candidate>> getAllCandidates() {
+    public ResponseEntity<List<HRCandidateDashboardDto>> getAllCandidates() {
 
         return ResponseEntity.ok(
-                hrDashboardService.getAllCandidates()
+                hrDashboardService.getCandidates()
         );
     }
 

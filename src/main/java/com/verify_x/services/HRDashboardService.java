@@ -1,5 +1,6 @@
 package com.verify_x.services;
 
+import com.verify_x.dto.HRCandidateDashboardDto;
 import com.verify_x.dto.HRDashboardResponseDto;
 import com.verify_x.entity.Candidate;
 
@@ -16,6 +17,6 @@ public interface HRDashboardService {
      * Returns all candidates for the
      * Recent Applications table.
      */
-    List<Candidate> getAllCandidates();
+    List<HRCandidateDashboardDto> getCandidates();
 
 }

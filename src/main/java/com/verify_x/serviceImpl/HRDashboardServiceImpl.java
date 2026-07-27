@@ -1,7 +1,9 @@
 package com.verify_x.serviceImpl;
 
+import com.verify_x.dto.HRCandidateDashboardDto;
 import com.verify_x.dto.HRDashboardResponseDto;
 import com.verify_x.entity.Candidate;
+import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.DocumentStatus;
 import com.verify_x.repository.CandidateDocumentRepository;
@@ -10,6 +12,7 @@ import com.verify_x.services.HRDashboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -26,27 +29,19 @@ public class HRDashboardServiceImpl implements HRDashboardService {
 
         long freshers = candidateRepository.findAll()
                 .stream()
-                .filter(candidate ->
-                        candidate.getCandidateType() == CandidateType.FRESHER)
+                .filter(candidate -> candidate.getCandidateType() == CandidateType.FRESHER)
                 .count();
 
         long experienced = candidateRepository.findAll()
                 .stream()
-                .filter(candidate ->
-                        candidate.getCandidateType() == CandidateType.EXPERIENCED)
+                .filter(candidate -> candidate.getCandidateType() == CandidateType.EXPERIENCED)
                 .count();
 
-        long pending = candidateDocumentRepository
-                .findByStatus(DocumentStatus.PENDING)
-                .size();
+        long pending = candidateDocumentRepository.findByStatus(DocumentStatus.PENDING).size();
 
-        long approved = candidateDocumentRepository
-                .findByStatus(DocumentStatus.VERIFIED)
-                .size();
+        long approved = candidateDocumentRepository.findByStatus(DocumentStatus.VERIFIED).size();
 
-        long rejected = candidateDocumentRepository
-                .findByStatus(DocumentStatus.REJECTED)
-                .size();
+        long rejected = candidateDocumentRepository.findByStatus(DocumentStatus.REJECTED).size();
 
         return new HRDashboardResponseDto(
                 total,
@@ -59,7 +54,39 @@ public class HRDashboardServiceImpl implements HRDashboardService {
     }
 
     @Override
-    public List<Candidate> getAllCandidates() {
-        return candidateRepository.findAll();
+    public List<HRCandidateDashboardDto> getCandidates() {
+
+        return candidateRepository.findAll()
+                .stream()
+                .map(candidate -> {
+
+                    List<CandidateDocument> documents =
+                            candidateDocumentRepository.findByCandidate(candidate);
+
+                    String status = "Draft";
+
+                    if (!documents.isEmpty()) {
+
+                        CandidateDocument latestDocument = documents.stream()
+                                .max(Comparator.comparing(CandidateDocument::getUploadedAt))
+                                .orElse(null);
+
+                        if (latestDocument != null) {
+                            status = latestDocument.getStatus().name();
+                        }
+                    }
+
+                    return new HRCandidateDashboardDto(
+                            candidate.getId(),
+                            candidate.getUsername(),
+                            candidate.getEmail(),
+                            candidate.getCandidateType().name(),
+                            status,
+                            candidate.getTechnicalSkills(),
+                            candidate.getAppliedRole()
+                    );
+                })
+                .toList();
     }
+    
 }
