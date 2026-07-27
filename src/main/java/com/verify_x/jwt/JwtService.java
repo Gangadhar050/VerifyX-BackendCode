@@ -27,7 +27,7 @@ public class JwtService {
 
     private SecretKey signingKey;
 
-    @PostConstruct
+    @PostConstruct	
     public void init() {
         byte[] keyBytes = Decoders.BASE64.decode(secret);
 
@@ -49,8 +49,16 @@ public class JwtService {
         return createToken(claims, admin.getEmail());
     }
 
+    
     private String createToken(Map<String, Object> claims, String email) {
-        return null;
+
+        return Jwts.builder()
+                .claims(claims)
+                .subject(email)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expirationMs))
+                .signWith(signingKey)
+                .compact();
     }
 
     public String generateToken(Candidate user) {
