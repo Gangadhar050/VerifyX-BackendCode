@@ -2,6 +2,7 @@ package com.verify_x.security;
 
 import com.verify_x.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,9 +14,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@EnableMethodSecurity
+import java.util.List;
+
 @Configuration
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -23,73 +29,110 @@ public class SecurityConfig {
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
-    @org.springframework.beans.factory.annotation.Value("${app.cors.allowed-origins}")
+    @Value("${app.cors.allowed-origins}")
     private String allowedOrigins;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+
+        http
+                .csrf(csrf -> csrf.disable())
+
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(customAuthenticationEntryPoint)
                         .accessDeniedHandler(customAccessDeniedHandler)
                 )
+
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
+
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/swagger-ui/**",
+
+                        .requestMatchers(
+                                "/swagger-ui/**",
                                 "/swagger-ui.html",
                                 "/v3/api-docs/**",
                                 "/v3/api-docs",
-                                "/v3/api-docs/swagger-config",
-                                "/api/auth/candidateRegister",
+                                "/v3/api-docs/swagger-config"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                "/api/auth/adminLogin",
+                                "/api/auth/hrLogin",
                                 "/api/auth/candidateLogin",
-                                "/api/auth/candidateLogout",
-                                "/api/auth/adminLogin"
-                                ).permitAll()
-                        .requestMatchers("/api/auth/hrLogin","/api/auth/hrLogout").hasRole("ADMIN")
-                        .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
-                        .requestMatchers("/api/screening/**",
+                                "/api/auth/candidateRegister",
+                                "/api/auth/candidateLogout"
+                        ).permitAll()
+
+                        .requestMatchers("/api/auth/hrLogout")
+                        .authenticated()
+
+                        .requestMatchers("/api/auth/adminRegister")
+                        .hasRole("ADMIN")
+
+                        .requestMatchers("/api/hr/dashboard/**")
+                        .authenticated()
+
+                        .requestMatchers(
+                                "/api/screening/**",
                                 "/api/employment/**",
                                 "/api/documents/**",
                                 "/api/resume/**",
                                 "/api/relieving-letter/**"
-                                ).authenticated()
+                        ).authenticated()
+
                         .anyRequest().authenticated()
-                        )
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                )
+
                 .addFilterBefore(
                         jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class
                 );
+
         return http.build();
     }
 
-    // FIX: no CORS configuration existed at all. Without it, browsers block the
-    // frontend from calling this API cross-origin (or, if a wildcard is added
-    // carelessly elsewhere, it can over-permit). Origins must come from config,
-    // not be hardcoded, so each environment (dev/staging/prod) sets its own.
     @Bean
-    public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
-        org.springframework.web.cors.CorsConfiguration configuration =
-                new org.springframework.web.cors.CorsConfiguration();
-        configuration.setAllowedOrigins(java.util.List.of(allowedOrigins.split(",")));
-        configuration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(java.util.List.of("Authorization", "Content-Type"));
+    public CorsConfigurationSource corsConfigurationSource() {
+
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        configuration.setAllowedOrigins(
+                List.of(allowedOrigins.split(","))
+        );
+
+        configuration.setAllowedMethods(
+                List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+        );
+
+        configuration.setAllowedHeaders(
+                List.of("Authorization", "Content-Type")
+        );
+
         configuration.setAllowCredentials(true);
-        org.springframework.web.cors.UrlBasedCorsConfigurationSource source =
-                new org.springframework.web.cors.UrlBasedCorsConfigurationSource();
+
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+
         source.registerCorsConfiguration("/**", configuration);
+
         return source;
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
-            throws Exception {
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration config
+    ) throws Exception {
+
         return config.getAuthenticationManager();
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
 }
