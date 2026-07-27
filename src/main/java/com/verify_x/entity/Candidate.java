@@ -1,5 +1,6 @@
 package com.verify_x.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.Role;
 import com.verify_x.enums.TechnicalSkill;
@@ -19,22 +20,23 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Candidate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String username;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false,unique = true,length = 10)
+    @Column(nullable = false, unique = true, length = 10)
     private String phoneNumber;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
-
 
     @Column(nullable = false)
     private String appliedRole;
@@ -44,7 +46,6 @@ public class Candidate {
     private CandidateType candidateType;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Role role;
 
     @Column(length = 500)
@@ -62,9 +63,7 @@ public class Candidate {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-
     // Education
-
     private String highestEducation;
 
     private String college;
@@ -73,9 +72,7 @@ public class Candidate {
 
     private Double percentage;
 
-
-// Technical Skills
-
+    // Technical Skills
     @ElementCollection(fetch = FetchType.EAGER, targetClass = TechnicalSkill.class)
     @CollectionTable(
             name = "candidate_technical_skills",
@@ -84,9 +81,7 @@ public class Candidate {
     @Enumerated(EnumType.STRING)
     private List<TechnicalSkill> technicalSkills;
 
-
-
-//Emplyment details
+    // Employment Details
     @OneToOne(
             mappedBy = "candidate",
             cascade = CascadeType.ALL,
@@ -95,4 +90,3 @@ public class Candidate {
     )
     private Employment employment;
 }
-
