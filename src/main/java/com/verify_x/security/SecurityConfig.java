@@ -64,10 +64,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // FIX: no CORS configuration existed at all. Without it, browsers block the
-    // frontend from calling this API cross-origin (or, if a wildcard is added
-    // carelessly elsewhere, it can over-permit). Origins must come from config,
-    // not be hardcoded, so each environment (dev/staging/prod) sets its own.
+
     @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration =

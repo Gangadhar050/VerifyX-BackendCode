@@ -8,18 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/exception/UnauthorizedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/payload/ErrorResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateDocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDocumentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDocumentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/CandidateDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/CandidateDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/enums/DocumentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/enums/DocumentType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/jwt/UserPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/jwt/UserPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/payload/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/payload/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +22,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="114" />
+    <option name="cachedIndexableFilesCount" value="116" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -47,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop1" />
+        <entry key="$PROJECT_DIR$" value="VivekM" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -111,61 +100,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000006885190942" />
-      <entry key="MS500" value="1.0585575904295266" />
-      <entry key="S2" value="1.4919214944718662" />
-      <entry key="S5" value="1.7529364460642924" />
-      <entry key="S10" value="1.8677191055083968" />
-      <entry key="S30" value="1.9538052750033943" />
-      <entry key="S60" value="1.9766295548177855" />
-      <entry key="M2" value="1.9883822930184873" />
-      <entry key="M5" value="2.050242869629112" />
-      <entry key="M10" value="2.483249773142429" />
-      <entry key="M15" value="3.7181583350224243" />
-      <entry key="M30" value="14.369846295175662" />
-      <entry key="H1" value="41.42397199190528" />
-      <entry key="H2" value="77.46680991421158" />
-      <entry key="H4" value="120.94817379452552" />
-      <entry key="D1" value="231.99581259730368" />
-      <entry key="W1" value="272.946692673917" />
+      <entry key="MS100" value="1.4972880854952293" />
+      <entry key="MS500" value="3.5165410176020324" />
+      <entry key="S2" value="5.991678027689721" />
+      <entry key="S5" value="9.342510074894294" />
+      <entry key="S10" value="13.658897884428798" />
+      <entry key="S30" value="21.088164127591515" />
+      <entry key="S60" value="24.45621630373166" />
+      <entry key="M2" value="26.551083694433437" />
+      <entry key="M5" value="28.022375818303452" />
+      <entry key="M10" value="28.937735722265096" />
+      <entry key="M15" value="30.307712236716952" />
+      <entry key="M30" value="40.968583346213016" />
+      <entry key="H1" value="67.97403243316509" />
+      <entry key="H2" value="104.07541531999058" />
+      <entry key="H4" value="147.65204763025397" />
+      <entry key="D1" value="258.9037150507942" />
+      <entry key="W1" value="299.93128403778803" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.836665568381886E-263" />
-      <entry key="S5" value="8.046592975644653E-106" />
-      <entry key="S10" value="2.836651719130259E-53" />
-      <entry key="S30" value="3.049781125252056E-18" />
-      <entry key="S60" value="1.746362254874989E-9" />
-      <entry key="M2" value="4.1789499338005876E-5" />
-      <entry key="M5" value="0.017720299420201598" />
-      <entry key="M10" value="0.1357974190351127" />
-      <entry key="M15" value="0.2916786339858574" />
-      <entry key="M30" value="0.8933921980803081" />
-      <entry key="H1" value="2.3979429830443255" />
-      <entry key="H2" value="6.5925268976991465" />
-      <entry key="H4" value="15.839285609481763" />
-      <entry key="D1" value="47.28239221192595" />
-      <entry key="W1" value="60.36064658524309" />
+      <entry key="S2" value="1.1192913522139363E-270" />
+      <entry key="S5" value="1.0461097728783975E-108" />
+      <entry key="S10" value="1.022795078634228E-54" />
+      <entry key="S30" value="1.0075413447013547E-18" />
+      <entry key="S60" value="1.003763590045662E-9" />
+      <entry key="M2" value="3.1682228300298255E-5" />
+      <entry key="M5" value="0.015862457675816018" />
+      <entry key="M10" value="0.1284816857158807" />
+      <entry key="M15" value="0.28110663139032466" />
+      <entry key="M30" value="0.8770520989302995" />
+      <entry key="H1" value="2.375912655455577" />
+      <entry key="H2" value="6.562173664630479" />
+      <entry key="H4" value="15.80278001718165" />
+      <entry key="D1" value="47.264212397483334" />
+      <entry key="W1" value="60.3573305630851" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.885190984643833E-7" />
-      <entry key="MS500" value="0.05989161411776332" />
-      <entry key="S2" value="0.6830347829097426" />
-      <entry key="S5" value="1.2687780357149718" />
-      <entry key="S10" value="1.585940234166333" />
-      <entry key="S30" value="1.8493474820254523" />
-      <entry key="S60" value="1.9229604746721558" />
-      <entry key="M2" value="1.9612168104889207" />
-      <entry key="M5" value="2.056551272808555" />
-      <entry key="M10" value="2.61190373288575" />
-      <entry key="M15" value="4.003980055564418" />
-      <entry key="M30" value="15.258928160920766" />
-      <entry key="H1" value="43.81849560667176" />
-      <entry key="H2" value="84.05585730668632" />
-      <entry key="H4" value="136.78367940953973" />
-      <entry key="D1" value="279.276348893311" />
-      <entry key="W1" value="333.3069988488527" />
+      <entry key="MS100" value="1.3389435175935427" />
+      <entry key="MS500" value="3.4341044499499733" />
+      <entry key="S2" value="5.94993760960038" />
+      <entry key="S5" value="9.295701494409858" />
+      <entry key="S10" value="13.603464058649166" />
+      <entry key="S30" value="21.027300610191492" />
+      <entry key="S60" value="24.409998383365036" />
+      <entry key="M2" value="26.522168470905754" />
+      <entry key="M5" value="28.024529695681917" />
+      <entry key="M10" value="29.057683551142965" />
+      <entry key="M15" value="30.581984294462426" />
+      <entry key="M30" value="41.840805724367755" />
+      <entry key="H1" value="70.3462572056122" />
+      <entry key="H2" value="110.63397533038572" />
+      <entry key="H4" value="163.45098122899793" />
+      <entry key="D1" value="306.1660597161713" />
+      <entry key="W1" value="360.28827241912416" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -192,33 +181,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.verifyX.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "develop1",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.verifyX.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop1&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>
