@@ -7,7 +7,104 @@
     <option name="selectedModelId" value="auto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc" />
+    <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
+      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/HRCandidateDashboardDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/HRDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/HRDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/HRDashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/HRDashboardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDashboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/config/AIConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/config/AIConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/config/AdminDataSeeder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/config/AdminDataSeeder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/config/FileUploadConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/config/FileUploadConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/config/JacksonConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/config/JacksonConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/config/SwaggerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/config/SwaggerConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateDocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateDocumentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/EmploymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/EmploymentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/AdminLoginRequestDto$AdminLoginRequestDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/AdminLoginRequestDto$AdminLoginRequestDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/AdminLoginRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/AdminLoginRequestDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDocumentDto$CandidateDocumentDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDocumentDto$CandidateDocumentDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDocumentDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDocumentDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateEducationDto$CandidateEducationDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateEducationDto$CandidateEducationDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateEducationDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateEducationDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateProfileDto$CandidateProfileDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateProfileDto$CandidateProfileDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateProfileDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateProfileDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateUpdateDto$CandidateUpdateDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateUpdateDto$CandidateUpdateDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateUpdateDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateUpdateDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CurrentUserDto$CurrentUserDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CurrentUserDto$CurrentUserDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CurrentUserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CurrentUserDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/EmploymentDetailsDto$EmploymentDetailsDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/EmploymentDetailsDto$EmploymentDetailsDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/EmploymentDetailsDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/EmploymentDetailsDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginRequestDto$LoginRequestDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginRequestDto$LoginRequestDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginRequestDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginResponseDto$LoginResponseDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginResponseDto$LoginResponseDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/LoginResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/UserRegistrationDto$UserRegistrationDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/UserRegistrationDto$UserRegistrationDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/UserRegistrationDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/UserRegistrationDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Admin$AdminBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Admin$AdminBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/CandidateDocument$CandidateDocumentBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/CandidateDocument$CandidateDocumentBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/CandidateDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/CandidateDocument.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment$EmploymentBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment$EmploymentBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/CandidateType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/CandidateType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/DocumentStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/DocumentStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/DocumentType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/DocumentType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/EmploymentStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/EmploymentStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/OfferLetterStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/OfferLetterStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/enums/TechnicalSkill.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/TechnicalSkill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/BadRequestException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/BadRequestException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/CandidateNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/CandidateNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/DuplicateCandidateException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/DuplicateCandidateException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/EmailAlreadyExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/EmailAlreadyExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/InvalidVerificationStateException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/InvalidVerificationStateException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/OfferLetterProcessingException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/OfferLetterProcessingException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/PdfProcessingException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/PdfProcessingException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/RelievingLetterProcessingException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/RelievingLetterProcessingException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/ResourceAlreadyExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/ResourceAlreadyExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/ResourceNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/ResourceNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/UserAlreadyExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/UserAlreadyExistsException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/UserNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/UserNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/exception/ValidationException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/exception/ValidationException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/CustomUserDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/JwtAuthenticationFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/JwtAuthenticationFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/TokenBlacklist.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/TokenBlacklist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/UserPrincipal$UserPrincipalBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/UserPrincipal$UserPrincipalBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/UserPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/jwt/UserPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/payload/ApiResponse$ApiResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/payload/ApiResponse$ApiResponseBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/payload/ApiResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/payload/ApiResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/repository/AdminRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/repository/AdminRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateDocumentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateDocumentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/repository/EmploymentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/repository/EmploymentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/security/CustomAccessDeniedHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/security/CustomAccessDeniedHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/security/CustomAuthenticationEntryPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/security/CustomAuthenticationEntryPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/DocumentParseResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/DocumentParseResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/DocumentParserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/DocumentParserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EmploymentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EmploymentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/FileStorageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/FileStorageService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateDocumentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateDocumentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/EmploymentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/EmploymentService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/util/EmploymentUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/util/EmploymentUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiOfferLetterParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiOfferLetterParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiRelievingLetterParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiRelievingLetterParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiResumeParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiResumeParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiUANParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/util/GeminiUANParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/util/PdfExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/util/PdfExtractor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/verifyX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/verifyX.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,61 +199,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="3.0089935347926074E-10" />
-      <entry key="MS500" value="0.013582559042228182" />
-      <entry key="S2" value="0.9313899057050906" />
-      <entry key="S5" value="3.0618259856911325" />
-      <entry key="S10" value="4.914864850103444" />
-      <entry key="S30" value="7.1723568081669615" />
-      <entry key="S60" value="8.001719485378088" />
-      <entry key="M2" value="8.574880396464515" />
-      <entry key="M5" value="10.571552239377972" />
-      <entry key="M10" value="13.859544727757285" />
-      <entry key="M15" value="16.094733046849157" />
-      <entry key="M30" value="22.477118296585267" />
-      <entry key="H1" value="41.91919139317644" />
-      <entry key="H2" value="77.6026021392524" />
-      <entry key="H4" value="125.52845019440802" />
-      <entry key="D1" value="250.17990732378195" />
-      <entry key="W1" value="296.7922110435742" />
+      <entry key="MS100" value="1.000000000003737" />
+      <entry key="MS500" value="1.0148456855328736" />
+      <entry key="S2" value="2.539930094076968" />
+      <entry key="S5" value="5.35371827924688" />
+      <entry key="S10" value="7.539414026761542" />
+      <entry key="S30" value="14.676626720886219" />
+      <entry key="S60" value="21.92612561966993" />
+      <entry key="M2" value="28.389750560738836" />
+      <entry key="M5" value="35.11176970907503" />
+      <entry key="M10" value="40.23716831808016" />
+      <entry key="M15" value="43.18297034927966" />
+      <entry key="M30" value="50.30526671234152" />
+      <entry key="H1" value="70.01781836757401" />
+      <entry key="H2" value="105.86343424734139" />
+      <entry key="H4" value="153.96516734729622" />
+      <entry key="D1" value="279.0020752138392" />
+      <entry key="W1" value="325.7623214293801" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.000000000001427" />
-      <entry key="MS500" value="1.0042745851461716" />
-      <entry key="S2" value="1.260098116533059" />
-      <entry key="S5" value="1.693697757203727" />
-      <entry key="S10" value="2.099141078820419" />
-      <entry key="S30" value="2.609578956417496" />
-      <entry key="S60" value="2.790129887313857" />
-      <entry key="M2" value="2.8947462557402472" />
-      <entry key="M5" value="3.061660588616959" />
-      <entry key="M10" value="3.3055906496169474" />
-      <entry key="M15" value="3.4768018654574826" />
-      <entry key="M30" value="3.903868487405907" />
-      <entry key="H1" value="5.024385957113985" />
-      <entry key="H2" value="8.569784292823325" />
-      <entry key="H4" value="17.27153279346548" />
-      <entry key="D1" value="49.927817884048984" />
-      <entry key="W1" value="64.11086837783517" />
+      <entry key="MS100" value="1.0505481812017853E-151" />
+      <entry key="MS500" value="6.476913364083041E-31" />
+      <entry key="S2" value="3.837171398708781E-8" />
+      <entry key="S5" value="0.0016050678565353597" />
+      <entry key="S10" value="0.062386168135039326" />
+      <entry key="S30" value="0.9831756026251446" />
+      <entry key="S60" value="2.1610157567335673" />
+      <entry key="M2" value="3.2680010285266876" />
+      <entry key="M5" value="4.2976633920660285" />
+      <entry key="M10" value="4.884681409484987" />
+      <entry key="M15" value="5.181461546700932" />
+      <entry key="M30" value="5.740491085890393" />
+      <entry key="H1" value="6.924159280494124" />
+      <entry key="H2" value="10.490988289729914" />
+      <entry key="H4" value="19.197018895814626" />
+      <entry key="D1" value="51.89342493183394" />
+      <entry key="W1" value="66.10459119737375" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0038524717620696328" />
-      <entry key="MS500" value="0.3434170307604134" />
-      <entry key="S2" value="1.8677540121205738" />
-      <entry key="S5" value="4.550619023843127" />
-      <entry key="S10" value="6.875746256505292" />
-      <entry key="S30" value="9.719025456874284" />
-      <entry key="S60" value="10.757069982990464" />
-      <entry key="M2" value="11.45117993168058" />
-      <entry key="M5" value="13.624763034211105" />
-      <entry key="M10" value="17.159977472425105" />
-      <entry key="M15" value="19.567541696155967" />
-      <entry key="M30" value="26.37799119030997" />
-      <entry key="H1" value="46.940878810503364" />
-      <entry key="H2" value="86.1694144419021" />
-      <entry key="H4" value="142.79654126423782" />
-      <entry key="D1" value="300.1058768082203" />
-      <entry key="W1" value="360.90273389369514" />
+      <entry key="MS100" value="0.8888426811698097" />
+      <entry key="MS500" value="0.9909797227985141" />
+      <entry key="S2" value="2.511644797363434" />
+      <entry key="S5" value="5.326029793497988" />
+      <entry key="S10" value="7.5769975191921874" />
+      <entry key="S30" value="15.626250724970898" />
+      <entry key="S60" value="24.0543854063318" />
+      <entry key="M2" value="31.633721639346327" />
+      <entry key="M5" value="39.396515067162746" />
+      <entry key="M10" value="45.11402145093329" />
+      <entry key="M15" value="48.358551664461444" />
+      <entry key="M30" value="56.04176907940085" />
+      <entry key="H1" value="76.93877310762474" />
+      <entry key="H2" value="116.35119855487076" />
+      <entry key="H4" value="173.15862011863197" />
+      <entry key="D1" value="330.89362990072465" />
+      <entry key="W1" value="391.8665638328604" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -183,32 +280,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.verifyX.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;VivekM&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.verifyX.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "copilot.chat.legacySessionMetadata.migrated": "true",
+    "git-widget-placeholder": "Merging VivekM",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>
