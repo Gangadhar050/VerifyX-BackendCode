@@ -48,6 +48,13 @@ public class Employment {
     @Column(length = 12)
     private String uanNumber;
 
+    @Builder.Default
+    private Boolean uanVerified = false;
+
+    private String uanVerifiedBy;
+
+    private LocalDateTime uanVerifiedAt;
+
     /*
      * Current Employment Details
      */
@@ -87,4 +94,6 @@ public class Employment {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+
 }

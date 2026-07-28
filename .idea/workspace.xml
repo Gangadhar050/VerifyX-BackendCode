@@ -8,10 +8,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/ApplicationStatusUpdateDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDetailsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateSummaryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/enums/ApplicationStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateManagementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ApplicationStatusUpdateDto$ApplicationStatusUpdateDtoBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ApplicationStatusUpdateDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDetailsDto$CandidateDetailsDtoBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDetailsDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateSummaryDto$CandidateSummaryDtoBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateSummaryDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/ApplicationStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateManagementServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateManagementService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDashboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Employment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Employment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate$CandidateBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate$CandidateBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment$EmploymentBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment$EmploymentBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/security/SecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +50,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -96,6 +116,7 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/EmploymentServiceImpl.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/ReportServiceImpl.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="SKIP_INSPECTION" />
   </component>
   <component name="McpProjectServerCommands">
@@ -104,61 +125,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="9.358409087422338E-29" />
-      <entry key="MS500" value="4.913772029148768E-6" />
-      <entry key="S2" value="0.1530731897089931" />
-      <entry key="S5" value="1.4093650104189441" />
-      <entry key="S10" value="3.59930890541425" />
-      <entry key="S30" value="12.20301914485672" />
-      <entry key="S60" value="22.742360756126054" />
-      <entry key="M2" value="33.754474453359755" />
-      <entry key="M5" value="44.04542178645614" />
-      <entry key="M10" value="50.50795834628838" />
-      <entry key="M15" value="57.124095909669755" />
-      <entry key="M30" value="78.5530237934785" />
-      <entry key="H1" value="116.52699287663346" />
-      <entry key="H2" value="168.09894702189206" />
-      <entry key="H4" value="227.29379882204532" />
-      <entry key="D1" value="365.2925393465036" />
-      <entry key="W1" value="415.1868432405338" />
+      <entry key="MS100" value="1.5398125699176601" />
+      <entry key="MS500" value="3.841727658783418" />
+      <entry key="S2" value="6.645364968643174" />
+      <entry key="S5" value="10.526342562705668" />
+      <entry key="S10" value="14.419654076741416" />
+      <entry key="S30" value="19.285560715900182" />
+      <entry key="S60" value="21.002051689168706" />
+      <entry key="M2" value="21.962520584687038" />
+      <entry key="M5" value="22.57694427637827" />
+      <entry key="M10" value="23.089711963780434" />
+      <entry key="M15" value="24.74558695381468" />
+      <entry key="M30" value="37.23138032694797" />
+      <entry key="H1" value="72.75779872357519" />
+      <entry key="H2" value="133.0248881132106" />
+      <entry key="H4" value="207.14352037904655" />
+      <entry key="D1" value="376.40188565623134" />
+      <entry key="W1" value="437.06213091290215" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000408869507578" />
-      <entry key="S2" value="1.0799643075451677" />
-      <entry key="S5" value="1.3640478515001468" />
-      <entry key="S10" value="1.603363780401299" />
-      <entry key="S30" value="1.8450059079690564" />
-      <entry key="S60" value="1.9192420290484642" />
-      <entry key="M2" value="1.9587713994265106" />
-      <entry key="M5" value="1.9870074946493812" />
-      <entry key="M10" value="2.0785137871509565" />
-      <entry key="M15" value="2.249548344187394" />
-      <entry key="M30" value="2.85915668580288" />
-      <entry key="H1" value="4.200579862999829" />
-      <entry key="H2" value="7.833478374370861" />
-      <entry key="H4" value="16.53919862035129" />
-      <entry key="D1" value="49.58088489204797" />
-      <entry key="W1" value="64.04734575945346" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.1865469593363157E-269" />
+      <entry key="S10" value="9.424628901148887E-135" />
+      <entry key="S30" value="4.3529648093135714E-45" />
+      <entry key="S60" value="1.1413524706247119E-22" />
+      <entry key="M2" value="1.849845443164984E-11" />
+      <entry key="M5" value="9.854450108939472E-5" />
+      <entry key="M10" value="0.017681666650265004" />
+      <entry key="M15" value="0.10421415290295279" />
+      <entry key="M30" value="0.6910655325888763" />
+      <entry key="H1" value="2.2006349454961596" />
+      <entry key="H2" value="5.74605413517356" />
+      <entry key="H4" value="14.145722067785696" />
+      <entry key="D1" value="48.80023577103813" />
+      <entry key="W1" value="64.7151665024407" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.221454860285383E-4" />
-      <entry key="MS500" value="0.20028345992879334" />
-      <entry key="S2" value="0.8782003213866234" />
-      <entry key="S5" value="2.5743752708317467" />
-      <entry key="S10" value="5.0798455490622" />
-      <entry key="S30" value="13.993467046117427" />
-      <entry key="S60" value="24.628395537892132" />
-      <entry key="M2" value="35.693835453387244" />
-      <entry key="M5" value="46.02365120127731" />
-      <entry key="M10" value="52.581554311611704" />
-      <entry key="M15" value="59.36974516755463" />
-      <entry key="M30" value="81.40884610392078" />
-      <entry key="H1" value="120.72442047824804" />
-      <entry key="H2" value="175.92913882358414" />
-      <entry key="H4" value="243.8293824774405" />
-      <entry key="D1" value="414.87153068588145" />
-      <entry key="W1" value="479.2338354135936" />
+      <entry key="MS100" value="1.3052621410324292" />
+      <entry key="MS500" value="3.674491444049357" />
+      <entry key="S2" value="6.560143932244499" />
+      <entry key="S5" value="10.457579250247454" />
+      <entry key="S10" value="14.358603832487173" />
+      <entry key="S30" value="19.24986931260876" />
+      <entry key="S60" value="20.98101320480817" />
+      <entry key="M2" value="21.951058896793384" />
+      <entry key="M5" value="22.572210068096453" />
+      <entry key="M10" value="23.104884293130812" />
+      <entry key="M15" value="24.847946939691536" />
+      <entry key="M30" value="37.9207991330921" />
+      <entry key="H1" value="74.95642507501353" />
+      <entry key="H2" value="138.7683976647272" />
+      <entry key="H4" value="221.28609979891468" />
+      <entry key="D1" value="425.2002526744966" />
+      <entry key="W1" value="501.77693954564785" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -185,33 +206,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.verifyX.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "develop1",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.verifyX.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop1&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>

@@ -1,5 +1,6 @@
 package com.verify_x.entity;
 
+import com.verify_x.enums.ApplicationStatus;
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.Role;
 import com.verify_x.enums.TechnicalSkill;
@@ -84,8 +85,14 @@ public class Candidate {
     @Enumerated(EnumType.STRING)
     private List<TechnicalSkill> technicalSkills;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @Builder.Default
+    private ApplicationStatus applicationStatus =
+            ApplicationStatus.PENDING_VERIFICATION;
 
-
+    @Column(length = 1000)
+    private String remarks;
 //Emplyment details
     @OneToOne(
             mappedBy = "candidate",
@@ -94,5 +101,7 @@ public class Candidate {
             orphanRemoval = true
     )
     private Employment employment;
+
+
 }
 
