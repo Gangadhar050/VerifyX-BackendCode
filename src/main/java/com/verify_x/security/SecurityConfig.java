@@ -42,11 +42,10 @@ public class SecurityConfig {
                                 "/v3/api-docs/swagger-config",
                                 "/api/auth/candidateRegister",
                                 "/api/auth/candidateLogin",
-                                "/api/auth/candidateLogout",
-                                "/api/auth/adminLogin"
+                                "/api/auth/candidateLogout"
                                 ).permitAll()
                         .requestMatchers("/api/auth/hrLogin","/api/auth/hrLogout").hasRole("ADMIN")
-                        .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
+//                        .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
                         .requestMatchers("/api/screening/**",
                                 "/api/employment/**",
                                 "/api/documents/**",

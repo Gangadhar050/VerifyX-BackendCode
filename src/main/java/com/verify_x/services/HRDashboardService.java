@@ -8,15 +8,10 @@ import java.util.List;
 
 public interface HRDashboardService {
 
-    /**
-     * Returns the dashboard summary.
-     */
+    //Returns the dashboard summary.
     HRDashboardResponseDto getDashboardReport();
 
-    /**
-     * Returns all candidates for the
-     * Recent Applications table.
-     */
+    //Returns all candidates for the Recent Applications table.
     List<HRCandidateDashboardDto> getCandidates();
 
 }
