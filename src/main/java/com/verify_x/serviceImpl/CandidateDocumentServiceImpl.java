@@ -1,6 +1,8 @@
 package com.verify_x.serviceImpl;
-
+import com.verify_x.entity.Employment;
+import com.verify_x.enums.VerificationStatus;
 import com.verify_x.dto.CandidateDocumentDto;
+import com.verify_x.dto.HrVerificationRequestDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.CandidateType;
@@ -445,7 +447,20 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         log.info("Document deleted successfully.");
 
     }
+    @Override
+    public void verifyUan(Long candidateId) {
 
+        Candidate candidate = candidateRepository.findById(candidateId)
+                .orElseThrow(() -> new RuntimeException("Candidate not found."));
+
+        Employment employment = candidate.getEmployment();
+
+        if (employment == null) {
+            throw new RuntimeException("Employment details not found.");
+        }
+
+        employment.setUanVerificationStatus(VerificationStatus.VERIFIED);
+    }
     @Override
     public void verifyDocument(
             Long documentId
@@ -498,5 +513,54 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 document.getDocumentType());
 
     }
+    @Override
+    public List<HrVerificationRequestDto> getAllVerificationRequests() {
 
-}
+        return candidateRepository.findAll()
+                .stream()
+                .filter(candidate ->
+                        candidateDocumentRepository.countByCandidate(candidate) > 0)
+                .map(candidate -> {
+
+                    Long documentCount =
+                            candidateDocumentRepository.countByCandidate(candidate);
+
+                    List<CandidateDocument> documents =
+                            candidateDocumentRepository.findByCandidate(candidate);
+
+                    DocumentStatus overallStatus = DocumentStatus.PENDING;
+
+                    if (!documents.isEmpty()) {
+
+                        boolean rejected = documents.stream()
+                                .anyMatch(doc -> doc.getStatus() == DocumentStatus.REJECTED);
+
+                        boolean pending = documents.stream()
+                                .anyMatch(doc -> doc.getStatus() == DocumentStatus.PENDING);
+
+                        if (rejected) {
+                            overallStatus = DocumentStatus.REJECTED;
+                        } else if (pending) {
+                            overallStatus = DocumentStatus.PENDING;
+                        } else {
+                            overallStatus = DocumentStatus.VERIFIED;
+                        }
+                    }
+
+                    return HrVerificationRequestDto.builder()
+                            .candidateId(candidate.getId())
+                            .candidateName(candidate.getUsername())
+                            .email(candidate.getEmail())
+                            .candidateType(candidate.getCandidateType())
+                            .documentCount(documentCount.intValue())
+                            .uanVerificationStatus(
+                                    candidate.getEmployment() != null
+                                            ? candidate.getEmployment().getUanVerificationStatus()
+                                            : VerificationStatus.PENDING
+                            )
+                            .status(overallStatus)
+                            .build();
+                })
+                .toList();
+    }
+    }

@@ -1,6 +1,7 @@
 package com.verify_x.services;
 
 import com.verify_x.dto.CandidateDocumentDto;
+import com.verify_x.dto.HrVerificationRequestDto;
 import com.verify_x.enums.DocumentType;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -8,36 +9,48 @@ import java.util.List;
 
 public interface CandidateDocumentService {
 
-  // Candidate uploads a document.
+    // Candidate uploads document
     void uploadDocument(
             MultipartFile file,
             DocumentType documentType
     );
 
-    // Candidate re-uploads a rejected document.
+    // Candidate re-uploads rejected document
     void reUploadDocument(
             MultipartFile file,
             DocumentType documentType
     );
 
-    // Get logged-in candidate documents.
+    // Logged-in candidate documents
     List<CandidateDocumentDto> getMyDocuments();
 
-    // HR/Admin view candidate documents.
-    List<CandidateDocumentDto> getDocumentsByCandidateId(Long candidateId);
+    // HR/Admin view candidate documents
+    List<CandidateDocumentDto> getDocumentsByCandidateId(
+            Long candidateId
+    );
 
-    // Download candidate document.
-    CandidateDocumentDto getDocument(Long documentId);
+    // HR Verification Requests
+    List<HrVerificationRequestDto> getAllVerificationRequests();
 
-    // Candidate deletes a document.
-    void deleteDocument(Long documentId);
+    // Download document
+    CandidateDocumentDto getDocument(
+            Long documentId
+    );
 
-    // HR verifies document.
-    void verifyDocument(Long documentId);
+    // Delete document
+    void deleteDocument(
+            Long documentId
+    );
 
-    /**
-     * HR rejects document.
-     */
+    // Verify document
+    void verifyDocument(
+            Long documentId
+    );
+    //verify uan number
+    void verifyUan(
+    		Long candidateId);
+
+    // Reject document
     void rejectDocument(
             Long documentId,
             String rejectionReason

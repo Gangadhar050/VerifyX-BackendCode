@@ -45,14 +45,15 @@ public class SecurityConfig {
                                 "/api/auth/candidateLogout",
                                 "/api/auth/adminLogin"
                                 ).permitAll()
-                        .requestMatchers("/api/auth/hrLogin","/api/auth/hrLogout").hasRole("ADMIN")
+                        .requestMatchers("/api/auth/hrLogin").permitAll()
+                        .requestMatchers("/api/auth/hrLogout").hasRole("ADMIN")
                         .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
-                        .requestMatchers("/api/screening/**",
-                                "/api/employment/**",
-                                "/api/documents/**",
-                                "/api/resume/**",
-                                "/api/relieving-letter/**"
-                                ).authenticated()
+                        .requestMatchers(
+                        		 "/upload/verification-requests",
+                                "/upload/verify/**",
+                                "/upload/reject/**",
+                                "/upload/candidate/**"
+                        ).hasAnyRole("HR", "ADMIN")
                         .anyRequest().authenticated()
                         )
                 .sessionManagement(session ->

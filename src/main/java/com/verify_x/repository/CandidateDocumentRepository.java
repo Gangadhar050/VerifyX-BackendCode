@@ -44,4 +44,5 @@ public interface CandidateDocumentRepository extends JpaRepository<CandidateDocu
             Candidate candidate,
             DocumentType documentType
     );
+    Long countByCandidate(Candidate candidate);
 }

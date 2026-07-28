@@ -1,14 +1,11 @@
 package com.verify_x.payload;
 
-import com.verify_x.dto.CandidateDocumentDto;
-import com.verify_x.dto.CandidateEducationDto;
-import com.verify_x.dto.CandidateProfileDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,26 +16,30 @@ public class ApiResponse<T> {
     private T data;
     private LocalDateTime timeStamp;
 
-    public ApiResponse(boolean b, String candidateProfileFetchedSuccessfully, CandidateProfileDto profile) {
+    // Generic Constructor
+    public ApiResponse(boolean success, String message, T data) {
+        this.success = success;
+        this.message = message;
+        this.data = data;
+        this.timeStamp = LocalDateTime.now();
     }
 
-    public ApiResponse(boolean b, String educationFetchedSuccessfully, CandidateEducationDto dto) {
-    }
-
-    public ApiResponse(boolean b, String s, CandidateDocumentDto document) {
-    }
-
+    // Error Response
     public static ApiResponse<Void> error(String message) {
         return ApiResponse.<Void>builder()
                 .success(false)
                 .message(message)
+                .timeStamp(LocalDateTime.now())
                 .build();
     }
+
+    // Success Response
     public static <T> ApiResponse<T> success(String message, T data) {
         return ApiResponse.<T>builder()
                 .success(true)
                 .message(message)
                 .data(data)
+                .timeStamp(LocalDateTime.now())
                 .build();
     }
 }

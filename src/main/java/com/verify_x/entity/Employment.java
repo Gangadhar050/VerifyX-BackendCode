@@ -1,5 +1,5 @@
 package com.verify_x.entity;
-
+import com.verify_x.enums.VerificationStatus;
 import com.verify_x.enums.EmploymentStatus;
 import com.verify_x.enums.OfferLetterStatus;
 import jakarta.persistence.*;
@@ -45,8 +45,14 @@ public class Employment {
 
     private LocalDate lastWorkingDay;
 
+   
     @Column(length = 12)
     private String uanNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @Builder.Default
+    private VerificationStatus uanVerificationStatus = VerificationStatus.PENDING;
 
     /*
      * Current Employment Details

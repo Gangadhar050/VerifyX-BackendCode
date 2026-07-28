@@ -22,52 +22,47 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private static final Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
+	private static final Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
-    private final JwtService jwtService;
-    private final TokenBlacklist tokenBlacklist;
-    private final CustomUserDetailsService customUserDetailsService;
+	private final JwtService jwtService;
+	private final TokenBlacklist tokenBlacklist;
+	private final CustomUserDetailsService customUserDetailsService;
 
-    @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request,
-                                    @NonNull HttpServletResponse response,
-                                    @NonNull FilterChain filterChain)
-            throws ServletException, IOException {
+	@Override
+	protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
+			@NonNull FilterChain filterChain) throws ServletException, IOException {
 
-        final String authHeader = request.getHeader("Authorization");
+		final String authHeader = request.getHeader("Authorization");
 
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
-        final String token = authHeader.substring(7);
+		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		final String token = authHeader.substring(7);
 
-        try {
-            if (tokenBlacklist.isBlacklisted(token) || jwtService.isTokenExpired(token)) {
-                filterChain.doFilter(request, response);
-                return;
-            }
+		try {
+			if (tokenBlacklist.isBlacklisted(token) || jwtService.isTokenExpired(token)) {
+				filterChain.doFilter(request, response);
+				return;
+			}
 
-            final Long userId = jwtService.extractUserId(token);
-            final String email = jwtService.extractEmail(token);
-            final String username = jwtService.extractUsername(token);
-            final String role = jwtService.extractRole(token);
+			final Long userId = jwtService.extractUserId(token);
+			final String email = jwtService.extractEmail(token);
+			final String username = jwtService.extractUsername(token);
+			final String role = jwtService.extractRole(token);
 
-            UserPrincipal principal = new UserPrincipal(userId, email, username);
+			UserPrincipal principal = new UserPrincipal(userId, email, username);
 
-            UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(
-                            principal,
-                            token,
-                            List.of(new SimpleGrantedAuthority("ROLE_" + role)));
+			UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(principal,
+					token, List.of(new SimpleGrantedAuthority("ROLE_" + role)));
 
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-        } catch (JwtException | IllegalArgumentException ex) {
-            log.debug("Rejected invalid JWT: {}", ex.getMessage());
-            SecurityContextHolder.clearContext();
-        }
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+		} catch (JwtException | IllegalArgumentException ex) {
+			log.debug("Rejected invalid JWT: {}", ex.getMessage());
+			SecurityContextHolder.clearContext();
+		}
 
-        filterChain.doFilter(request, response);
-    }
+		filterChain.doFilter(request, response);
+	}
 
 }

@@ -90,6 +90,8 @@ public class AuthController {
     public ResponseEntity<ApiResponse<LoginResponseDto>> adminLogin(
             @Valid @RequestBody AdminLoginRequestDto request) {
 
+        System.out.println("HR Login API called");
+
         return ResponseEntity.ok(
                 ApiResponse.<LoginResponseDto>builder()
                         .success(true)
