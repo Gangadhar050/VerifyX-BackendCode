@@ -20,14 +20,14 @@ public class ApiResponse<T> {
     private T data;
     private LocalDateTime timeStamp;
 
-    public ApiResponse(boolean b, String candidateProfileFetchedSuccessfully, CandidateProfileDto profile) {
-    }
-
-    public ApiResponse(boolean b, String educationFetchedSuccessfully, CandidateEducationDto dto) {
-    }
-
-    public ApiResponse(boolean b, String s, CandidateDocumentDto document) {
-    }
+//    public ApiResponse(boolean b, String candidateProfileFetchedSuccessfully, CandidateProfileDto profile) {
+//    }
+//
+//    public ApiResponse(boolean b, String educationFetchedSuccessfully, CandidateEducationDto dto) {
+//    }
+//
+//    public ApiResponse(boolean b, String s, CandidateDocumentDto document) {
+//    }
 
     public ApiResponse(boolean b, String s, CandidateDocument document) {
     }
@@ -38,6 +38,7 @@ public class ApiResponse<T> {
                 .message(message)
                 .build();
     }
+
     public static <T> ApiResponse<T> success(String message, T data) {
         return ApiResponse.<T>builder()
                 .success(true)
@@ -45,5 +46,27 @@ public class ApiResponse<T> {
                 .data(data)
                 .build();
     }
+    // Candidate Profile
+    public ApiResponse(boolean success, String message, CandidateProfileDto profile) {
+        this.success = success;
+        this.message = message;
+        this.data = (T) profile;
+        this.timeStamp = LocalDateTime.now();
+    }
 
+    // Candidate Education
+    public ApiResponse(boolean success, String message, CandidateEducationDto education) {
+        this.success = success;
+        this.message = message;
+        this.data = (T) education;
+        this.timeStamp = LocalDateTime.now();
+    }
+
+    // Candidate Document
+    public ApiResponse(boolean success, String message, CandidateDocumentDto document) {
+        this.success = success;
+        this.message = message;
+        this.data = (T) document;
+        this.timeStamp = LocalDateTime.now();
+    }
 }
