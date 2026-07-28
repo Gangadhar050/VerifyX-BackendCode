@@ -29,6 +29,9 @@ public class CandidateDocument {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private DocumentType documentType;
+    
+    
+    
 
     // Original uploaded file name
     @Column(nullable = false)

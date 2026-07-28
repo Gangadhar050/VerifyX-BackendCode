@@ -35,6 +35,7 @@ public class Candidate {
     @Column(nullable = false)
     private String password;
 
+    
 
     @Column(nullable = false)
     private String appliedRole;
@@ -94,5 +95,13 @@ public class Candidate {
             orphanRemoval = true
     )
     private Employment employment;
+    
+    @OneToMany(
+            mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    private List<CandidateDocument> documents;
 }
 

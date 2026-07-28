@@ -7,8 +7,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,26 +19,45 @@ public class ApiResponse<T> {
     private T data;
     private LocalDateTime timeStamp;
 
-    public ApiResponse(boolean b, String candidateProfileFetchedSuccessfully, CandidateProfileDto profile) {
+    // Candidate Profile
+    public ApiResponse(boolean success, String message, CandidateProfileDto profile) {
+        this.success = success;
+        this.message = message;
+        this.data = (T) profile;
+        this.timeStamp = LocalDateTime.now();
     }
 
-    public ApiResponse(boolean b, String educationFetchedSuccessfully, CandidateEducationDto dto) {
+    // Candidate Education
+    public ApiResponse(boolean success, String message, CandidateEducationDto education) {
+        this.success = success;
+        this.message = message;
+        this.data = (T) education;
+        this.timeStamp = LocalDateTime.now();
     }
 
-    public ApiResponse(boolean b, String s, CandidateDocumentDto document) {
+    // Candidate Document
+    public ApiResponse(boolean success, String message, CandidateDocumentDto document) {
+        this.success = success;
+        this.message = message;
+        this.data = (T) document;
+        this.timeStamp = LocalDateTime.now();
     }
 
     public static ApiResponse<Void> error(String message) {
         return ApiResponse.<Void>builder()
                 .success(false)
                 .message(message)
+                .data(null)
+                .timeStamp(LocalDateTime.now())
                 .build();
     }
+
     public static <T> ApiResponse<T> success(String message, T data) {
         return ApiResponse.<T>builder()
                 .success(true)
                 .message(message)
                 .data(data)
+                .timeStamp(LocalDateTime.now())
                 .build();
     }
 }

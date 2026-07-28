@@ -1,5 +1,6 @@
 package com.verify_x.jwt;
 
+import com.verify_x.enums.Role;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -53,7 +54,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             final String username = jwtService.extractUsername(token);
             final String role = jwtService.extractRole(token);
 
-            UserPrincipal principal = new UserPrincipal(userId, email, username);
+            UserPrincipal principal = UserPrincipal.builder()
+                    .userId(userId)
+                    .email(email)
+                    .username(username)
+                    .role(Role.valueOf(role))
+                    .build();
 
             UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(

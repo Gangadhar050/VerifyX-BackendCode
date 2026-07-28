@@ -1,5 +1,11 @@
+
+
 package com.verify_x.serviceImpl;
 
+
+import com.verify_x.dto.CandidateDashboardDto;
+import java.util.ArrayList;
+import com.verify_x.dto.DashboardStatisticsDto;
 import com.verify_x.dto.CandidateDocumentDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
@@ -18,6 +24,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -399,7 +407,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         return mapToDto(document);
 
     }
-
+//    deleteDocument()
     @Override
     public void deleteDocument(
             Long documentId
@@ -423,6 +431,12 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             );
 
         }
+     // Improvement: Prevent deleting verified documents
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new RuntimeException(
+                    "Verified documents cannot be deleted."
+            );
+        }
 
         try {
 
@@ -445,33 +459,30 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         log.info("Document deleted successfully.");
 
     }
-
+//    verifyDocument()
     @Override
-    public void verifyDocument(
-            Long documentId
-    ) {
+    public void verifyDocument(Long documentId) {
 
-        CandidateDocument document =
-                candidateDocumentRepository
-                        .findById(documentId)
-                        .orElseThrow(() ->
-                                new RuntimeException(
-                                        "Document not found."
-                                ));
+        CandidateDocument document = candidateDocumentRepository
+                .findById(documentId)
+                .orElseThrow(() ->
+                        new RuntimeException("Document not found."));
+
+        // Prevent verifying again
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new RuntimeException("Document is already verified.");
+        }
 
         document.setStatus(DocumentStatus.VERIFIED);
-
         document.setRejectionReason(null);
-
         document.setUpdatedAt(LocalDateTime.now());
 
         candidateDocumentRepository.save(document);
 
         log.info("{} verified successfully.",
                 document.getDocumentType());
-
     }
-
+//    rejectDocument()
     @Override
     public void rejectDocument(
             Long documentId,
@@ -486,6 +497,15 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                                         "Document not found."
                                 ));
 
+        // Prevent rejecting a verified document
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new RuntimeException(
+                    "Verified document cannot be rejected."
+            );
+        }
+
+       
+
         document.setStatus(DocumentStatus.REJECTED);
 
         document.setRejectionReason(rejectionReason);
@@ -496,7 +516,115 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
         log.info("{} rejected.",
                 document.getDocumentType());
-
     }
+ // Fetch all pending documents for HR review.
+        @Override
+        public List<CandidateDocumentDto> getPendingDocuments() {
 
+            return candidateDocumentRepository
+                    .findByStatus(DocumentStatus.PENDING)
+                    .stream()
+                    .map(this::mapToDto)
+                    .toList();
+        }
+        
+        @Override
+        public Resource downloadDocument(Long documentId) {
+
+            CandidateDocument document = candidateDocumentRepository
+                    .findById(documentId)
+                    .orElseThrow(() ->
+                            new RuntimeException("Document not found."));
+
+            Authentication authentication =
+                    SecurityContextHolder.getContext().getAuthentication();
+
+            UserPrincipal principal =
+                    (UserPrincipal) authentication.getPrincipal();
+
+            // Candidate can access only their own documents
+            if ("CANDIDATE".equals(principal.getRole().name())) {
+
+                if (!document.getCandidate().getId().equals(principal.getUserId())) {
+
+                    throw new RuntimeException(
+                            "You are not authorized to access this document.");
+
+                }
+            }
+
+            try {
+
+                Path path = Paths.get(document.getFilePath());
+
+                Resource resource = new UrlResource(path.toUri());
+
+                if (!resource.exists() || !resource.isReadable()) {
+                    throw new RuntimeException("File not found.");
+                }
+
+                return resource;
+
+            } catch (Exception e) {
+
+                log.error("Unable to download document.", e);
+
+                throw new RuntimeException("Unable to download document.");
+            }
+        }
+        @Override
+        public DashboardStatisticsDto getDashboardStatistics() {
+            return DashboardStatisticsDto.builder()
+                    .totalDocuments(candidateDocumentRepository.count())
+                    .verified(candidateDocumentRepository.countByStatus(DocumentStatus.VERIFIED))
+                    .pending(candidateDocumentRepository.countByStatus(DocumentStatus.PENDING))
+                    .rejected(candidateDocumentRepository.countByStatus(DocumentStatus.REJECTED))
+                    .build();
+        }
+        @Override
+        public List<CandidateDashboardDto> getCandidateDashboard() {
+
+            List<Candidate> candidates = candidateRepository.findAll();
+
+            if (candidates.isEmpty()) {
+                return new ArrayList<>();
+            }
+
+            List<CandidateDashboardDto> dashboardList = new ArrayList<>();
+
+            for (Candidate candidate : candidates) {
+
+                List<CandidateDocument> documents =
+                        candidateDocumentRepository.findByCandidateId(candidate.getId());
+
+                long verified = documents.stream()
+                        .filter(document -> document.getStatus() == DocumentStatus.VERIFIED)
+                        .count();
+
+                long pending = documents.stream()
+                        .filter(document -> document.getStatus() == DocumentStatus.PENDING)
+                        .count();
+
+                long rejected = documents.stream()
+                        .filter(document -> document.getStatus() == DocumentStatus.REJECTED)
+                        .count();
+
+                dashboardList.add(
+                        CandidateDashboardDto.builder()
+                                .candidateId(candidate.getId())
+                                .candidateName(candidate.getUsername())
+                                .email(candidate.getEmail())
+                                .phoneNumber(candidate.getPhoneNumber())
+                                .appliedRole(candidate.getAppliedRole())
+                                .candidateType(candidate.getCandidateType())
+                                .totalDocuments(documents.size())
+                                .verifiedDocuments(verified)
+                                .pendingDocuments(pending)
+                                .rejectedDocuments(rejected)
+                                .build()
+                );
+            }
+
+            return dashboardList;
+        }
 }

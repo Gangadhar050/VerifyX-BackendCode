@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CandidateDocumentRepository extends JpaRepository<CandidateDocument, Long>{
+public interface CandidateDocumentRepository extends JpaRepository<CandidateDocument, Long> {
+
     // Get all documents of a candidate
     List<CandidateDocument> findByCandidate(Candidate candidate);
 
@@ -44,4 +45,11 @@ public interface CandidateDocumentRepository extends JpaRepository<CandidateDocu
             Candidate candidate,
             DocumentType documentType
     );
+
+    // ===============================
+    // Dashboard Statistics
+    // ===============================
+
+    long countByStatus(DocumentStatus status);
+
 }

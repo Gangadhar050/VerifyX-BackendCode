@@ -50,7 +50,14 @@ public class JwtService {
     }
 
     private String createToken(Map<String, Object> claims, String email) {
-        return null;
+
+        return Jwts.builder()
+                .claims(claims)
+                .subject(email)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expirationMs))
+                .signWith(signingKey)
+                .compact();
     }
 
     public String generateToken(Candidate user) {
