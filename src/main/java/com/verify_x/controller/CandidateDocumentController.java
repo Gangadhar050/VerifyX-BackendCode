@@ -77,15 +77,11 @@ public class CandidateDocumentController {
 
     @PreAuthorize("hasRole('CANDIDATE')")
     @GetMapping("/my-documents")
-    public ResponseEntity<ApiResponse<List<CandidateDocumentDto>>> getMyDocuments() {
+    public ResponseEntity<List<CandidateDocumentDto>> getMyDocuments() {
 
         return ResponseEntity.ok(
-                new ApiResponse<>(
-                        true,
-                        "Documents fetched successfully.",
-                        (CandidateProfileDto) candidateDocumentService.getMyDocuments()
-                )
-        );
+                candidateDocumentService.getMyDocuments());
+
     }
 
     // ==========================================================

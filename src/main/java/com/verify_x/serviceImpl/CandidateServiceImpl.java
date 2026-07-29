@@ -36,8 +36,7 @@ public class CandidateServiceImpl implements CandidateService {
                 .passingYear(candidate.getPassingYear())
                 .percentage(candidate.getPercentage())
                 .technicalSkills(new ArrayList<>(candidate.getTechnicalSkills()))
-//                .softSkills(new ArrayList<>(candidate.getSoftSkills()))
-//                .languages(new ArrayList<>(candidate.getLanguages()))
+
                 .build();
     }
     @Override
