@@ -1,13 +1,17 @@
 package com.verify_x.controller;
 
-import com.verify_x.dto.ApplicationStatusUpdateDto;
-import com.verify_x.dto.CandidateDetailsDto;
-import com.verify_x.dto.CandidateSummaryDto;
+import com.verify_x.dto.*;
 import com.verify_x.services.CandidateManagementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import com.verify_x.enums.ApplicationStatus;
+import com.verify_x.enums.CandidateType;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 import java.util.List;
 
@@ -19,8 +23,28 @@ public class CandidateManagementController {
     private final CandidateManagementService candidateManagementService;
 
     @GetMapping
-    public ResponseEntity<List<CandidateSummaryDto>> getAllCandidates() {
-        return ResponseEntity.ok(candidateManagementService.getAllCandidates());
+    public ResponseEntity<PagedResponse<CandidateSummaryDto>> getAllCandidates(
+
+            @RequestParam(required = false) String keyword,
+
+            @RequestParam(required = false) CandidateType candidateType,
+
+            @RequestParam(required = false) ApplicationStatus applicationStatus,
+
+            @RequestParam(defaultValue = "0") int page,
+
+            @RequestParam(defaultValue = "5") int size
+    ) {
+
+        return ResponseEntity.ok(
+                candidateManagementService.getAllCandidates(
+                        keyword,
+                        candidateType,
+                        applicationStatus,
+                        page,
+                        size
+                )
+        );
     }
 
     @GetMapping("/{candidateId}")
@@ -29,6 +53,15 @@ public class CandidateManagementController {
 
         return ResponseEntity.ok(
                 candidateManagementService.getCandidateDetails(candidateId));
+    }
+
+    @PostMapping
+    public ResponseEntity<CandidateSummaryDto> createCandidate(
+            @RequestBody UserRegistrationDto dto
+    ) {
+        return ResponseEntity.ok(
+                candidateManagementService.createCandidate(dto)
+        );
     }
 
     @DeleteMapping("/{candidateId}")

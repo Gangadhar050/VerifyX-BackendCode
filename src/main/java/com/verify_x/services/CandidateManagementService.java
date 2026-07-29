@@ -1,20 +1,29 @@
 package com.verify_x.services;
 
-import com.verify_x.dto.ApplicationStatusUpdateDto;
-import com.verify_x.dto.CandidateDetailsDto;
-import com.verify_x.dto.CandidateSummaryDto;
-
-import java.util.List;
+import com.verify_x.dto.*;
+import com.verify_x.enums.ApplicationStatus;
+import com.verify_x.enums.CandidateType;
 
 public interface CandidateManagementService {
 
-    List<CandidateSummaryDto> getAllCandidates();
+    PagedResponse<CandidateSummaryDto> getAllCandidates(
+            String keyword,
+            CandidateType candidateType,
+            ApplicationStatus applicationStatus,
+            int page,
+            int size
+    );
 
     CandidateDetailsDto getCandidateDetails(Long candidateId);
+
+    // HR-side "+ Add Candidate"
+    CandidateSummaryDto createCandidate(UserRegistrationDto dto);
 
     void deleteCandidate(Long candidateId);
 
     void verifyUan(Long candidateId, String verifiedBy);
 
-    void updateApplicationStatus(Long candidateId, ApplicationStatusUpdateDto dto, String reviewedBy);
+    void updateApplicationStatus(Long candidateId,
+                                 ApplicationStatusUpdateDto dto,
+                                 String reviewedBy);
 }

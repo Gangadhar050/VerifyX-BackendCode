@@ -44,7 +44,8 @@ public class SecurityConfig {
                                 "/api/auth/candidateLogin",
                                 "/api/auth/candidateLogout"
                                 ).permitAll()
-                        .requestMatchers("/api/auth/hrLogin","/api/auth/hrLogout").hasRole("ADMIN")
+                                .requestMatchers("/api/auth/hrLogin").permitAll()
+                                .requestMatchers("/api/auth/hrLogout").hasRole("ADMIN")
 //                        .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
                         .requestMatchers("/api/screening/**",
                                 "/api/employment/**",
