@@ -1,8 +1,12 @@
 package com.verify_x.services;
 
+import com.verify_x.dto.CandidateDashboardDto;
 import com.verify_x.dto.CandidateDocumentDto;
+import com.verify_x.dto.DashboardStatisticsDto;
+import com.verify_x.dto.HrVerificationRequestDto;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.DocumentType;
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -43,5 +47,27 @@ public interface CandidateDocumentService {
             Long documentId,
             String rejectionReason
     );
+
+  //verify uan number
+  void verifyUan(
+          Long candidateId);
+
+  // HR Verification Requests
+  List<HrVerificationRequestDto> getAllVerificationRequests();
+
+  // Download candidate document.
+  Resource downloadDocument(Long documentId);
+
+  // ===============================
+  // HR Dashboard Statistics
+  // ===============================
+  DashboardStatisticsDto getDashboardStatistics();
+
+  // HR Dashboard
+  List<CandidateDashboardDto> getCandidateDashboard();
+
+  // Get all pending documents.
+  List<CandidateDocumentDto> getPendingDocuments();
+
 
 }

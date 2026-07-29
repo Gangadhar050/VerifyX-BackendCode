@@ -1,11 +1,16 @@
 package com.verify_x.serviceImpl;
 
+import com.verify_x.dto.CandidateDashboardDto;
 import com.verify_x.dto.CandidateDocumentDto;
+import com.verify_x.dto.DashboardStatisticsDto;
+import com.verify_x.dto.HrVerificationRequestDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
+import com.verify_x.entity.Employment;
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.DocumentStatus;
 import com.verify_x.enums.DocumentType;
+import com.verify_x.enums.VerificationStatus;
 import com.verify_x.exception.ResourceNotFoundException;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.CandidateDocumentRepository;
@@ -14,6 +19,8 @@ import com.verify_x.services.CandidateDocumentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,6 +28,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -341,7 +352,12 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                     "You are not allowed to delete this document."
             );
         }
-
+     // Improvement: Prevent deleting verified documents
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new RuntimeException(
+                    "Verified documents cannot be deleted."
+            );
+        }
         candidateDocumentRepository.delete(document);
 
         log.info("{} deleted by {}",
@@ -362,10 +378,13 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                         .orElseThrow(() ->
                                 new RuntimeException("Document not found."));
 
+        // Prevent verifying again
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new RuntimeException("Document is already verified.");
+        }
+
         document.setStatus(DocumentStatus.VERIFIED);
-
         document.setRejectionReason(null);
-
         candidateDocumentRepository.save(document);
 
         log.info("{} verified successfully.",
@@ -388,14 +407,196 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                         .orElseThrow(() ->
                                 new RuntimeException("Document not found."));
 
+        // Prevent rejecting a verified document
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new RuntimeException(
+                    "Verified document cannot be rejected."
+            );
+        }
+
         document.setStatus(DocumentStatus.REJECTED);
-
         document.setRejectionReason(rejectionReason);
-
         candidateDocumentRepository.save(document);
 
         log.info("{} rejected.",
                 document.getDocumentType());
     }
 
+    // Fetch all pending documents for HR review.
+    @Override
+    public List<CandidateDocumentDto> getPendingDocuments() {
+
+        return candidateDocumentRepository
+                .findByStatus(DocumentStatus.PENDING)
+                .stream()
+                .map(this::mapToDto)
+                .toList();
+    }
+
+    @Override
+    public Resource downloadDocument(Long documentId) {
+
+        CandidateDocument document = candidateDocumentRepository
+                .findById(documentId)
+                .orElseThrow(() ->
+                        new RuntimeException("Document not found."));
+
+        Authentication authentication =
+                SecurityContextHolder.getContext().getAuthentication();
+
+        UserPrincipal principal =
+                (UserPrincipal) authentication.getPrincipal();
+
+        // Candidate can access only their own documents
+        if ("CANDIDATE".equals(principal.getRole().name())) {
+
+            if (!document.getCandidate().getId().equals(principal.getUserId())) {
+
+                throw new RuntimeException(
+                        "You are not authorized to access this document.");
+
+            }
+        }
+
+        try {
+
+
+            Path path = Paths.get(Arrays.toString(document.getDocumentData()));
+
+            Resource resource = new UrlResource(path.toUri());
+
+            if (!resource.exists() || !resource.isReadable()) {
+                throw new RuntimeException("File not found.");
+            }
+
+            return resource;
+
+        } catch (Exception e) {
+
+            log.error("Unable to download document.", e);
+
+            throw new RuntimeException("Unable to download document.");
+        }
+    }
+    @Override
+    public DashboardStatisticsDto getDashboardStatistics() {
+        return DashboardStatisticsDto.builder()
+                .totalDocuments(candidateDocumentRepository.count())
+                .verified(candidateDocumentRepository.countByStatus(DocumentStatus.VERIFIED))
+                .pending(candidateDocumentRepository.countByStatus(DocumentStatus.PENDING))
+                .rejected(candidateDocumentRepository.countByStatus(DocumentStatus.REJECTED))
+                .build();
+    }
+    @Override
+    public List<CandidateDashboardDto> getCandidateDashboard() {
+
+        List<Candidate> candidates = candidateRepository.findAll();
+
+        if (candidates.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        List<CandidateDashboardDto> dashboardList = new ArrayList<>();
+
+        for (Candidate candidate : candidates) {
+
+            List<CandidateDocument> documents =
+                    candidateDocumentRepository.findByCandidateId(candidate.getId());
+
+            long verified = documents.stream()
+                    .filter(document -> document.getStatus() == DocumentStatus.VERIFIED)
+                    .count();
+
+            long pending = documents.stream()
+                    .filter(document -> document.getStatus() == DocumentStatus.PENDING)
+                    .count();
+
+            long rejected = documents.stream()
+                    .filter(document -> document.getStatus() == DocumentStatus.REJECTED)
+                    .count();
+
+            dashboardList.add(
+                    CandidateDashboardDto.builder()
+                            .candidateId(candidate.getId())
+                            .candidateName(candidate.getUsername())
+                            .email(candidate.getEmail())
+                            .phoneNumber(candidate.getPhoneNumber())
+                            .appliedRole(candidate.getAppliedRole())
+                            .candidateType(candidate.getCandidateType())
+                            .totalDocuments(documents.size())
+                            .verifiedDocuments(verified)
+                            .pendingDocuments(pending)
+                            .rejectedDocuments(rejected)
+                            .build()
+            );
+        }
+
+        return dashboardList;
+    }
+
+    @Override
+    public void verifyUan(Long candidateId) {
+
+        Candidate candidate = candidateRepository.findById(candidateId)
+                .orElseThrow(() -> new RuntimeException("Candidate not found."));
+
+        Employment employment = candidate.getEmployment();
+
+        if (employment == null) {
+            throw new RuntimeException("Employment details not found.");
+        }
+
+        employment.setUanVerificationStatus(VerificationStatus.VERIFIED);
+    }
+
+    @Override
+    public List<HrVerificationRequestDto> getAllVerificationRequests() {
+
+        return candidateRepository.findAll()
+                .stream()
+                .filter(candidate ->
+                        candidateDocumentRepository.countByCandidate(candidate) > 0)
+                .map(candidate -> {
+
+                    Long documentCount =
+                            candidateDocumentRepository.countByCandidate(candidate);
+
+                    List<CandidateDocument> documents =
+                            candidateDocumentRepository.findByCandidate(candidate);
+
+                    DocumentStatus overallStatus = DocumentStatus.PENDING;
+
+                    if (!documents.isEmpty()) {
+
+                        boolean rejected = documents.stream()
+                                .anyMatch(doc -> doc.getStatus() == DocumentStatus.REJECTED);
+
+                        boolean pending = documents.stream()
+                                .anyMatch(doc -> doc.getStatus() == DocumentStatus.PENDING);
+
+                        if (rejected) {
+                            overallStatus = DocumentStatus.REJECTED;
+                        } else if (pending) {
+                            overallStatus = DocumentStatus.PENDING;
+                        } else {
+                            overallStatus = DocumentStatus.VERIFIED;
+                        }
+                    }
+
+                    return HrVerificationRequestDto.builder()
+                            .candidateId(candidate.getId())
+                            .candidateName(candidate.getUsername())
+                            .email(candidate.getEmail())
+                            .candidateType(candidate.getCandidateType())
+                            .documentCount(documentCount.intValue())
+                            .uanVerificationStatus(
+                                    candidate.getEmployment() != null
+                                            ? candidate.getEmployment().getUanVerificationStatus()
+                                            : VerificationStatus.PENDING
+                            )
+                            .status(overallStatus)
+                            .build();
+                })
+                .toList();
+    }
 }

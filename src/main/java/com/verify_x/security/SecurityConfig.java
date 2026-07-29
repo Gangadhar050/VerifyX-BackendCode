@@ -42,11 +42,11 @@ public class SecurityConfig {
                                 "/v3/api-docs/swagger-config",
                                 "/api/auth/candidateRegister",
                                 "/api/auth/candidateLogin",
-                                "/api/auth/candidateLogout",
-                                "/api/auth/adminLogin"
+                                "/api/auth/candidateLogout"
                                 ).permitAll()
-                        .requestMatchers("/api/auth/hrLogin","/api/auth/hrLogout").hasRole("ADMIN")
-                        .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
+                                .requestMatchers("/api/auth/hrLogin").permitAll()
+                                .requestMatchers("/api/auth/hrLogout").hasRole("ADMIN")
+//                        .requestMatchers("/api/auth/adminRegister").hasRole("ADMIN")
                         .requestMatchers("/api/screening/**",
                                 "/api/employment/**",
                                 "/api/documents/**",
@@ -64,10 +64,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // FIX: no CORS configuration existed at all. Without it, browsers block the
-    // frontend from calling this API cross-origin (or, if a wildcard is added
-    // carelessly elsewhere, it can over-permit). Origins must come from config,
-    // not be hardcoded, so each environment (dev/staging/prod) sets its own.
+
     @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration =

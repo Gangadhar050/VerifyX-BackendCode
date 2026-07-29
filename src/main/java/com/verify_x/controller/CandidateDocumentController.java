@@ -34,21 +34,13 @@ public class CandidateDocumentController {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
     public ResponseEntity<ApiResponse<String>> uploadDocument(
-
             @RequestParam("file") MultipartFile file,
-
-            @RequestParam DocumentType documentType
-
-    ) {
+            @RequestParam DocumentType documentType) {
 
         candidateDocumentService.uploadDocument(file, documentType);
-
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new ApiResponse<>(
-                        true,
-                        "Document uploaded successfully.",
-                        (CandidateProfileDto) null
-                ));
+                .body(ApiResponse.success("Document uploaded successfully.", null));
+
     }
 
     // ==========================================================
@@ -85,15 +77,11 @@ public class CandidateDocumentController {
 
     @PreAuthorize("hasRole('CANDIDATE')")
     @GetMapping("/my-documents")
-    public ResponseEntity<ApiResponse<List<CandidateDocumentDto>>> getMyDocuments() {
+    public ResponseEntity<List<CandidateDocumentDto>> getMyDocuments() {
 
         return ResponseEntity.ok(
-                new ApiResponse<>(
-                        true,
-                        "Documents fetched successfully.",
-                        (CandidateProfileDto) candidateDocumentService.getMyDocuments()
-                )
-        );
+                candidateDocumentService.getMyDocuments());
+
     }
 
     // ==========================================================
@@ -214,4 +202,19 @@ public class CandidateDocumentController {
                 )
         );
     }
+
+//    @PutMapping("/verify-uan/{candidateId}")
+//    public ResponseEntity<ApiResponse<String>> verifyUan(
+//            @PathVariable Long candidateId) {
+//
+//        candidateDocumentService.verifyUan(candidateId);
+//
+//        return ResponseEntity.ok(
+//                new ApiResponse<>(
+//                        true,
+//                        "UAN verified successfully.",
+//                        null
+//                )
+//        );
+//    }
 }

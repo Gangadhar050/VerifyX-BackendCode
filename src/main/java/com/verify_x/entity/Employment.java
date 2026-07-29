@@ -2,6 +2,7 @@ package com.verify_x.entity;
 
 import com.verify_x.enums.EmploymentStatus;
 import com.verify_x.enums.OfferLetterStatus;
+import com.verify_x.enums.VerificationStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -48,6 +49,13 @@ public class Employment {
     @Column(length = 12)
     private String uanNumber;
 
+    @Builder.Default
+    private Boolean uanVerified = false;
+
+    private String uanVerifiedBy;
+
+    private LocalDateTime uanVerifiedAt;
+
     /*
      * Current Employment Details
      */
@@ -87,4 +95,10 @@ public class Employment {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @Builder.Default
+    private VerificationStatus uanVerificationStatus = VerificationStatus.PENDING;
+
 }
