@@ -102,6 +102,12 @@ public class Candidate {
     )
     private Employment employment;
 
-
+    @OneToMany(
+            mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    private List<CandidateDocument> documents;
 }
 
