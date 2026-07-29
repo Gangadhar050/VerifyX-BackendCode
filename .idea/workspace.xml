@@ -8,30 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/ApplicationStatusUpdateDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDetailsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateSummaryDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/enums/ApplicationStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateManagementServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ApplicationStatusUpdateDto$ApplicationStatusUpdateDtoBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ApplicationStatusUpdateDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDetailsDto$CandidateDetailsDtoBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateDetailsDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateSummaryDto$CandidateSummaryDtoBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/CandidateSummaryDto.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/enums/ApplicationStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateManagementServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateManagementService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]2/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Employment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/entity/Employment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate$CandidateBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate$CandidateBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Candidate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment$EmploymentBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment$EmploymentBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/entity/Employment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateManagementServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateManagementServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateManagementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateManagementServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateManagementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateManagementService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,9 +208,10 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;YashodharGK&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/IdeaProjects/VerifyX-BackendCode/src/main/java/com/verify_x/controller&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -233,11 +224,19 @@
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\IdeaProjects\VerifyX-BackendCode\src\main\java\com\verify_x\controller" />
+      <recent name="C:\Users\User\IdeaProjects\VerifyX-BackendCode\src\main\java\com\verify_x\serviceImpl" />
+      <recent name="C:\Users\User\IdeaProjects\VerifyX-BackendCode\src\main\java\com\verify_x\services" />
+      <recent name="C:\Users\User\IdeaProjects\VerifyX-BackendCode\src\main\java\com\verify_x\dto" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="CORS_ALLOWED_ORIGINS" value="http://localhost:3000" />
-        <env name="DB_PASSWORD" value="test" />
+        <env name="DB_PASSWORD" value="root" />
         <env name="DB_POOL_SIZE" value="10" />
         <env name="DB_URL" value="jdbc:mysql://localhost:3306/verify-x1" />
         <env name="DB_USERNAME" value="root" />
@@ -282,8 +281,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.25134.95" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
       </set>
     </attachedChunks>
   </component>

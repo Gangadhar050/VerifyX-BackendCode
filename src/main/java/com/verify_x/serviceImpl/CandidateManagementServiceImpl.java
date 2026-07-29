@@ -61,8 +61,54 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
     }
 
     @Override
-    public List<CandidateSummaryDto> getAllCandidates() {
-        return candidateRepository.findAll().stream().map(this::mapToSummary).toList();
+    public PagedResponse<CandidateSummaryDto> getAllCandidates(
+            String keyword,
+            CandidateType candidateType,
+            ApplicationStatus applicationStatus,
+            int page,
+            int size
+    ) {
+
+        List<CandidateSummaryDto> candidates = candidateRepository.findAll()
+                .stream()
+                .map(this::mapToSummary)
+                .toList();
+
+        if (keyword != null && !keyword.isBlank()) {
+            String k = keyword.toLowerCase();
+
+            candidates = candidates.stream()
+                    .filter(c ->
+                            (c.getFullName() != null && c.getFullName().toLowerCase().contains(k))
+                                    || (c.getEmail() != null && c.getEmail().toLowerCase().contains(k))
+                                    || (c.getPhoneNumber() != null && c.getPhoneNumber().contains(k))
+                    )
+                    .toList();
+        }
+
+        if (candidateType != null) {
+            candidates = candidates.stream()
+                    .filter(c -> c.getCandidateType() == candidateType)
+                    .toList();
+        }
+
+        if (applicationStatus != null) {
+            candidates = candidates.stream()
+                    .filter(c -> c.getApplicationStatus() == applicationStatus)
+                    .toList();
+        }
+
+        int total = candidates.size();
+        int from = Math.min(page * size, total);
+        int to = Math.min(from + size, total);
+
+        return PagedResponse.<CandidateSummaryDto>builder()
+                .content(candidates.subList(from, to))
+                .page(page)
+                .size(size)
+                .totalElements(total)
+                .totalPages((int) Math.ceil((double) total / size))
+                .build();
     }
 
     @Override
@@ -126,6 +172,32 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
                 .uanVerified(employment != null && Boolean.TRUE.equals(employment.getUanVerified()))
                 .uanVerifiedBy(employment != null ? employment.getUanVerifiedBy() : null)
                 .build();
+    }
+
+    @Override
+    public CandidateSummaryDto createCandidate(UserRegistrationDto dto) {
+
+        if (candidateRepository.existsByEmail(dto.getEmail())) {
+            throw new BadRequestException("Email already exists.");
+        }
+
+        if (candidateRepository.existsByPhoneNumber(dto.getPhoneNumber())) {
+            throw new BadRequestException("Phone number already exists.");
+        }
+
+        Candidate candidate = Candidate.builder()
+                .username(dto.getUsername())
+                .email(dto.getEmail())
+                .phoneNumber(dto.getPhoneNumber())
+                .password(dto.getPassword())
+                .appliedRole(dto.getAppliedRole())
+                .candidateType(dto.getCandidateType())
+                .applicationStatus(ApplicationStatus.PENDING_VERIFICATION)
+                .build();
+
+        candidateRepository.save(candidate);
+
+        return mapToSummary(candidate);
     }
 
     @Override
