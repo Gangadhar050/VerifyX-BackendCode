@@ -3,6 +3,7 @@ package com.verify_x.controller;
 import com.verify_x.dto.EducationRequest;
 import com.verify_x.dto.EducationResponse;
 import com.verify_x.enums.EducationDocumentType;
+import com.verify_x.enums.TechnicalSkill;
 import com.verify_x.payload.ApiResponse;
 import com.verify_x.services.EducationService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/education")
@@ -131,6 +135,23 @@ public class EducationController {
                         .success(true)
                         .message("Education deleted successfully.")
                         .data("Deleted")
+                        .build()
+        );
+    }
+
+    /**
+     * Get all available technical skills
+     */
+    @GetMapping("/technical-skills")
+    @PreAuthorize("hasRole('CANDIDATE')")
+    public ResponseEntity<ApiResponse<List<TechnicalSkill>>> getTechnicalSkills() {
+
+        return ResponseEntity.ok(
+
+                ApiResponse.<List<TechnicalSkill>>builder()
+                        .success(true)
+                        .message("Technical skills fetched successfully.")
+                        .data(Arrays.asList(TechnicalSkill.values()))
                         .build()
         );
     }
