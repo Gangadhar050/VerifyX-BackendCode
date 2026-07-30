@@ -1,18 +1,17 @@
 package com.verify_x.repository;
 
 import com.verify_x.entity.Candidate;
+import com.verify_x.enums.ApplicationStatus;
 import com.verify_x.enums.CandidateType;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
-import com.verify_x.enums.ApplicationStatus;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate, Long> {
@@ -33,18 +32,43 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
     boolean existsByAadhaarNumber(String aadhaarNumber);
 
+    // ===========================
+    // Used by EmploymentServiceImpl.searchEmploymentDetails()
+    // ===========================
     List<Candidate> findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(
             String username,
             String email
     );
 
+    // ===========================
+    // Search Candidate Education
+    // ===========================
+    @Query("""
+        SELECT c FROM Candidate c
+        WHERE
+            LOWER(c.username) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.email) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.tenthSchoolName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.tenthBoard) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.pucInstitutionName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.pucBoardUniversity) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.bachelorDegree) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.bachelorCollegeName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.bachelorUniversityName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.masterDegree) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.masterCollegeName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+            OR LOWER(c.masterUniversityName) LIKE LOWER(CONCAT('%', :keyword, '%'))
+        """)
+    List<Candidate> searchEducation(@Param("keyword") String keyword);
+
+    // ===========================
     // Reports Dashboard
+    // ===========================
     long countByCandidateType(CandidateType candidateType);
 
-    /*
-     * HR Candidate Management: search + filter + pagination
-     * (all filters optional; pass null to skip a filter)
-     */
+    // ===========================
+    // HR Candidate Search
+    // ===========================
     @Query("""
         SELECT c FROM Candidate c
         WHERE (:keyword IS NULL OR

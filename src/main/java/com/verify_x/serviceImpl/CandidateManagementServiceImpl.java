@@ -135,12 +135,53 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
                 .candidateType(candidate.getCandidateType())
                 .build();
 
+        // NOTE: CandidateEducationDto's file fields are MultipartFile and cannot
+        // be reconstructed from stored byte[] data, so they are intentionally
+        // omitted here (left null). Use a dedicated download endpoint if you
+        // need to serve the actual file bytes.
         CandidateEducationDto education = CandidateEducationDto.builder()
-                .highestEducation(candidate.getHighestEducation())
-                .college(candidate.getCollege())
-                .passingYear(candidate.getPassingYear())
-                .percentage(candidate.getPercentage())
+
+                // 10th
+                .tenthSchoolName(candidate.getTenthSchoolName())
+                .tenthBoard(candidate.getTenthBoard())
+                .tenthSchoolLocation(candidate.getTenthSchoolLocation())
+                .tenthRegistrationNumber(candidate.getTenthRegistrationNumber())
+                .tenthPassingYear(candidate.getTenthPassingYear())
+                .tenthPercentage(candidate.getTenthPercentage())
+
+                // PUC
+                .pucInstitutionName(candidate.getPucInstitutionName())
+                .pucBoardUniversity(candidate.getPucBoardUniversity())
+                .pucStream(candidate.getPucStream())
+                .pucRegistrationNumber(candidate.getPucRegistrationNumber())
+                .pucPassingYear(candidate.getPucPassingYear())
+                .pucPercentage(candidate.getPucPercentage())
+
+                // Bachelor
+                .bachelorDegree(candidate.getBachelorDegree())
+                .bachelorSpecialization(candidate.getBachelorSpecialization())
+                .bachelorCollegeName(candidate.getBachelorCollegeName())
+                .bachelorUniversityName(candidate.getBachelorUniversityName())
+                .bachelorUsnNumber(candidate.getBachelorUsnNumber())
+                .bachelorStartYear(candidate.getBachelorStartYear())
+                .bachelorEndYear(candidate.getBachelorEndYear())
+                .bachelorPercentage(candidate.getBachelorPercentage())
+                .bachelorBacklogs(candidate.getBachelorBacklogs())
+
+                // Master
+                .masterDegree(candidate.getMasterDegree())
+                .masterSpecialization(candidate.getMasterSpecialization())
+                .masterCollegeName(candidate.getMasterCollegeName())
+                .masterUniversityName(candidate.getMasterUniversityName())
+                .masterRegistrationNumber(candidate.getMasterRegistrationNumber())
+                .masterModeOfStudy(candidate.getMasterModeOfStudy())
+                .masterStartYear(candidate.getMasterStartYear())
+                .masterEndYear(candidate.getMasterEndYear())
+                .masterPercentage(candidate.getMasterPercentage())
+
+                // Technical Skills
                 .technicalSkills(candidate.getTechnicalSkills())
+
                 .build();
 
         EmploymentDetailsDto employmentDto = employment == null ? null : EmploymentDetailsDto.builder()
@@ -222,12 +263,6 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
 
         Employment employment = employmentRepository.findByCandidate(candidate)
                 .orElseThrow(() -> new ResourceNotFoundException("Employment details not found."));
-
-        System.out.println("========== VERIFY UAN ==========");
-        System.out.println("Employment ID : " + employment.getId());
-        System.out.println("Candidate ID  : " + candidate.getId());
-        System.out.println("UAN Number    : [" + employment.getUanNumber() + "]");
-        System.out.println("================================");
 
         if (employment.getUanNumber() == null || !employment.getUanNumber().matches("^\\d{12}$")) {
             throw new BadRequestException("UAN number must contain exactly 12 digits before verification.");

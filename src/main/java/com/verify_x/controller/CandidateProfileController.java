@@ -99,37 +99,40 @@ public class CandidateProfileController {
         );
     }
 
-    //EducationDetails
+ // ===========================
+ // Education Details Upload
+ // ===========================
 
-    @PostMapping("/education")
-    public ResponseEntity<ApiResponse<String>> saveEducation(
-            @RequestBody CandidateEducationDto dto) {
+ @PostMapping(value = "/education", consumes = "multipart/form-data")
+ public ResponseEntity<ApiResponse<String>> saveEducation(
+         @ModelAttribute CandidateEducationDto dto) {
 
-        candidateService.saveEducation(dto);
+     candidateService.saveEducation(dto);
 
-        return ResponseEntity.ok(
-                ApiResponse.<String>builder()
-                        .success(true)
-                        .message("Education Details Saved Successfully")
-                        .data("Success")
-                        .build()
-        );
-    }
+     return ResponseEntity.ok(
+             ApiResponse.<String>builder()
+                     .success(true)
+                     .message("Education Details Saved Successfully")
+                     .data("Success")
+                     .build()
+     );
+ }
 
-    @PutMapping("/education")
-    public ResponseEntity<ApiResponse<String>> updateEducation(
-            @RequestBody CandidateEducationDto dto) {
 
-        candidateService.updateEducation(dto);
+ @PutMapping(value = "/education", consumes = "multipart/form-data")
+ public ResponseEntity<ApiResponse<String>> updateEducation(
+         @ModelAttribute CandidateEducationDto dto) {
 
-        return ResponseEntity.ok(
-                ApiResponse.<String>builder()
-                        .success(true)
-                        .message("Education details updated successfully.")
-                        .data("Success")
-                        .build()
-        );
-    }
+     candidateService.updateEducation(dto);
+
+     return ResponseEntity.ok(
+             ApiResponse.<String>builder()
+                     .success(true)
+                     .message("Education details updated successfully.")
+                     .data("Success")
+                     .build()
+     );
+ }
 
     @GetMapping("/education/{candidateId}")
     public ResponseEntity<ApiResponse<CandidateEducationDto>> getEducationByCandidateId(

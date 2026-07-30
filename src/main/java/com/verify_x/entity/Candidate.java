@@ -20,22 +20,22 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Candidate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String username;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false,unique = true,length = 10)
+    @Column(nullable = false, unique = true, length = 10)
     private String phoneNumber;
 
     @Column(nullable = false)
     private String password;
-
 
     @Column(nullable = false)
     private String appliedRole;
@@ -63,20 +63,93 @@ public class Candidate {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    // ===========================
+    // Education Details
+    // ===========================
 
-    // Education
+    // ---------- 10th ----------
+    private String tenthSchoolName;
+    private String tenthBoard;
+    private String tenthSchoolLocation;
+    private String tenthRegistrationNumber;
+    private Integer tenthPassingYear;
+    private Double tenthPercentage;
 
-    private String highestEducation;
+    private String tenthMarksCardType;
 
-    private String college;
+    @Lob
+    @Column(name = "tenth_marks_card", columnDefinition = "LONGBLOB")
+    private byte[] tenthMarksCard;
 
-    private Integer passingYear;
+    // ---------- PUC / 12th / Diploma ----------
+    private String pucInstitutionName;
+    private String pucBoardUniversity;
+    private String pucStream;
+    private String pucRegistrationNumber;
+    private Integer pucPassingYear;
+    private Double pucPercentage;
 
-    private Double percentage;
+    private String pucMarksCardType;
 
+    @Lob
+    @Column(name = "puc_marks_card", columnDefinition = "LONGBLOB")
+    private byte[] pucMarksCard;
 
-// Technical Skills
+    // ---------- Bachelor's Degree ----------
+    private String bachelorDegree;
+    private String bachelorSpecialization;
+    private String bachelorCollegeName;
+    private String bachelorUniversityName;
+    private String bachelorUsnNumber;
+    private Integer bachelorStartYear;
+    private Integer bachelorEndYear;
+    private Double bachelorPercentage;
+    private String bachelorBacklogs;
 
+    private String bachelorMarksCardType;
+
+    @Lob
+    @Column(name = "bachelor_marks_card", columnDefinition = "LONGBLOB")
+    private byte[] bachelorMarksCard;
+
+    private String bachelorDegreeCertificateType;
+
+    @Lob
+    @Column(name = "bachelor_degree_certificate", columnDefinition = "LONGBLOB")
+    private byte[] bachelorDegreeCertificate;
+
+    // ---------- Master's Degree ----------
+    private String masterDegree;
+    private String masterSpecialization;
+    private String masterCollegeName;
+    private String masterUniversityName;
+    private String masterRegistrationNumber;
+    private String masterModeOfStudy;
+    private Integer masterStartYear;
+    private Integer masterEndYear;
+    private Double masterPercentage;
+
+    private String masterMarksCardType;
+
+    @Lob
+    @Column(name = "master_marks_card", columnDefinition = "LONGBLOB")
+    private byte[] masterMarksCard;
+
+    private String masterConsolidatedMarksCardType;
+
+    @Lob
+    @Column(name = "master_consolidated_marks_card", columnDefinition = "LONGBLOB")
+    private byte[] masterConsolidatedMarksCard;
+
+    private String masterDegreeCertificateType;
+
+    @Lob
+    @Column(name = "master_degree_certificate", columnDefinition = "LONGBLOB")
+    private byte[] masterDegreeCertificate;
+
+    // ===========================
+    // Technical Skills
+    // ===========================
     @ElementCollection(fetch = FetchType.EAGER, targetClass = TechnicalSkill.class)
     @CollectionTable(
             name = "candidate_technical_skills",
@@ -88,12 +161,14 @@ public class Candidate {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @Builder.Default
-    private ApplicationStatus applicationStatus =
-            ApplicationStatus.PENDING_VERIFICATION;
+    private ApplicationStatus applicationStatus = ApplicationStatus.PENDING_VERIFICATION;
 
     @Column(length = 1000)
     private String remarks;
-//Emplyment details
+
+    // ===========================
+    // Employment details
+    // ===========================
     @OneToOne(
             mappedBy = "candidate",
             cascade = CascadeType.ALL,
@@ -110,4 +185,3 @@ public class Candidate {
     )
     private List<CandidateDocument> documents;
 }
-

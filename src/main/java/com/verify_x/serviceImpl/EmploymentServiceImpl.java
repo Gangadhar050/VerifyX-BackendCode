@@ -169,7 +169,8 @@ public class EmploymentServiceImpl implements EmploymentService {
     @Override
     public EmploymentDetailsDto getEmploymentDetailsByEmail(String email) {
 
-        Candidate candidate = candidateRepository.findByEmail(email)                .orElseThrow(() ->
+        Candidate candidate = candidateRepository.findByEmail(email)
+                .orElseThrow(() ->
                         new RuntimeException("Candidate not found"));
 
         Employment employment = employmentRepository.findByCandidate(candidate)
@@ -208,10 +209,6 @@ public class EmploymentServiceImpl implements EmploymentService {
     private void validateEmploymentDetails(Candidate candidate,
                                            EmploymentDetailsDto dto) {
 
-
-
-        //  Experienced Candidate Validation
-
         if (candidate.getCandidateType() == CandidateType.EXPERIENCED) {
 
             if (dto.getPreviousCompanyName() == null ||
@@ -241,8 +238,6 @@ public class EmploymentServiceImpl implements EmploymentService {
                 throw new RuntimeException("UAN Number is required.");
             }
 
-            // Current Employment
-
             if (dto.getEmploymentStatus() == null) {
                 throw new RuntimeException("Employment Status is required.");
             }
@@ -268,9 +263,6 @@ public class EmploymentServiceImpl implements EmploymentService {
                 }
             }
         }
-
-
-//      Offer Letter Validation
 
         if (dto.getOfferLetterStatus() == null) {
             throw new RuntimeException("Offer Letter Status is required.");
