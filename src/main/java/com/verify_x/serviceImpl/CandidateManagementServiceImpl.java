@@ -3,6 +3,8 @@ package com.verify_x.serviceImpl;
 import com.verify_x.dto.*;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
+import com.verify_x.entity.Education;
+import com.verify_x.repository.EducationRepository;
 import com.verify_x.entity.Employment;
 import com.verify_x.enums.ApplicationStatus;
 import com.verify_x.enums.CandidateType;
@@ -30,6 +32,7 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
     private final CandidateRepository candidateRepository;
     private final EmploymentRepository employmentRepository;
     private final CandidateDocumentRepository candidateDocumentRepository;
+    private final EducationRepository educationRepository;
 
     private CandidateSummaryDto mapToSummary(Candidate candidate) {
         Employment employment = employmentRepository.findByCandidate(candidate).orElse(null);
@@ -134,15 +137,58 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
                 .appliedRole(candidate.getAppliedRole())
                 .candidateType(candidate.getCandidateType())
                 .build();
+        Education educationEntity = educationRepository
+                .findByCandidate(candidate)
+                .orElse(null);
 
-        CandidateEducationDto education = CandidateEducationDto.builder()
-                .highestEducation(candidate.getHighestEducation())
-                .college(candidate.getCollege())
-                .passingYear(candidate.getPassingYear())
-                .percentage(candidate.getPercentage())
-                .technicalSkills(candidate.getTechnicalSkills())
-                .build();
+        EducationResponse education = null;
 
+        if (educationEntity != null) {
+
+            education = EducationResponse.builder()
+                    .id(educationEntity.getId())
+
+                    .tenthSchoolName(educationEntity.getTenthSchoolName())
+                    .tenthBoard(educationEntity.getTenthBoard())
+                    .tenthSchoolLocation(educationEntity.getTenthSchoolLocation())
+                    .tenthRollNumber(educationEntity.getTenthRollNumber())
+                    .tenthPassingYear(educationEntity.getTenthPassingYear())
+                    .tenthPercentage(educationEntity.getTenthPercentage())
+                    .tenthMarksCardName(educationEntity.getTenthMarksCardName())
+
+                    .twelfthInstitutionName(educationEntity.getTwelfthInstitutionName())
+                    .twelfthBoardUniversity(educationEntity.getTwelfthBoardUniversity())
+                    .twelfthStream(educationEntity.getTwelfthStream())
+                    .twelfthRegistrationNumber(educationEntity.getTwelfthRegistrationNumber())
+                    .twelfthPassingYear(educationEntity.getTwelfthPassingYear())
+                    .twelfthPercentage(educationEntity.getTwelfthPercentage())
+                    .twelfthMarksCardName(educationEntity.getTwelfthMarksCardName())
+
+                    .degreeName(educationEntity.getDegreeName())
+                    .specialization(educationEntity.getSpecialization())
+                    .collegeName(educationEntity.getCollegeName())
+                    .universityName(educationEntity.getUniversityName())
+                    .usnNumber(educationEntity.getUsnNumber())
+                    .degreeStartYear(educationEntity.getDegreeStartYear())
+                    .degreeEndYear(educationEntity.getDegreeEndYear())
+                    .degreePercentage(educationEntity.getDegreePercentage())
+                    .backlogStatus(educationEntity.getBacklogStatus())
+                    .degreeCertificateName(educationEntity.getDegreeCertificateName())
+
+                    .mastersDegree(educationEntity.getMastersDegree())
+                    .mastersSpecialization(educationEntity.getMastersSpecialization())
+                    .mastersCollege(educationEntity.getMastersCollege())
+                    .mastersUniversity(educationEntity.getMastersUniversity())
+                    .mastersRegistrationNumber(educationEntity.getMastersRegistrationNumber())
+                    .modeOfStudy(educationEntity.getModeOfStudy())
+                    .mastersStartYear(educationEntity.getMastersStartYear())
+                    .mastersEndYear(educationEntity.getMastersEndYear())
+                    .mastersPercentage(educationEntity.getMastersPercentage())
+                    .mastersMarksCardName(educationEntity.getMastersMarksCardName())
+                    .mastersDegreeCertificateName(educationEntity.getMastersDegreeCertificateName())
+
+                    .build();
+        }
         EmploymentDetailsDto employmentDto = employment == null ? null : EmploymentDetailsDto.builder()
                 .previousCompanyName(employment.getPreviousCompanyName())
                 .previousDesignation(employment.getPreviousDesignation())

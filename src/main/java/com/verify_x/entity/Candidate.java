@@ -64,17 +64,6 @@ public class Candidate {
     private LocalDateTime updatedAt;
 
 
-    // Education
-
-    private String highestEducation;
-
-    private String college;
-
-    private Integer passingYear;
-
-    private Double percentage;
-
-
 // Technical Skills
 
     @ElementCollection(fetch = FetchType.EAGER, targetClass = TechnicalSkill.class)
@@ -109,5 +98,12 @@ public class Candidate {
             orphanRemoval = true
     )
     private List<CandidateDocument> documents;
+    @OneToOne(
+            mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    private Education education;
 }
 
