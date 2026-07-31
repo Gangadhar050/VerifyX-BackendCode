@@ -40,7 +40,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
 
     // Reports Dashboard
     long countByCandidateType(CandidateType candidateType);
-
+    long countByApplicationStatus(ApplicationStatus applicationStatus);
     /*
      * HR Candidate Management: search + filter + pagination
      * (all filters optional; pass null to skip a filter)

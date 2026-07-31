@@ -4,6 +4,7 @@ import com.verify_x.dto.HRCandidateDashboardDto;
 import com.verify_x.dto.HRDashboardResponseDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
+import com.verify_x.enums.ApplicationStatus;
 import com.verify_x.enums.CandidateType;
 import com.verify_x.enums.DocumentStatus;
 import com.verify_x.repository.CandidateDocumentRepository;
@@ -37,11 +38,17 @@ public class HRDashboardServiceImpl implements HRDashboardService {
                 .filter(candidate -> candidate.getCandidateType() == CandidateType.EXPERIENCED)
                 .count();
 
-        long pending = candidateDocumentRepository.findByStatus(DocumentStatus.PENDING).size();
+        long pending =
+                candidateRepository.countByApplicationStatus(
+                        ApplicationStatus.PENDING_VERIFICATION);
 
-        long approved = candidateDocumentRepository.findByStatus(DocumentStatus.VERIFIED).size();
+        long approved =
+                candidateRepository.countByApplicationStatus(
+                        ApplicationStatus.APPROVED);
 
-        long rejected = candidateDocumentRepository.findByStatus(DocumentStatus.REJECTED).size();
+        long rejected =
+                candidateRepository.countByApplicationStatus(
+                        ApplicationStatus.RE_UPLOAD_REQUIRED);
 
         return new HRDashboardResponseDto(
                 total,

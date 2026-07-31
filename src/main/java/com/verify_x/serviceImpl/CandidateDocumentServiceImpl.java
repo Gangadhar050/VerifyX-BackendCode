@@ -358,6 +358,12 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                         .orElseThrow(() ->
                                 new RuntimeException("Document not found."));
 
+        log.info("======================================");
+        log.info("Logged-in Candidate ID : {}", candidate.getId());
+        log.info("Document Owner ID      : {}", document.getCandidate().getId());
+        log.info("Document ID            : {}", document.getId());
+        log.info("======================================");
+
         if (!document.getCandidate().getId().equals(candidate.getId())) {
 
             throw new RuntimeException(
