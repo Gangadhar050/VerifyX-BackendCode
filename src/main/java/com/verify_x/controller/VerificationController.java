@@ -11,13 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * Powers the "Verification" sidebar screen. Actually verifying/rejecting a
- * document or the overall application still goes through the existing
- * endpoints in CandidateDocumentController and
- * CandidateManagementController#updateApplicationStatus — this controller
- * only surfaces the queue of who still needs attention.
- */
+
 @RestController
 @RequestMapping("/api/hr/verification")
 @RequiredArgsConstructor

@@ -4,6 +4,7 @@ import com.verify_x.dto.*;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.entity.Education;
+import com.verify_x.enums.DocumentType;
 import com.verify_x.repository.EducationRepository;
 import com.verify_x.entity.Employment;
 import com.verify_x.enums.ApplicationStatus;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -293,20 +295,74 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
                 .orElseThrow(() -> new ResourceNotFoundException("Candidate", candidateId));
 
         if (dto.getStatus() == ApplicationStatus.APPROVED) {
-            Employment employment = employmentRepository.findByCandidate(candidate).orElse(null);
 
-            boolean uanOk = candidate.getCandidateType() != CandidateType.EXPERIENCED
-                    || (employment != null && Boolean.TRUE.equals(employment.getUanVerified()));
+            Employment employment =
+                    employmentRepository.findByCandidate(candidate)
+                            .orElse(null);
 
-            boolean hasRejectedDocs = candidateDocumentRepository.findByCandidate(candidate)
-                    .stream()
+            boolean uanOk =
+                    candidate.getCandidateType() != CandidateType.EXPERIENCED
+                            || (employment != null &&
+                            Boolean.TRUE.equals(employment.getUanVerified()));
+
+            List<CandidateDocument> documents =
+                    candidateDocumentRepository.findByCandidate(candidate);
+
+            Set<DocumentType> requiredDocuments;
+
+            if (candidate.getCandidateType() == CandidateType.FRESHER) {
+
+                requiredDocuments = Set.of(
+                        DocumentType.RESUME,
+                        DocumentType.PAN_CARD
+                );
+
+            } else {
+
+
+                //If documents are optional remove the below lines and set requiredDocuments to an empty set
+                requiredDocuments = Set.of(
+                        DocumentType.RESUME,
+                        DocumentType.PAN_CARD,
+                        DocumentType.OFFER_LETTER,
+                        DocumentType.SALARY_SLIP,
+                        DocumentType.RELIEVING_LETTER,
+                        DocumentType.EXPERIENCE_LETTER,
+                        DocumentType.UAN_PROOF
+
+                );
+            }
+            boolean hasRejectedDocs = documents.stream()
                     .anyMatch(doc -> doc.getStatus() == DocumentStatus.REJECTED);
 
+            boolean hasPendingDocs = documents.stream()
+                    .anyMatch(doc -> doc.getStatus() == DocumentStatus.PENDING);
+
+            boolean missingRequiredDocuments =
+
+                    requiredDocuments.stream()
+
+                            .anyMatch(type ->
+
+                                    documents.stream()
+
+                                            .noneMatch(doc -> doc.getDocumentType() == type));
             if (!uanOk) {
-                throw new BadRequestException("Cannot approve. UAN must be verified for experienced candidates.");
+                throw new BadRequestException(
+                        "Cannot approve. UAN must be verified.");
             }
+
             if (hasRejectedDocs) {
-                throw new BadRequestException("Cannot approve. Candidate has rejected documents pending re-upload.");
+                throw new BadRequestException(
+                        "Cannot approve. Candidate has rejected documents.");
+            }
+            if (hasPendingDocs) {
+                throw new BadRequestException(
+                        "Cannot approve. Some documents are still pending verification.");
+            }
+            if (missingRequiredDocuments) {
+                throw new BadRequestException(
+                        "Cannot approve. Required documents are missing.");
             }
         }
 

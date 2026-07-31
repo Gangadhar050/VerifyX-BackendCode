@@ -4,10 +4,7 @@ import com.verify_x.dto.*;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.entity.Employment;
-import com.verify_x.enums.CandidateType;
-import com.verify_x.enums.DocumentStatus;
-import com.verify_x.enums.DocumentType;
-import com.verify_x.enums.VerificationStatus;
+import com.verify_x.enums.*;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.CandidateDocumentRepository;
 import com.verify_x.repository.CandidateRepository;
@@ -208,6 +205,8 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 request.getUanProof(),
                 DocumentType.UAN_PROOF);
 
+        updateApplicationStatus(candidate);
+
         log.info("Documents uploaded successfully by {}",
                 candidate.getEmail());
     }
@@ -300,6 +299,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             document.setRejectionReason(null);
 
             candidateDocumentRepository.save(document);
+            updateApplicationStatus(candidate);
 
         } catch (IOException e) {
 
@@ -427,6 +427,8 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
         candidateDocumentRepository.save(document);
 
+        updateApplicationStatus(document.getCandidate());
+
         log.info("{} verified successfully.",
                 document.getDocumentType());
     }
@@ -454,6 +456,8 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         document.setRejectionReason(rejectionReason);
 
         candidateDocumentRepository.save(document);
+
+        updateApplicationStatus(document.getCandidate());
 
         log.info("{} rejected.",
                 document.getDocumentType());
@@ -629,6 +633,27 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 })
 
                 .toList();
+    }
+    private void updateApplicationStatus(Candidate candidate) {
+
+        List<CandidateDocument> documents =
+                candidateDocumentRepository.findByCandidate(candidate);
+
+        boolean rejected = documents.stream()
+                .anyMatch(d -> d.getStatus() == DocumentStatus.REJECTED);
+
+        boolean pending = documents.stream()
+                .anyMatch(d -> d.getStatus() == DocumentStatus.PENDING);
+
+        if (rejected) {
+            candidate.setApplicationStatus(ApplicationStatus.RE_UPLOAD_REQUIRED);
+        } else if (pending) {
+            candidate.setApplicationStatus(ApplicationStatus.PENDING_VERIFICATION);
+        } else {
+            candidate.setApplicationStatus(ApplicationStatus.DOCUMENTS_VERIFIED);
+        }
+
+        candidateRepository.save(candidate);
     }
 }
 

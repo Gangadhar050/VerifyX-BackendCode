@@ -55,14 +55,14 @@ public class CandidateManagementController {
                 candidateManagementService.getCandidateDetails(candidateId));
     }
 
-    @PostMapping
-    public ResponseEntity<CandidateSummaryDto> createCandidate(
-            @RequestBody UserRegistrationDto dto
-    ) {
-        return ResponseEntity.ok(
-                candidateManagementService.createCandidate(dto)
-        );
-    }
+//    @PostMapping
+//    public ResponseEntity<CandidateSummaryDto> createCandidate(
+//            @RequestBody UserRegistrationDto dto
+//    ) {
+//        return ResponseEntity.ok(
+//                candidateManagementService.createCandidate(dto)
+//        );
+//    }
 
     @DeleteMapping("/{candidateId}")
     public ResponseEntity<String> deleteCandidate(
