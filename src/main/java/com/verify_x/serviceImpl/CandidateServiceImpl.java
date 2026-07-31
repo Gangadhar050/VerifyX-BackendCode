@@ -27,6 +27,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     private final CandidateRepository candidateRepository;
 
+
     private byte[] convertFileToBytes(MultipartFile file) {
         try {
             if (file != null && !file.isEmpty()) {
@@ -98,6 +99,8 @@ public class CandidateServiceImpl implements CandidateService {
 
                 .build();
     }
+
+
 
     @Override
     public CandidateProfileDto getCandidateProfile(Long userId) {
@@ -190,6 +193,7 @@ public class CandidateServiceImpl implements CandidateService {
 
         log.info("Candidate profile created for User ID : {}", candidate.getId());
     }
+
 
 
     // ===========================
@@ -453,3 +457,6 @@ public class CandidateServiceImpl implements CandidateService {
         log.info("Education details deleted for candidate ID: {}", candidateId);
     }
 }
+
+
+

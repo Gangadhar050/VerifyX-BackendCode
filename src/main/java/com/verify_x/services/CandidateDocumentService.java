@@ -1,9 +1,6 @@
 package com.verify_x.services;
 
-import com.verify_x.dto.CandidateDashboardDto;
-import com.verify_x.dto.CandidateDocumentDto;
-import com.verify_x.dto.DashboardStatisticsDto;
-import com.verify_x.dto.HrVerificationRequestDto;
+import com.verify_x.dto.*;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.DocumentType;
 import org.springframework.core.io.Resource;
@@ -14,16 +11,10 @@ import java.util.List;
 public interface CandidateDocumentService {
 
   // Candidate uploads a document.
-    void uploadDocument(
-            MultipartFile file,
-            DocumentType documentType
-    );
+  void uploadDocuments(CandidateDocumentRequest request);
 
     // Candidate re-uploads a rejected document.
-    void reUploadDocument(
-            MultipartFile file,
-            DocumentType documentType
-    );
+    void reUploadDocuments(CandidateDocumentRequest request);
 
     // Get logged-in candidate documents.
     List<CandidateDocumentDto> getMyDocuments();
@@ -68,6 +59,7 @@ public interface CandidateDocumentService {
 
   // Get all pending documents.
   List<CandidateDocumentDto> getPendingDocuments();
+
 
 
 }

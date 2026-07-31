@@ -1,6 +1,7 @@
 package com.verify_x.controller;
 
 import com.verify_x.dto.CandidateDocumentDto;
+import com.verify_x.dto.CandidateDocumentRequest;
 import com.verify_x.dto.CandidateProfileDto;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.enums.DocumentType;
@@ -28,48 +29,51 @@ public class CandidateDocumentController {
     // Upload Document (Candidate)
     // ==========================================================
 
-    @PreAuthorize("hasRole('CANDIDATE')")
     @PostMapping(
-            value = "/upload",
+            value="/upload",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
-    public ResponseEntity<ApiResponse<String>> uploadDocument(
-            @RequestParam("file") MultipartFile file,
-            @RequestParam DocumentType documentType) {
+    @PreAuthorize("hasRole('CANDIDATE')")
+    public ResponseEntity<ApiResponse<String>> uploadDocuments(
 
-        candidateDocumentService.uploadDocument(file, documentType);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ApiResponse.success("Document uploaded successfully.", null));
+            @ModelAttribute CandidateDocumentRequest request
+    ) {
 
+        candidateDocumentService.uploadDocuments(request);
+
+        return ResponseEntity.ok(
+
+                ApiResponse.success(
+                        "Documents uploaded successfully.",
+                        null
+                )
+        );
     }
 
     // ==========================================================
     // Re Upload
     // ==========================================================
-
-    @PreAuthorize("hasRole('CANDIDATE')")
     @PutMapping(
-            value = "/re-upload",
+            value="/re-upload",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
-    public ResponseEntity<ApiResponse<String>> reUploadDocument(
+    @PreAuthorize("hasRole('CANDIDATE')")
+    public ResponseEntity<ApiResponse<String>> reUploadDocuments(
 
-            @RequestParam("file") MultipartFile file,
-
-            @RequestParam DocumentType documentType
-
+            @ModelAttribute CandidateDocumentRequest request
     ) {
 
-        candidateDocumentService.reUploadDocument(file, documentType);
+        candidateDocumentService.reUploadDocuments(request);
 
         return ResponseEntity.ok(
-                new ApiResponse<>(
-                        true,
-                        "Document re-uploaded successfully.",
-                        (CandidateProfileDto) null
+
+                ApiResponse.success(
+                        "Documents re-uploaded successfully.",
+                        null
                 )
         );
     }
+
 
     // ==========================================================
     // Logged In Candidate Documents

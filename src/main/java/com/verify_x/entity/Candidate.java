@@ -64,47 +64,8 @@ public class Candidate {
     private LocalDateTime updatedAt;
 
     // ===========================
-    // Education Details
-    // ===========================
-
-    // ---------- 10th ----------
-    private String tenthSchoolName;
-    private String tenthBoard;
-    private String tenthSchoolLocation;
-    private String tenthRegistrationNumber;
-    private Integer tenthPassingYear;
-    private Double tenthPercentage;
-
-    private String tenthMarksCardType;
-
-    @Lob
-    @Column(name = "tenth_marks_card", columnDefinition = "LONGBLOB")
-    private byte[] tenthMarksCard;
-
-    // ---------- PUC / 12th / Diploma ----------
-    private String pucInstitutionName;
-    private String pucBoardUniversity;
-    private String pucStream;
-    private String pucRegistrationNumber;
-    private Integer pucPassingYear;
-    private Double pucPercentage;
-
-    private String pucMarksCardType;
-
-    @Lob
-    @Column(name = "puc_marks_card", columnDefinition = "LONGBLOB")
-    private byte[] pucMarksCard;
-
-    // ---------- Bachelor's Degree ----------
-    private String bachelorDegree;
-    private String bachelorSpecialization;
-    private String bachelorCollegeName;
-    private String bachelorUniversityName;
-    private String bachelorUsnNumber;
-    private Integer bachelorStartYear;
-    private Integer bachelorEndYear;
-    private Double bachelorPercentage;
-    private String bachelorBacklogs;
+// Technical Skills
+// ===========================
 
     private String bachelorMarksCardType;
 
@@ -148,8 +109,8 @@ public class Candidate {
     private byte[] masterDegreeCertificate;
 
     // ===========================
-    // Technical Skills
-    // ===========================
+// Technical Skills
+// ===========================
     @ElementCollection(fetch = FetchType.EAGER, targetClass = TechnicalSkill.class)
     @CollectionTable(
             name = "candidate_technical_skills",
@@ -167,8 +128,8 @@ public class Candidate {
     private String remarks;
 
     // ===========================
-    // Employment details
-    // ===========================
+// Employment details
+// ===========================
     @OneToOne(
             mappedBy = "candidate",
             cascade = CascadeType.ALL,
@@ -184,4 +145,14 @@ public class Candidate {
             orphanRemoval = true
     )
     private List<CandidateDocument> documents;
+
+    @OneToOne(
+            mappedBy = "candidate",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
+    )
+    private Education education;
 }
+
+
