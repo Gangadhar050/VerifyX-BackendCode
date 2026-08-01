@@ -17,4 +17,5 @@ public interface EducationRepository extends JpaRepository<Education, Long> {
     boolean existsByCandidate(Candidate candidate);
 
     void deleteByCandidate(Candidate candidate);
+
 }

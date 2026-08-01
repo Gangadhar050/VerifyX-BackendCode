@@ -81,8 +81,8 @@ public class EducationController {
     /**
      * HR/Admin
      */
-    @GetMapping("/{candidateId}")
-    @PreAuthorize("hasAnyRole('HR','ADMIN')")
+    @GetMapping("hr/{candidateId}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<ApiResponse<EducationResponse>>
     getEducationByCandidateId(
             @PathVariable Long candidateId) {
@@ -100,8 +100,8 @@ public class EducationController {
     /**
      * View Uploaded Document
      */
-    @GetMapping("/document/{educationId}")
-    @PreAuthorize("hasAnyRole('HR','ADMIN','CANDIDATE')")
+    @GetMapping("/hr/{educationId}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<Resource> viewDocument(
 
             @PathVariable Long educationId,
@@ -123,8 +123,8 @@ public class EducationController {
     /**
      * Delete Education
      */
-    @DeleteMapping
-    @PreAuthorize("hasRole('CANDIDATE')")
+    @DeleteMapping("hr/delete")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<ApiResponse<String>> deleteEducation() {
 
         educationService.deleteEducation();
