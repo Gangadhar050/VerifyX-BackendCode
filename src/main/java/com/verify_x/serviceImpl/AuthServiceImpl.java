@@ -137,7 +137,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public LoginResponseDto adminLogin(AdminLoginRequestDto request) {
+    public HrLoginResponseDto adminLogin(AdminLoginRequestDto request) {
         Admin admin = adminRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("Invalid credentials"));
 
@@ -154,10 +154,9 @@ public class AuthServiceImpl implements AuthService {
 
         String token = jwtService.generateToken(admin);
 
-        return LoginResponseDto.builder()
+        return HrLoginResponseDto.builder()
                 .accessToken(token)
                 .tokenType("Bearer")
-                .userId(admin.getId())
                 .email(admin.getEmail())
                 .role(admin.getRole())
                 .build();

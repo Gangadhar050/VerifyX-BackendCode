@@ -22,31 +22,47 @@ public class CandidateManagementController {
 
     private final CandidateManagementService candidateManagementService;
 
-    @GetMapping
-    public ResponseEntity<PagedResponse<CandidateSummaryDto>> getAllCandidates(
+//    @GetMapping
+//    public ResponseEntity<PagedResponse<CandidateSummaryDto>> getAllCandidates(
+//
+//            @RequestParam(required = false) String keyword,
+//
+//            @RequestParam(required = false) CandidateType candidateType,
+//
+//            @RequestParam(required = false) ApplicationStatus applicationStatus,
+//
+//            @RequestParam(defaultValue = "0") int page,
+//
+//            @RequestParam(defaultValue = "5") int size
+//    ) {
+//
+//        return ResponseEntity.ok(
+//                candidateManagementService.getAllCandidates(
+//                        keyword,
+//                        candidateType,
+//                        applicationStatus,
+//                        page,
+//                        size
+//                )
+//        );
+//    }
+@GetMapping
+public ResponseEntity<List<CandidateSummaryDto>> getAllCandidates() {
 
-            @RequestParam(required = false) String keyword,
+    return ResponseEntity.ok(
+            candidateManagementService.getAllCandidates()
+    );
+}
+    @GetMapping("/search")
+    public ResponseEntity<List<CandidateSummaryDto>> searchCandidates(
 
-            @RequestParam(required = false) CandidateType candidateType,
-
-            @RequestParam(required = false) ApplicationStatus applicationStatus,
-
-            @RequestParam(defaultValue = "0") int page,
-
-            @RequestParam(defaultValue = "5") int size
+            @RequestParam String keyword
     ) {
 
         return ResponseEntity.ok(
-                candidateManagementService.getAllCandidates(
-                        keyword,
-                        candidateType,
-                        applicationStatus,
-                        page,
-                        size
-                )
+                candidateManagementService.searchCandidates(keyword)
         );
     }
-
     @GetMapping("/{candidateId}")
     public ResponseEntity<CandidateDetailsDto> getCandidateDetails(
             @PathVariable Long candidateId) {

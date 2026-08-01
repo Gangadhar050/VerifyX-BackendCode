@@ -23,18 +23,18 @@ public class ReportServiceImpl implements ReportService {
     private final CandidateRepository candidateRepository;
     private final CandidateDocumentRepository candidateDocumentRepository;
 
-    @Override
-    public ReportDashboardResponse getDashboard() {
-
-        return ReportDashboardResponse.builder()
-                .total(candidateRepository.count())
-                .freshers(candidateRepository.countByCandidateType(CandidateType.FRESHER))
-                .experienced(candidateRepository.countByCandidateType(CandidateType.EXPERIENCED))
-                .pending(candidateDocumentRepository.countByStatus(DocumentStatus.PENDING))
-                .approved(candidateDocumentRepository.countByStatus(DocumentStatus.VERIFIED))
-                .rejected(candidateDocumentRepository.countByStatus(DocumentStatus.REJECTED))
-                .build();
-    }
+//    @Override
+//    public ReportDashboardResponse getDashboard() {
+//
+//        return ReportDashboardResponse.builder()
+//                .total(candidateRepository.count())
+//                .freshers(candidateRepository.countByCandidateType(CandidateType.FRESHER))
+//                .experienced(candidateRepository.countByCandidateType(CandidateType.EXPERIENCED))
+//                .pending(candidateDocumentRepository.countByStatus(DocumentStatus.PENDING))
+//                .approved(candidateDocumentRepository.countByStatus(DocumentStatus.VERIFIED))
+//                .rejected(candidateDocumentRepository.countByStatus(DocumentStatus.REJECTED))
+//                .build();
+//    }
 
     @Override
     public List<ReportResponse> getReports() {
@@ -58,6 +58,8 @@ public class ReportServiceImpl implements ReportService {
                     .fullName(candidate.getUsername())
                     .candidateType(candidate.getCandidateType().name())
                     .status(status)
+                    .email(candidate.getEmail())
+                    .phoneNumber(candidate.getPhoneNumber())
                     .appliedRole(candidate.getAppliedRole())
                     .build();
 
@@ -74,14 +76,16 @@ public class ReportServiceImpl implements ReportService {
 
         StringBuilder csv = new StringBuilder();
 
-        csv.append("Candidate ID,Full Name,Candidate Type,Status,Applied Role\n");
+        csv.append("Candidate ID,Full Name,Candidate Type,Status,Applied Role,Email,Phone Number\n");
 
         for (ReportResponse report : reports) {
             csv.append(report.getCandidateId()).append(",");
             csv.append(report.getFullName()).append(",");
             csv.append(report.getCandidateType()).append(",");
             csv.append(report.getStatus()).append(",");
-            csv.append(report.getAppliedRole()).append("\n");
+            csv.append(report.getAppliedRole()).append(",");
+            csv.append(report.getEmail()).append(",");
+            csv.append(report.getPhoneNumber()).append("\n");
         }
 
         return csv.toString().getBytes(StandardCharsets.UTF_8);

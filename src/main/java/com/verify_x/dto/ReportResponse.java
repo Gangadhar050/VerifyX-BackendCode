@@ -18,4 +18,8 @@ public class ReportResponse {
     private String candidateType;
     private String status;
     private String appliedRole;
+
+    private String email;
+    private String phoneNumber;
+
 }

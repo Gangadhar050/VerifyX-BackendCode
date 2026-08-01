@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ReportService {
 
-    ReportDashboardResponse getDashboard();
+//    ReportDashboardResponse getDashboard();
 
     List<ReportResponse> getReports();
 

@@ -65,57 +65,76 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
                 .build();
     }
 
-    @Override
-    public PagedResponse<CandidateSummaryDto> getAllCandidates(
-            String keyword,
-            CandidateType candidateType,
-            ApplicationStatus applicationStatus,
-            int page,
-            int size
-    ) {
+//    @Override
+//    public PagedResponse<CandidateSummaryDto> getAllCandidates(
+//            String keyword,
+//            CandidateType candidateType,
+//            ApplicationStatus applicationStatus,
+//            int page,
+//            int size
+//    ) {
+//
+//        List<CandidateSummaryDto> candidates = candidateRepository.findAll()
+//                .stream()
+//                .map(this::mapToSummary)
+//                .toList();
+//
+//        if (keyword != null && !keyword.isBlank()) {
+//            String k = keyword.toLowerCase();
+//
+//            candidates = candidates.stream()
+//                    .filter(c ->
+//                            (c.getFullName() != null && c.getFullName().toLowerCase().contains(k))
+//                                    || (c.getEmail() != null && c.getEmail().toLowerCase().contains(k))
+//                                    || (c.getPhoneNumber() != null && c.getPhoneNumber().contains(k))
+//                    )
+//                    .toList();
+//        }
+//
+//        if (candidateType != null) {
+//            candidates = candidates.stream()
+//                    .filter(c -> c.getCandidateType() == candidateType)
+//                    .toList();
+//        }
+//
+//        if (applicationStatus != null) {
+//            candidates = candidates.stream()
+//                    .filter(c -> c.getApplicationStatus() == applicationStatus)
+//                    .toList();
+//        }
+//
+//        int total = candidates.size();
+//        int from = Math.min(page * size, total);
+//        int to = Math.min(from + size, total);
+//
+//        return PagedResponse.<CandidateSummaryDto>builder()
+//                .content(candidates.subList(from, to))
+//                .page(page)
+//                .size(size)
+//                .totalElements(total)
+//                .totalPages((int) Math.ceil((double) total / size))
+//                .build();
+//    }
+@Override
+public List<CandidateSummaryDto> getAllCandidates() {
 
-        List<CandidateSummaryDto> candidates = candidateRepository.findAll()
+    return candidateRepository.findAll()
+            .stream()
+            .map(this::mapToSummary)
+            .toList();
+}
+    @Override
+    public List<CandidateSummaryDto> searchCandidates(String keyword) {
+
+        return candidateRepository
+                .findByUsernameContainingIgnoreCaseOrEmailContainingIgnoreCase(
+                        keyword,
+                        keyword
+                )
                 .stream()
                 .map(this::mapToSummary)
                 .toList();
-
-        if (keyword != null && !keyword.isBlank()) {
-            String k = keyword.toLowerCase();
-
-            candidates = candidates.stream()
-                    .filter(c ->
-                            (c.getFullName() != null && c.getFullName().toLowerCase().contains(k))
-                                    || (c.getEmail() != null && c.getEmail().toLowerCase().contains(k))
-                                    || (c.getPhoneNumber() != null && c.getPhoneNumber().contains(k))
-                    )
-                    .toList();
-        }
-
-        if (candidateType != null) {
-            candidates = candidates.stream()
-                    .filter(c -> c.getCandidateType() == candidateType)
-                    .toList();
-        }
-
-        if (applicationStatus != null) {
-            candidates = candidates.stream()
-                    .filter(c -> c.getApplicationStatus() == applicationStatus)
-                    .toList();
-        }
-
-        int total = candidates.size();
-        int from = Math.min(page * size, total);
-        int to = Math.min(from + size, total);
-
-        return PagedResponse.<CandidateSummaryDto>builder()
-                .content(candidates.subList(from, to))
-                .page(page)
-                .size(size)
-                .totalElements(total)
-                .totalPages((int) Math.ceil((double) total / size))
-                .build();
     }
-
     @Override
     public CandidateDetailsDto getCandidateDetails(Long candidateId) {
         Candidate candidate = candidateRepository.findById(candidateId)

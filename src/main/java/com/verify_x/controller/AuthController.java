@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
@@ -87,16 +86,22 @@ public class AuthController {
         );
     }
     @PostMapping("/hrLogin")
-    public ResponseEntity<ApiResponse<LoginResponseDto>> adminLogin(
+    public ResponseEntity<ApiResponse<HrLoginResponseDto>> adminLogin(
             @Valid @RequestBody AdminLoginRequestDto request) {
-
-        return ResponseEntity.ok(
-                ApiResponse.<LoginResponseDto>builder()
+return  ResponseEntity.ok(
+                ApiResponse.<HrLoginResponseDto>builder()
                         .success(true)
                         .message("Admin login successful.")
                         .data(authService.adminLogin(request))
                         .build()
         );
+//        return ResponseEntity.ok(
+//                ApiResponse.<LoginResponseDto>builder()
+//                        .success(true)
+//                        .message("Admin login successful.")
+//                        .data(authService.adminLogin(request))
+//                        .build()
+//        );
     }
     @PostMapping("/hrLogout")
     public ResponseEntity<ApiResponse<String>> adminLogout(

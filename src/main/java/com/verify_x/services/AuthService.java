@@ -4,7 +4,6 @@ package com.verify_x.services;
 //import com.verify_x.dto.LoginResponseDto;
 //import com.verify_x.dto.UserRegistrationDto;
 import com.verify_x.dto.*;
-import com.verify_x.enums.Role;
 
 public interface AuthService {
 
@@ -17,7 +16,7 @@ public interface AuthService {
 
         void logout(String token);
 
-        LoginResponseDto adminLogin(AdminLoginRequestDto request);
+        HrLoginResponseDto adminLogin(AdminLoginRequestDto request);
 
         void adminLogout(String token);
 

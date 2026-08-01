@@ -114,41 +114,51 @@ public class Education {
     // =====================================================
     // Master's
     // =====================================================
-
+    @Column(nullable = true)
     private String mastersDegree;
 
+    @Column(nullable = true)
     private String mastersSpecialization;
 
+    @Column(nullable = true)
     private String mastersCollege;
 
+    @Column(nullable = true)
     private String mastersUniversity;
 
+    @Column(nullable = true)
     private String mastersRegistrationNumber;
 
     @Enumerated(EnumType.STRING)
     private ModeOfStudy modeOfStudy;
 
+    @Column(nullable = true)
     private Integer mastersStartYear;
 
+    @Column(nullable = true)
     private Integer mastersEndYear;
 
+    @Column(nullable = true)
     private Double mastersPercentage;
 
-
+    @Column(nullable = true)
     private String mastersMarksCardName;
 
+    @Column(nullable = true)
     private String mastersMarksCardContentType;
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Column(columnDefinition = "LONGBLOB",nullable = true)
     private byte[] mastersMarksCard;
 
+    @Column(nullable = true)
     private String mastersDegreeCertificateName;
 
+    @Column(nullable = true)
     private String mastersDegreeCertificateContentType;
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Column(columnDefinition = "LONGBLOB",nullable = true)
     private byte[] mastersDegreeCertificate;
 
     @CreationTimestamp

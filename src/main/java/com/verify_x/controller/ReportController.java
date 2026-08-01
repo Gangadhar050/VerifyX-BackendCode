@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reports")
+@RequestMapping("/api/hr")
 @RequiredArgsConstructor
 public class ReportController {
 
     private final ReportService reportService;
 
-    @GetMapping("/dashboard")
-    public ResponseEntity<ReportDashboardResponse> getDashboard() {
-        return ResponseEntity.ok(reportService.getDashboard());
-    }
+//    @GetMapping("/dashboard")
+//    public ResponseEntity<ReportDashboardResponse> getDashboard() {
+//        return ResponseEntity.ok(reportService.getDashboard());
+//    }
 
-    @GetMapping
-    public ResponseEntity<List<ReportResponse>> getReports() {
-        return ResponseEntity.ok(reportService.getReports());
-    }
+//    @GetMapping
+//    public ResponseEntity<List<ReportResponse>> getReports() {
+//        return ResponseEntity.ok(reportService.getReports());
+//    }
 
     @GetMapping("/export")
     public ResponseEntity<byte[]> exportCsv() {
