@@ -25,54 +25,6 @@ import java.util.List;
 @Transactional
 public class VerificationServiceImpl implements VerificationService {
 
-//    private final CandidateRepository candidateRepository;
-//    private final CandidateDocumentRepository candidateDocumentRepository;
-//    private final EmploymentRepository employmentRepository;
-//
-//    @Override
-//    public List<VerificationQueueItemDto> getVerificationQueue() {
-//
-//        return candidateRepository.findAll()
-//                .stream()
-//                .filter(candidate -> candidate.getApplicationStatus() != ApplicationStatus.APPROVED
-//                        && candidate.getApplicationStatus() != ApplicationStatus.REJECTED)
-//                .map(this::toQueueItem)
-//                .toList();
-//    }
-//
-//    private VerificationQueueItemDto toQueueItem(Candidate candidate) {
-//
-//        List<CandidateDocument> documents = candidateDocumentRepository.findByCandidate(candidate);
-//
-//        long pending = documents.stream().filter(d -> d.getStatus() == DocumentStatus.PENDING).count();
-//        long rejected = documents.stream().filter(d -> d.getStatus() == DocumentStatus.REJECTED).count();
-//        long verified = documents.stream().filter(d -> d.getStatus() == DocumentStatus.VERIFIED).count();
-//
-//        Employment employment = employmentRepository.findByCandidate(candidate).orElse(null);
-//
-//        boolean uanRequired = candidate.getCandidateType() == CandidateType.EXPERIENCED;
-//        boolean uanVerified = employment != null && Boolean.TRUE.equals(employment.getUanVerified());
-//
-//        boolean readyForDecision = pending == 0 && rejected == 0
-//                && (!uanRequired || uanVerified)
-//                && !documents.isEmpty();
-//
-//        return VerificationQueueItemDto.builder()
-//
-//                .candidateId(candidate.getId())
-//                .candidateName(candidate.getUsername())
-//                .email(candidate.getEmail())
-//                .candidateType(candidate.getCandidateType())
-//                .applicationStatus(candidate.getApplicationStatus())
-//                .pendingDocumentsCount(pending)
-////                .rejectedDocumentsCount(rejected)
-////                .verifiedDocumentsCount(verified)
-////                .uanRequired(uanRequired)
-//                .uanVerified(uanVerified)
-////                .readyForDecision(readyForDecision)
-//                .build();
-//    }
-
 private final CandidateRepository candidateRepository;
     private final EmploymentRepository employmentRepository;
     private final CandidateDocumentRepository candidateDocumentRepository;
@@ -125,3 +77,56 @@ public List<VerificationQueueItemDto> getVerificationQueue() {
             .toList();
 }
 }
+
+
+
+
+
+
+//    private final CandidateRepository candidateRepository;
+//    private final CandidateDocumentRepository candidateDocumentRepository;
+//    private final EmploymentRepository employmentRepository;
+//
+//    @Override
+//    public List<VerificationQueueItemDto> getVerificationQueue() {
+//
+//        return candidateRepository.findAll()
+//                .stream()
+//                .filter(candidate -> candidate.getApplicationStatus() != ApplicationStatus.APPROVED
+//                        && candidate.getApplicationStatus() != ApplicationStatus.REJECTED)
+//                .map(this::toQueueItem)
+//                .toList();
+//    }
+//
+//    private VerificationQueueItemDto toQueueItem(Candidate candidate) {
+//
+//        List<CandidateDocument> documents = candidateDocumentRepository.findByCandidate(candidate);
+//
+//        long pending = documents.stream().filter(d -> d.getStatus() == DocumentStatus.PENDING).count();
+//        long rejected = documents.stream().filter(d -> d.getStatus() == DocumentStatus.REJECTED).count();
+//        long verified = documents.stream().filter(d -> d.getStatus() == DocumentStatus.VERIFIED).count();
+//
+//        Employment employment = employmentRepository.findByCandidate(candidate).orElse(null);
+//
+//        boolean uanRequired = candidate.getCandidateType() == CandidateType.EXPERIENCED;
+//        boolean uanVerified = employment != null && Boolean.TRUE.equals(employment.getUanVerified());
+//
+//        boolean readyForDecision = pending == 0 && rejected == 0
+//                && (!uanRequired || uanVerified)
+//                && !documents.isEmpty();
+//
+//        return VerificationQueueItemDto.builder()
+//
+//                .candidateId(candidate.getId())
+//                .candidateName(candidate.getUsername())
+//                .email(candidate.getEmail())
+//                .candidateType(candidate.getCandidateType())
+//                .applicationStatus(candidate.getApplicationStatus())
+//                .pendingDocumentsCount(pending)
+////                .rejectedDocumentsCount(rejected)
+////                .verifiedDocumentsCount(verified)
+////                .uanRequired(uanRequired)
+//                .uanVerified(uanVerified)
+////                .readyForDecision(readyForDecision)
+//                .build();
+//    }
