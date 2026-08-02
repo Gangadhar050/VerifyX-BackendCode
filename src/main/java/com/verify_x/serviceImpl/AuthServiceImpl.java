@@ -122,11 +122,11 @@ public class AuthServiceImpl implements AuthService {
                         new UsernameNotFoundException("User not found"));
 
         return CurrentUserDto.builder()
-                .userId(user.getId())
+//                .userId(user.getId())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .role(user.getRole())
-                .candidateType(user.getCandidateType())
+//                .candidateType(user.getCandidateType())
                 .build();
     }
 

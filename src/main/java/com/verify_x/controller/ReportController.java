@@ -23,10 +23,10 @@ public class ReportController {
 //        return ResponseEntity.ok(reportService.getDashboard());
 //    }
 
-//    @GetMapping
-//    public ResponseEntity<List<ReportResponse>> getReports() {
-//        return ResponseEntity.ok(reportService.getReports());
-//    }
+    @GetMapping("/reports")
+    public ResponseEntity<List<ReportResponse>> getReports() {
+        return ResponseEntity.ok(reportService.getReports());
+    }
 
     @GetMapping("/export")
     public ResponseEntity<byte[]> exportCsv() {
