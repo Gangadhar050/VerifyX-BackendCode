@@ -176,10 +176,8 @@ public class EducationServiceImpl implements EducationService {
             Education education,
             EducationRequest request) throws IOException {
 
-        // ==========================
-        // 10th
-        // ==========================
 
+        // 10th
         education.setTenthSchoolName(request.getTenthSchoolName());
         education.setTenthBoard(request.getTenthBoard());
         education.setTenthSchoolLocation(request.getTenthSchoolLocation());
@@ -187,10 +185,8 @@ public class EducationServiceImpl implements EducationService {
         education.setTenthPassingYear(request.getTenthPassingYear());
         education.setTenthPercentage(request.getTenthPercentage());
 
-        // ==========================
-        // 12th
-        // ==========================
 
+        // 12th
         education.setTwelfthInstitutionName(request.getTwelfthInstitutionName());
         education.setTwelfthBoardUniversity(request.getTwelfthBoardUniversity());
         education.setTwelfthStream(request.getTwelfthStream());
@@ -198,10 +194,8 @@ public class EducationServiceImpl implements EducationService {
         education.setTwelfthPassingYear(request.getTwelfthPassingYear());
         education.setTwelfthPercentage(request.getTwelfthPercentage());
 
-        // ==========================
-        // Degree
-        // ==========================
 
+        // Degree
         education.setDegreeName(request.getDegreeName());
         education.setSpecialization(request.getSpecialization());
         education.setCollegeName(request.getCollegeName());
@@ -212,10 +206,8 @@ public class EducationServiceImpl implements EducationService {
         education.setDegreePercentage(request.getDegreePercentage());
         education.setBacklogStatus(request.getBacklogStatus());
 
-        // ==========================
-        // Masters
-        // ==========================
 
+        // Masters
         education.setMastersDegree(request.getMastersDegree());
         education.setMastersSpecialization(request.getMastersSpecialization());
         education.setMastersCollege(request.getMastersCollege());
@@ -226,10 +218,8 @@ public class EducationServiceImpl implements EducationService {
         education.setMastersEndYear(request.getMastersEndYear());
         education.setMastersPercentage(request.getMastersPercentage());
 
-        // ==========================
-        // Documents
-        // ==========================
 
+        //Documents
         saveFile(
                 request.getTenthMarksCard(),
                 education::setTenthMarksCard,

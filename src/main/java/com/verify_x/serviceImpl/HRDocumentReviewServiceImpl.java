@@ -205,7 +205,6 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
                 }
 
             } else {
-
                 candidate.setApplicationStatus(
                         ApplicationStatus.DOCUMENTS_VERIFIED);
             }
@@ -218,4 +217,5 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
 
         candidateRepository.save(candidate);
     }
+
 }

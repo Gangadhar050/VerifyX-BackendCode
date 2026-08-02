@@ -76,10 +76,8 @@ public class EmploymentServiceImpl implements EmploymentService {
 
         employment.setCandidate(candidate);
 
-        // ===========================
-        // Candidate Type
-        // ===========================
 
+        // Candidate Type
         if (candidate.getCandidateType() == CandidateType.EXPERIENCED) {
 
             employment.setPreviousCompanyName(dto.getPreviousCompanyName());
@@ -109,7 +107,6 @@ public class EmploymentServiceImpl implements EmploymentService {
         } else {
 
             // Fresher
-
             employment.setPreviousCompanyName(null);
             employment.setPreviousDesignation(null);
             employment.setTotalExperience(null);
@@ -125,10 +122,8 @@ public class EmploymentServiceImpl implements EmploymentService {
             employment.setNoticePeriod(null);
         }
 
-        // ===========================
-        // Offer Letter
-        // ===========================
 
+        // Offer Letter
         employment.setOfferLetterStatus(dto.getOfferLetterStatus());
 
         if (dto.getOfferLetterStatus() == OfferLetterStatus.HOLDING_OFFER_LETTER) {

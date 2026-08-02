@@ -40,13 +40,11 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             "application/pdf",
             "image/png",
             "image/jpeg",
-            "image/jpg"
-    );
+            "image/jpg" );
 
     private static final Set<DocumentType> FRESHER_DOCUMENTS = Set.of(
             DocumentType.RESUME,
-            DocumentType.PAN_CARD
-    );
+            DocumentType.PAN_CARD );
 
     private static final Set<DocumentType> EXPERIENCED_DOCUMENTS = Set.of(
             DocumentType.RESUME,
@@ -55,8 +53,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             DocumentType.RELIEVING_LETTER,
             DocumentType.EXPERIENCE_LETTER,
             DocumentType.PAN_CARD,
-            DocumentType.UAN_PROOF
-    );
+            DocumentType.UAN_PROOF );
 
     private CandidateDocumentDto mapToDto(CandidateDocument document) {
 
@@ -144,13 +141,10 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 documentType
         )) {
 
-            throw new RuntimeException(
-                    documentType + " already uploaded."
-            );
+            throw new RuntimeException(documentType + " already uploaded.");
         }
 
         try {
-
             CandidateDocument document = CandidateDocument.builder()
                     .candidate(candidate)
                     .documentType(documentType)
@@ -164,11 +158,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             candidateDocumentRepository.save(document);
 
         } catch (IOException e) {
-
-            throw new RuntimeException(
-                    "Unable to upload " + documentType,
-                    e
-            );
+            throw new RuntimeException("Unable to upload " + documentType, e );
         }
     }
 
@@ -189,7 +179,8 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         uploadIfPresent(candidate, request.getRelievingLetter(),
                 DocumentType.RELIEVING_LETTER);
 
-        uploadIfPresent(candidate, request.getExperienceLetter(), DocumentType.EXPERIENCE_LETTER);
+        uploadIfPresent(candidate, request.getExperienceLetter(),
+                DocumentType.EXPERIENCE_LETTER);
 
         uploadIfPresent(candidate, request.getPanCard(),
                 DocumentType.PAN_CARD);
@@ -205,8 +196,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
     @Override
     public void reUploadDocuments(
-            CandidateDocumentRequest request
-    ) {
+            CandidateDocumentRequest request ) {
 
         Candidate candidate = getLoggedInCandidate();
 
@@ -238,11 +228,8 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
     private void reUploadIfPresent(
 
             Candidate candidate,
-
             MultipartFile file,
-
-            DocumentType documentType
-    ) {
+            DocumentType documentType) {
 
         if (file == null || file.isEmpty()) {
             return;
@@ -253,22 +240,15 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         validateDocumentType(candidate, documentType);
 
         CandidateDocument document =
-                candidateDocumentRepository
-                        .findByCandidateAndDocumentType(
-                                candidate,
-                                documentType
-                        )
-                        .orElseThrow(() ->
-                                new RuntimeException(
-                                        documentType + " not found."
-                                ));
+                candidateDocumentRepository.findByCandidateAndDocumentType(
+                        candidate, documentType )
+
+                        .orElseThrow(() -> new RuntimeException(documentType + " not found." ));
 
         if (document.getStatus() != DocumentStatus.REJECTED) {
 
             throw new RuntimeException(
-                    documentType +
-                            " is not rejected. Only rejected documents can be re-uploaded."
-            );
+                    documentType + " is not rejected. Only rejected documents can be re-uploaded.");
         }
 
         try {
@@ -289,9 +269,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         } catch (IOException e) {
 
             throw new RuntimeException(
-                    "Unable to re-upload " + documentType,
-                    e
-            );
+                    "Unable to re-upload " + documentType, e);
         }
     }
 
@@ -308,9 +286,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
     }
 
     @Override
-    public List<CandidateDocumentDto> getDocumentsByCandidateId(
-            Long candidateId
-    ) {
+    public List<CandidateDocumentDto> getDocumentsByCandidateId(Long candidateId) {
 
         Candidate candidate = candidateRepository.findById(candidateId)
                 .orElseThrow(() ->
@@ -328,8 +304,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
         return candidateDocumentRepository
                 .findById(documentId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Document", documentId));
+                .orElseThrow(() -> new ResourceNotFoundException("Document", documentId));
     }
 
     @Override
@@ -337,11 +312,8 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
         Candidate candidate = getLoggedInCandidate();
 
-        CandidateDocument document =
-                candidateDocumentRepository
-                        .findById(documentId)
-                        .orElseThrow(() ->
-                                new ResourceNotFoundException("Document", documentId));
+        CandidateDocument document = candidateDocumentRepository.findById(documentId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Document", documentId));
 
         log.info("======================================");
         log.info("Logged-in Candidate ID : {}", candidate.getId());
@@ -352,15 +324,13 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         if (!document.getCandidate().getId().equals(candidate.getId())) {
 
             throw new RuntimeException(
-                    "You are not allowed to delete this document."
-            );
+                    "You are not allowed to delete this document.");
         }
 
         if (document.getStatus() == DocumentStatus.VERIFIED) {
 
             throw new RuntimeException(
-                    "Verified documents cannot be deleted."
-            );
+                    "Verified documents cannot be deleted.");
         }
 
         candidateDocumentRepository.delete(document);

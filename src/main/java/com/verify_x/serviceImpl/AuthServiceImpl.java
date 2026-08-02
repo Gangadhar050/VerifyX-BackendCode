@@ -32,12 +32,11 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AuthServiceImpl implements AuthService {
 
-//    private final UserRepository userRepository;
+
     private final CandidateRepository candidateRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-//    private final UserProfileService userProfileService;
     private final CandidateService candidateService;
     private final AdminRepository adminRepository;
     private final TokenBlacklist tokenBlacklist;
@@ -55,9 +54,6 @@ public class AuthServiceImpl implements AuthService {
             throw new UserAlreadyExistsException("Phone number already exists.");
         }
 
-//        if (userRepository.existsByUsername(dto.getUsername())) {
-//            throw new UserAlreadyExistsException("Username already exists.");
-//        }
 
         Candidate user = Candidate.builder()
                 .username(dto.getUsername())
@@ -71,8 +67,6 @@ public class AuthServiceImpl implements AuthService {
 
         Candidate savedUser = candidateRepository.save(user);
 
-//         Uncomment when implemented
-//         userProfileService.createDefaultProfile(savedUser);
           candidateService.saveCandidateProfile(savedUser);
         log.info("User registered successfully : {}", savedUser.getId());
 
@@ -176,8 +170,6 @@ public class AuthServiceImpl implements AuthService {
     }
     @Override
     public void logout(String token) {
-
-//        long expiry = jwtService.getExpiration(token);
 
         tokenBlacklist.blacklistToken(token);
 

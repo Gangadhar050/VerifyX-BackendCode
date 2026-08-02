@@ -76,6 +76,8 @@ public List<VerificationQueueItemDto> getVerificationQueue() {
             .map(this::mapToSummary)
             .toList();
 }
+
+
 }
 
 
