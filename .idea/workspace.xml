@@ -8,41 +8,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/HRDocumentReviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/DocumentReviewItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/HRDocumentReviewDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/HRDocumentReviewServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDocumentReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VerifyX-BackendCode" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/ReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/VerificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/VerificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/ReportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/ReportResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/VerificationQueueItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/VerificationQueueItemDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateManagementServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateManagementServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/DocumentParseResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/DocumentParseResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/DocumentParserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/DocumentParserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/FileStorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/FileStorageService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/VerificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/VerificationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/ReportService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/VerificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/VerificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/EducationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/EducationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/ReportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/ReportController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/VerificationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ReportResponse$ReportResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ReportResponse$ReportResponseBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ReportResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/ReportResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/VerificationQueueItemDto$VerificationQueueItemDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/VerificationQueueItemDto$VerificationQueueItemDtoBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/VerificationQueueItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/VerificationQueueItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/repository/CandidateRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/AuthServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateManagementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateManagementServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/ReportServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/ReportServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/VerificationServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateManagementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/CandidateManagementService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/ReportService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/ReportService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/VerificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/DocumentParseResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/DocumentParserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/FileStorageService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,13 +40,13 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="142" />
+    <option name="cachedIndexableFilesCount" value="143" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -119,6 +103,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/entity/Candidate.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/entity/Education.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/AdminRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateDocumentRepository.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/repository/CandidateRepository.java" root0="SKIP_INSPECTION" />
@@ -129,6 +114,7 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/DocumentParserService.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/EmploymentServiceImpl.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/ReportServiceImpl.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/VerificationServiceImpl.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateDocumentService.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="SKIP_INSPECTION" />
@@ -143,20 +129,20 @@
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.1364638679682439E-251" />
-      <entry key="S10" value="3.3711479765797664E-126" />
-      <entry key="S30" value="1.4998839109258633E-42" />
-      <entry key="S60" value="1.2532718954879358E-21" />
-      <entry key="M2" value="4.247980878082642E-11" />
-      <entry key="M5" value="1.2036840458910348E-4" />
-      <entry key="M10" value="0.020575409913009924" />
-      <entry key="M15" value="0.12778788319351805" />
-      <entry key="M30" value="0.9353699639796634" />
-      <entry key="H1" value="3.3525856757369876" />
-      <entry key="H2" value="12.951728538188586" />
-      <entry key="H4" value="41.27654572153703" />
-      <entry key="D1" value="341.3394207574685" />
-      <entry key="W1" value="704.0321266862983" />
+      <entry key="S5" value="1.1591346499440898E-206" />
+      <entry key="S10" value="1.5408979886265766E-103" />
+      <entry key="S30" value="1.115028174408532E-34" />
+      <entry key="S60" value="2.3518881963045698E-17" />
+      <entry key="M2" value="1.2131152296488605E-8" />
+      <entry key="M5" value="0.0021585052728918916" />
+      <entry key="M10" value="0.12268032760291457" />
+      <entry key="M15" value="0.4748546218193053" />
+      <entry key="M30" value="1.9606476516889257" />
+      <entry key="H1" value="4.880485862463003" />
+      <entry key="H2" value="13.10610152407571" />
+      <entry key="H4" value="38.57631028756606" />
+      <entry key="D1" value="335.08589809838764" />
+      <entry key="W1" value="707.0914437253034" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
@@ -166,35 +152,35 @@
       <entry key="S10" value="1.0" />
       <entry key="S30" value="1.0" />
       <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0000000020896216" />
-      <entry key="M5" value="1.0006815789963555" />
-      <entry key="M10" value="1.0498845782364217" />
-      <entry key="M15" value="1.2165548212009234" />
-      <entry key="M30" value="2.0541415819375635" />
-      <entry key="H1" value="3.680002537152566" />
-      <entry key="H2" value="5.846396948258543" />
-      <entry key="H4" value="8.90297116834097" />
-      <entry key="D1" value="40.809700235101865" />
-      <entry key="W1" value="89.47340771086891" />
+      <entry key="M2" value="1.0000000046250956" />
+      <entry key="M5" value="1.0009022985351927" />
+      <entry key="M10" value="1.0553903473058805" />
+      <entry key="M15" value="1.2285261131899046" />
+      <entry key="M30" value="2.089833950525737" />
+      <entry key="H1" value="3.9666897760951723" />
+      <entry key="H2" value="6.798909293763133" />
+      <entry key="H4" value="10.577630998873648" />
+      <entry key="D1" value="43.16483907461358" />
+      <entry key="W1" value="92.96408949690007" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.884799769781783E-14" />
-      <entry key="MS500" value="0.0022591566091900135" />
-      <entry key="S2" value="0.21801510507022565" />
-      <entry key="S5" value="0.5437441954274416" />
-      <entry key="S10" value="0.7373901243083213" />
-      <entry key="S30" value="0.9034395641939209" />
-      <entry key="S60" value="0.9504943788334158" />
-      <entry key="M2" value="0.9749330145943365" />
-      <entry key="M5" value="0.9906949458178886" />
-      <entry key="M10" value="1.0652072369821635" />
-      <entry key="M15" value="1.3403035474163543" />
-      <entry key="M30" value="2.9857068797704005" />
-      <entry key="H1" value="7.028554374692539" />
-      <entry key="H2" value="18.79433746280566" />
-      <entry key="H4" value="50.176190706867835" />
-      <entry key="D1" value="382.1470435344664" />
-      <entry key="W1" value="793.5049602743305" />
+      <entry key="MS100" value="4.936527842718972E-7" />
+      <entry key="MS500" value="0.054787857582252186" />
+      <entry key="S2" value="0.4838058100711721" />
+      <entry key="S5" value="0.747942879181195" />
+      <entry key="S10" value="0.8648369090072388" />
+      <entry key="S30" value="0.9527480574581692" />
+      <entry key="S60" value="0.9760881402097707" />
+      <entry key="M2" value="0.9879717470745917" />
+      <entry key="M5" value="0.9982205200821344" />
+      <entry key="M10" value="1.17530657195827" />
+      <entry key="M15" value="1.7008282241811876" />
+      <entry key="M30" value="4.0474558194595875" />
+      <entry key="H1" value="8.843582897315072" />
+      <entry key="H2" value="19.901309545029047" />
+      <entry key="H4" value="49.15054062322592" />
+      <entry key="D1" value="378.2485942382411" />
+      <entry key="W1" value="800.0549411335427" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -221,34 +207,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.verify-x [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.verifyX.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "copilot.chat.legacySessionMetadata.migrated": "true",
-    "git-widget-placeholder": "develop",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.verify-x [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.verifyX.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="verifyX" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <envs>

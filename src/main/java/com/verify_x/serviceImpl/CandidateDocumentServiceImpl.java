@@ -5,6 +5,8 @@ import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.entity.Employment;
 import com.verify_x.enums.*;
+import com.verify_x.exception.BadRequestException;
+import com.verify_x.exception.ResourceNotFoundException;
 import com.verify_x.jwt.UserPrincipal;
 import com.verify_x.repository.CandidateDocumentRepository;
 import com.verify_x.repository.CandidateRepository;
@@ -171,38 +173,28 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
     }
 
     @Override
-    public void uploadDocuments(
-            CandidateDocumentRequest request
-    ) {
+    public void uploadDocuments(CandidateDocumentRequest request) {
 
         Candidate candidate = getLoggedInCandidate();
 
-        uploadIfPresent(candidate,
-                request.getResume(),
+        uploadIfPresent(candidate, request.getResume(),
                 DocumentType.RESUME);
 
-        uploadIfPresent(candidate,
-                request.getOfferLetter(),
+        uploadIfPresent(candidate, request.getOfferLetter(),
                 DocumentType.OFFER_LETTER);
 
-        uploadIfPresent(candidate,
-                request.getSalarySlip(),
+        uploadIfPresent(candidate, request.getSalarySlip(),
                 DocumentType.SALARY_SLIP);
 
-        uploadIfPresent(candidate,
-                request.getRelievingLetter(),
+        uploadIfPresent(candidate, request.getRelievingLetter(),
                 DocumentType.RELIEVING_LETTER);
 
-        uploadIfPresent(candidate,
-                request.getExperienceLetter(),
-                DocumentType.EXPERIENCE_LETTER);
+        uploadIfPresent(candidate, request.getExperienceLetter(), DocumentType.EXPERIENCE_LETTER);
 
-        uploadIfPresent(candidate,
-                request.getPanCard(),
+        uploadIfPresent(candidate, request.getPanCard(),
                 DocumentType.PAN_CARD);
 
-        uploadIfPresent(candidate,
-                request.getUanProof(),
+        uploadIfPresent(candidate, request.getUanProof(),
                 DocumentType.UAN_PROOF);
 
         updateApplicationStatus(candidate);
@@ -218,32 +210,25 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
 
         Candidate candidate = getLoggedInCandidate();
 
-        reUploadIfPresent(candidate,
-                request.getResume(),
+        reUploadIfPresent(candidate, request.getResume(),
                 DocumentType.RESUME);
 
-        reUploadIfPresent(candidate,
-                request.getOfferLetter(),
+        reUploadIfPresent(candidate, request.getOfferLetter(),
                 DocumentType.OFFER_LETTER);
 
-        reUploadIfPresent(candidate,
-                request.getSalarySlip(),
+        reUploadIfPresent(candidate, request.getSalarySlip(),
                 DocumentType.SALARY_SLIP);
 
-        reUploadIfPresent(candidate,
-                request.getRelievingLetter(),
+        reUploadIfPresent(candidate, request.getRelievingLetter(),
                 DocumentType.RELIEVING_LETTER);
 
-        reUploadIfPresent(candidate,
-                request.getExperienceLetter(),
+        reUploadIfPresent(candidate, request.getExperienceLetter(),
                 DocumentType.EXPERIENCE_LETTER);
 
-        reUploadIfPresent(candidate,
-                request.getPanCard(),
+        reUploadIfPresent(candidate, request.getPanCard(),
                 DocumentType.PAN_CARD);
 
-        reUploadIfPresent(candidate,
-                request.getUanProof(),
+        reUploadIfPresent(candidate, request.getUanProof(),
                 DocumentType.UAN_PROOF);
 
         log.info("Documents re-uploaded successfully by {}",
@@ -344,7 +329,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         return candidateDocumentRepository
                 .findById(documentId)
                 .orElseThrow(() ->
-                        new RuntimeException("Document not found."));
+                        new ResourceNotFoundException("Document", documentId));
     }
 
     @Override
@@ -356,7 +341,7 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
                 candidateDocumentRepository
                         .findById(documentId)
                         .orElseThrow(() ->
-                                new RuntimeException("Document not found."));
+                                new ResourceNotFoundException("Document", documentId));
 
         log.info("======================================");
         log.info("Logged-in Candidate ID : {}", candidate.getId());
@@ -458,7 +443,11 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
             );
         }
 
-        document.setStatus(DocumentStatus.REJECTED);
+        if (document.getStatus() == DocumentStatus.VERIFIED) {
+            throw new BadRequestException("Document already verified.");
+        }
+
+
         document.setRejectionReason(rejectionReason);
 
         candidateDocumentRepository.save(document);
@@ -662,6 +651,12 @@ public class CandidateDocumentServiceImpl implements CandidateDocumentService {
         candidateRepository.save(candidate);
     }
 }
+
+
+
+
+
+
 
 //package com.verify_x.serviceImpl;
 //
