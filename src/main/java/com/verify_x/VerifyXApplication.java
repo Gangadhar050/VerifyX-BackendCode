@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class verifyX {
+public class VerifyXApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(verifyX.class, args);
+		SpringApplication.run(VerifyXApplication.class, args);
 	}
 
 }

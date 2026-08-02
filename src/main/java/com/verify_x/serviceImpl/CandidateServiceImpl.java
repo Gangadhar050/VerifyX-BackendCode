@@ -28,17 +28,6 @@ public class CandidateServiceImpl implements CandidateService {
     private final CandidateRepository candidateRepository;
     // private final UserRepository userRepository;
 
-//    private CandidateEducationDto mapToEducationDto(Candidate candidate) {
-//
-//        return CandidateEducationDto.builder()
-//                .highestEducation(candidate.getHighestEducation())
-//                .college(candidate.getCollege())
-//                .passingYear(candidate.getPassingYear())
-//                .percentage(candidate.getPercentage())
-//                .technicalSkills(new ArrayList<>(candidate.getTechnicalSkills()))
-//
-//                .build();
-//    }
     @Override
     public CandidateProfileDto getCandidateProfile(Long userId) {
 
