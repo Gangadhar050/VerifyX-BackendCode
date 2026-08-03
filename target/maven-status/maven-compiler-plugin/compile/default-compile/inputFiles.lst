@@ -1,7 +1,6 @@
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\config\AdminDataSeeder.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\config\AIConfig.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\config\FileUploadConfig.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\config\JacksonConfig.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\config\MailConfig.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\config\SwaggerConfig.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\AuthController.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\CandidateDocumentController.java
@@ -12,6 +11,7 @@ C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\control
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\HRDashboardController.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\HRDocumentController.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\HRDocumentReviewController.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\MailTestController.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\ReportController.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\controller\VerificationController.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\AdminLoginRequestDto.java
@@ -24,6 +24,7 @@ C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\Can
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\CandidateProfileDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\CandidateSummaryDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\CandidateUpdateDto.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\CriticalDocumentDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\CurrentUserDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\DashboardStatisticsDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\DocumentReviewItemDto.java
@@ -41,6 +42,8 @@ C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\Log
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\PagedResponse.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\ReportDashboardResponse.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\ReportResponse.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\UanVerificationDto.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\UanVerificationRequestDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\UserRegistrationDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\dto\VerificationQueueItemDto.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\entity\Admin.java
@@ -87,10 +90,8 @@ C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\payload
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\AdminRepository.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\CandidateDocumentRepository.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\CandidateRepository.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\DocumentRepository.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\EducationRepository.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\EmploymentRepository.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\repository\UserRepository.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\security\CustomAccessDeniedHandler.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\security\CustomAuthenticationEntryPoint.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\security\SecurityConfig.java
@@ -98,11 +99,9 @@ C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\service
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\CandidateDocumentServiceImpl.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\CandidateManagementServiceImpl.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\CandidateServiceImpl.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\DocumentParseResult.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\DocumentParserService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\EducationServiceImpl.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\EmailServiceImpl.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\EmploymentServiceImpl.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\FileStorageService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\HRDashboardServiceImpl.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\HRDocumentReviewServiceImpl.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\serviceImpl\HRDocumentServiceImpl.java
@@ -113,16 +112,11 @@ C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\service
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\CandidateManagementService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\CandidateService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\EducationService.java
+C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\EmailService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\EmploymentService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\HRDashboardService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\HRDocumentReviewService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\HRDocumentService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\ReportService.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\services\VerificationService.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\util\EmploymentUtil.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\util\GeminiOfferLetterParser.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\util\GeminiRelievingLetterParser.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\util\GeminiResumeParser.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\util\GeminiUANParser.java
-C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\util\PdfExtractor.java
 C:\Users\User\Downloads\VerifyX_Backend_fixed\src\main\java\com\verify_x\VerifyXApplication.java

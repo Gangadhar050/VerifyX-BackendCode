@@ -18,17 +18,4 @@ public interface CandidateService {
 
     void saveCandidateProfile(Candidate savedUser);
 
-
-    // Education
-//    void saveEducation(CandidateEducationDto dto);
-//
-//    void updateEducation(CandidateEducationDto dto);
-//
-//    CandidateEducationDto getEducationByCandidateId(Long candidateId);
-//
-//    CandidateEducationDto getEducationByEmail(String email);
-//
-//    List<CandidateEducationDto> searchEducation(String keyword);
-//
-//    void deleteEducation(Long candidateId);
 }

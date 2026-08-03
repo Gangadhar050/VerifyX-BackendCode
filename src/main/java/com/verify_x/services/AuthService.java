@@ -1,8 +1,5 @@
 package com.verify_x.services;
 
-//import com.verify_x.dto.LoginRequestDto;
-//import com.verify_x.dto.LoginResponseDto;
-//import com.verify_x.dto.UserRegistrationDto;
 import com.verify_x.dto.*;
 
 public interface AuthService {

@@ -23,18 +23,6 @@ public class ReportServiceImpl implements ReportService {
     private final CandidateRepository candidateRepository;
     private final CandidateDocumentRepository candidateDocumentRepository;
 
-//    @Override
-//    public ReportDashboardResponse getDashboard() {
-//
-//        return ReportDashboardResponse.builder()
-//                .total(candidateRepository.count())
-//                .freshers(candidateRepository.countByCandidateType(CandidateType.FRESHER))
-//                .experienced(candidateRepository.countByCandidateType(CandidateType.EXPERIENCED))
-//                .pending(candidateDocumentRepository.countByStatus(DocumentStatus.PENDING))
-//                .approved(candidateDocumentRepository.countByStatus(DocumentStatus.VERIFIED))
-//                .rejected(candidateDocumentRepository.countByStatus(DocumentStatus.REJECTED))
-//                .build();
-//    }
 
     @Override
     public List<ReportResponse> getReports() {
