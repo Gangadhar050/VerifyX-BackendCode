@@ -4,6 +4,8 @@ import com.verify_x.enums.DocumentStatus;
 import com.verify_x.enums.DocumentType;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,15 +13,17 @@ import lombok.*;
 @Builder
 public class DocumentReviewItemDto {
 
-    private Long documentId;
+//    private Long documentId;
 
     private DocumentType documentType;
 
     private String fileName;
 
-    private String contentType;
+//    private String contentType;
 
     private DocumentStatus status;
 
     private String rejectionReason;
+
+    private LocalDateTime updatedAt;
 }

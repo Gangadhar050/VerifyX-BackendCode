@@ -8,16 +8,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41afd171-3718-4b26-8cac-765f73750f43" name="Changes" comment="updated Doc">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateDetailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/CandidateEmploymentDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateDocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/CandidateManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/HRDocumentReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/controller/HRDocumentReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/DocumentReviewItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/DocumentReviewItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/HRDocumentReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/dto/HRDocumentReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/HRDocumentReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/serviceImpl/HRDocumentReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/CandidateManagementService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDocumentReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/verify_x/services/HRDocumentReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateDocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateDocumentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/CandidateManagementController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/controller/HRDocumentReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/controller/HRDocumentReviewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/DocumentReviewItemDto$DocumentReviewItemDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/DocumentReviewItemDto$DocumentReviewItemDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/DocumentReviewItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/DocumentReviewItemDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/HRDocumentReviewDto$HRDocumentReviewDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/HRDocumentReviewDto$HRDocumentReviewDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/dto/HRDocumentReviewDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/dto/HRDocumentReviewDto.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/AuthServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/CandidateDocumentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EducationServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EducationServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EducationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EducationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EmploymentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/EmploymentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/HRDashboardServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/HRDashboardServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/HRDocumentReviewServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/serviceImpl/HRDocumentReviewServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/verify_x/services/HRDocumentReviewService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/verify_x/services/HRDocumentReviewService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +42,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="143" />
+    <option name="cachedIndexableFilesCount" value="146" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -117,61 +128,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0000000000000957" />
-      <entry key="M10" value="1.000000309380016" />
-      <entry key="M15" value="1.00004574413551" />
-      <entry key="M30" value="1.0069698531330202" />
-      <entry key="H1" value="1.191940606409" />
-      <entry key="H2" value="3.957073242281759" />
-      <entry key="H4" value="17.84278491534032" />
-      <entry key="D1" value="278.4562941325375" />
-      <entry key="W1" value="728.7319041817733" />
+      <entry key="MS100" value="7.58373251585176E-43" />
+      <entry key="MS500" value="3.7761874458149736E-9" />
+      <entry key="S2" value="0.013010397614200675" />
+      <entry key="S5" value="0.5805722765522338" />
+      <entry key="S10" value="3.2491724303391094" />
+      <entry key="S30" value="17.43521744415744" />
+      <entry key="S60" value="29.884527021630465" />
+      <entry key="M2" value="39.91444512136484" />
+      <entry key="M5" value="47.87051960412182" />
+      <entry key="M10" value="51.087231025100884" />
+      <entry key="M15" value="52.283853070356706" />
+      <entry key="M30" value="53.58111889210119" />
+      <entry key="H1" value="54.42674457975539" />
+      <entry key="H2" value="57.30946325097616" />
+      <entry key="H4" value="70.84797654974382" />
+      <entry key="D1" value="330.16052375512595" />
+      <entry key="W1" value="781.8759589468117" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="6.80002438066476E-231" />
-      <entry key="M2" value="8.24622607231108E-116" />
-      <entry key="M5" value="9.266031677013373E-47" />
-      <entry key="M10" value="1.015463142447711E-23" />
-      <entry key="M15" value="5.557571901672121E-16" />
-      <entry key="M30" value="4.444901376156371E-8" />
-      <entry key="H1" value="5.785000639830718E-4" />
-      <entry key="H2" value="0.08210636667746231" />
-      <entry key="H4" value="1.1624042955607534" />
-      <entry key="D1" value="29.873877219937935" />
-      <entry key="W1" value="88.20255054551156" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.000000000996784" />
+      <entry key="S2" value="1.005618886601724" />
+      <entry key="S5" value="1.1258519957565092" />
+      <entry key="S10" value="1.3547562483685232" />
+      <entry key="S30" value="1.7079077786722958" />
+      <entry key="S60" value="1.8413725564054817" />
+      <entry key="M2" value="1.9172636242681174" />
+      <entry key="M5" value="1.9660456926691734" />
+      <entry key="M10" value="1.9828762346649618" />
+      <entry key="M15" value="1.988551325611918" />
+      <entry key="M30" value="1.9942592143171987" />
+      <entry key="H1" value="1.9976006714901762" />
+      <entry key="H2" value="2.0729780327186793" />
+      <entry key="H4" value="3.105911845968129" />
+      <entry key="D1" value="31.629941101747118" />
+      <entry key="W1" value="90.09933377828565" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.521519071385434E-13" />
-      <entry key="MS500" value="0.0035351814956363485" />
-      <entry key="S2" value="0.24383886538191044" />
-      <entry key="S5" value="0.5686449302256084" />
-      <entry key="S10" value="0.7540854926502754" />
-      <entry key="S30" value="0.9102070505198742" />
-      <entry key="S60" value="0.9540477192047965" />
-      <entry key="M2" value="0.9767536635225877" />
-      <entry key="M5" value="0.990635802017939" />
-      <entry key="M10" value="0.9953071967189339" />
-      <entry key="M15" value="0.9969144499165" />
-      <entry key="M30" value="1.0053955998784452" />
-      <entry key="H1" value="1.1916847894845652" />
-      <entry key="H2" value="4.038613188732064" />
-      <entry key="H4" value="19.00442831017044" />
-      <entry key="D1" value="308.3285647142557" />
-      <entry key="W1" value="816.9338725864956" />
+      <entry key="MS100" value="3.5992900812771014E-4" />
+      <entry key="MS500" value="0.2047591782316181" />
+      <entry key="S2" value="0.6884944188691023" />
+      <entry key="S5" value="1.528244716126603" />
+      <entry key="S10" value="4.477790411791296" />
+      <entry key="S30" value="19.07497026640948" />
+      <entry key="S60" value="31.683807177609577" />
+      <entry key="M2" value="41.80761041516518" />
+      <entry key="M5" value="49.82515647543005" />
+      <entry key="M10" value="53.06323085132463" />
+      <entry key="M15" value="54.26731574959066" />
+      <entry key="M30" value="55.572463976702295" />
+      <entry key="H1" value="56.422728809922674" />
+      <entry key="H2" value="59.38146106380912" />
+      <entry key="H4" value="73.95293025067934" />
+      <entry key="D1" value="361.7888323268041" />
+      <entry key="W1" value="871.9747056922455" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -203,6 +214,7 @@
     "JUnit.VerifyXApplicationTests.contextLoads.executor": "Run",
     "JUnit.VerifyXApplicationTests.executor": "Run",
     "Maven.verify-x [install].executor": "Run",
+    "Maven.verify-x [verify].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",

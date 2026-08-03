@@ -92,46 +92,59 @@ public class CandidateDocumentController {
     // HR/Admin View Candidate Documents
     // ==========================================================
 
-    @PreAuthorize("hasAnyRole('HR','ADMIN')")
-    @GetMapping("/candidate/{candidateId}")
-    public ResponseEntity<ApiResponse<List<CandidateDocumentDto>>> getCandidateDocuments(
-
-            @PathVariable Long candidateId
-
-    ) {
-
-        return ResponseEntity.ok(
-                new ApiResponse<>(
-                        true,
-                        "Documents fetched successfully.",
-                        (CandidateProfileDto) candidateDocumentService.getDocumentsByCandidateId(candidateId)
-                )
-        );
-    }
+//    @PreAuthorize("hasAnyRole('HR','ADMIN')")
+//    @GetMapping("/candidate/{candidateId}")
+//    public ResponseEntity<ApiResponse<List<CandidateDocumentDto>>> getCandidateDocuments(
+//
+//            @PathVariable Long candidateId
+//
+//    ) {
+//
+//        return ResponseEntity.ok(
+//                new ApiResponse<>(
+//                        true,
+//                        "Documents fetched successfully.",
+//                        (CandidateProfileDto) candidateDocumentService.getDocumentsByCandidateId(candidateId)
+//                )
+//        );
+//    }
+//@PreAuthorize("hasAnyRole('HR','ADMIN')")
+//@GetMapping("/candidate/{candidateId}")
+//public ResponseEntity<ApiResponse<List<CandidateDocumentDto>>> getCandidateDocuments(
+//        @PathVariable Long candidateId) {
+//
+//    return ResponseEntity.ok(
+//            ApiResponse.<List<CandidateDocumentDto>>builder()
+//                    .success(true)
+//                    .message("Documents fetched successfully.")
+//                    .data(candidateDocumentService.getDocumentsByCandidateId(candidateId))
+//                    .build()
+//    );
+//}
 
     // ==========================================================
     // View Document
     // ==========================================================
 
-    @PreAuthorize("hasAnyRole('CANDIDATE','HR','ADMIN')")
-    @GetMapping("/view/{documentId}")
-    public ResponseEntity<byte[]> viewDocument(
-            @PathVariable Long documentId
-    ) {
-
-        CandidateDocument document =
-                candidateDocumentService.getDocument(documentId);
-
-        return ResponseEntity.ok()
-                .header(
-                        HttpHeaders.CONTENT_DISPOSITION,
-                        "inline; filename=\"" + document.getFileName() + "\""
-                )
-                .contentType(
-                        MediaType.parseMediaType(document.getContentType())
-                )
-                .body(document.getDocumentData());
-    }
+//    @PreAuthorize("hasAnyRole('CANDIDATE','HR','ADMIN')")
+//    @GetMapping("/view/{documentId}")
+//    public ResponseEntity<byte[]> viewDocument(
+//            @PathVariable Long documentId
+//    ) {
+//
+//        CandidateDocument document =
+//                candidateDocumentService.getDocument(documentId);
+//
+//        return ResponseEntity.ok()
+//                .header(
+//                        HttpHeaders.CONTENT_DISPOSITION,
+//                        "inline; filename=\"" + document.getFileName() + "\""
+//                )
+//                .contentType(
+//                        MediaType.parseMediaType(document.getContentType())
+//                )
+//                .body(document.getDocumentData());
+//    }
 
     // ==========================================================
     // Delete Document
@@ -160,52 +173,52 @@ public class CandidateDocumentController {
     // Verify Document (HR/Admin)
     // ==========================================================
 
-    @PreAuthorize("hasAnyRole('HR','ADMIN')")
-    @PutMapping("/verify/{documentId}")
-    public ResponseEntity<ApiResponse<String>> verifyDocument(
-
-            @PathVariable Long documentId
-
-    ) {
-
-        candidateDocumentService.verifyDocument(documentId);
-
-        return ResponseEntity.ok(
-                new ApiResponse<>(
-                        true,
-                        "Document verified successfully.",
-                        (CandidateProfileDto) null
-                )
-        );
-    }
+//    @PreAuthorize("hasAnyRole('HR','ADMIN')")
+//    @PutMapping("/verify/{documentId}")
+//    public ResponseEntity<ApiResponse<String>> verifyDocument(
+//
+//            @PathVariable Long documentId
+//
+//    ) {
+//
+//        candidateDocumentService.verifyDocument(documentId);
+//
+//        return ResponseEntity.ok(
+//                new ApiResponse<>(
+//                        true,
+//                        "Document verified successfully.",
+//                        (CandidateProfileDto) null
+//                )
+//        );
+//    }
 
     // ==========================================================
     // Reject Document (HR/Admin)
     // ==========================================================
-
-    @PreAuthorize("hasAnyRole('HR','ADMIN')")
-    @PutMapping("/reject/{documentId}")
-    public ResponseEntity<ApiResponse<String>> rejectDocument(
-
-            @PathVariable Long documentId,
-
-            @RequestParam String rejectionReason
-
-    ) {
-
-        candidateDocumentService.rejectDocument(
-                documentId,
-                rejectionReason
-        );
-
-        return ResponseEntity.ok(
-                new ApiResponse<>(
-                        true,
-                        "Document rejected successfully.",
-                        (CandidateProfileDto) null
-                )
-        );
-    }
+//
+//    @PreAuthorize("hasAnyRole('HR','ADMIN')")
+//    @PutMapping("/reject/{documentId}")
+//    public ResponseEntity<ApiResponse<String>> rejectDocument(
+//
+//            @PathVariable Long documentId,
+//
+//            @RequestParam String rejectionReason
+//
+//    ) {
+//
+//        candidateDocumentService.rejectDocument(
+//                documentId,
+//                rejectionReason
+//        );
+//
+//        return ResponseEntity.ok(
+//                new ApiResponse<>(
+//                        true,
+//                        "Document rejected successfully.",
+//                        (CandidateProfileDto) null
+//                )
+//        );
+//    }
 
 //    @PutMapping("/verify-uan/{candidateId}")
 //    public ResponseEntity<ApiResponse<String>> verifyUan(

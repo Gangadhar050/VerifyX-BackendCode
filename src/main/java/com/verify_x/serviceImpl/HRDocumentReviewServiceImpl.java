@@ -2,6 +2,7 @@ package com.verify_x.serviceImpl;
 
 import com.verify_x.dto.DocumentReviewItemDto;
 import com.verify_x.dto.HRDocumentReviewDto;
+import com.verify_x.dto.UanVerificationDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.entity.Employment;
@@ -42,6 +43,24 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
         Employment employment =
                 employmentRepository.findByCandidate(candidate).orElse(null);
 
+        UanVerificationDto uanVerification = null;
+
+        if (employment != null) {
+
+            uanVerification = UanVerificationDto.builder()
+                    .uanNumber(employment.getUanNumber())
+                    .status(Boolean.TRUE.equals(employment.getUanVerified())
+                            ? "Verified by HR"
+                            : "Pending HR Validation")
+                    .verifiedMessage(Boolean.TRUE.equals(employment.getUanVerified())
+                            ? "Verified by "
+                              + employment.getUanVerifiedBy()
+                              + " on "
+                              + employment.getUanVerifiedAt()
+                            : null)
+                    .build();
+        }
+
         String holdingOfferLetter = "No";
 
         if (employment != null
@@ -70,41 +89,34 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
         List<DocumentReviewItemDto> documents =
                 candidateDocuments.stream()
                         .map(document -> DocumentReviewItemDto.builder()
-                                .documentId(document.getId())
+//                                .documentId(document.getId())
                                 .documentType(document.getDocumentType())
                                 .fileName(document.getFileName())
-                                .contentType(document.getContentType())
+//                                .contentType(document.getContentType())
                                 .status(document.getStatus())
                                 .rejectionReason(document.getRejectionReason())
+                                .updatedAt(document.getUpdatedAt())
                                 .build())
                         .toList();
 
         return HRDocumentReviewDto.builder()
 
-                .candidateId(candidate.getId())
-
                 .candidateName(candidate.getUsername())
 
                 .email(candidate.getEmail())
 
-                .candidateType(candidate.getCandidateType())
-
                 .applicationStatus(candidate.getApplicationStatus())
 
-                // ADD THIS
                 .panNumber(candidate.getPanNumber())
 
-                .uanNumber(employment != null
-                        ? employment.getUanNumber()
-                        : null)
+                .uanNumber(employment != null ? employment.getUanNumber() : null)
 
-                // ADD THIS
                 .holdingOfferLetter(holdingOfferLetter)
 
                 .uanVerified(employment != null &&
                         Boolean.TRUE.equals(employment.getUanVerified()))
 
-                .totalDocuments(total)
+                .uanVerification(uanVerification)
 
                 .verifiedDocuments(verified)
 
@@ -119,13 +131,24 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
     @Override
     public Resource viewDocument(Long documentId) {
 
-        CandidateDocument document =
-                candidateDocumentRepository.findById(documentId)
-                        .orElseThrow(() ->
-                                new ResourceNotFoundException("Document", documentId));
+        CandidateDocument document = candidateDocumentRepository.findById(documentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Document", documentId));
+
+        if (document.getDocumentData() == null || document.getDocumentData().length == 0) {
+            throw new ResourceNotFoundException("Document file not found.");
+        }
 
         return new ByteArrayResource(document.getDocumentData());
     }
+
+    public CandidateDocument getDocumentEntity(Long documentId) {
+
+        return candidateDocumentRepository.findById(documentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Document", documentId));
+    }
+
 
     @Override
     public void verifyDocument(Long documentId) {

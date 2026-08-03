@@ -13,13 +13,13 @@ import java.util.List;
 @Builder
 public class HRDocumentReviewDto {
 
-    private Long candidateId;
+//    private Long candidateId;
 
     private String candidateName;
 
     private String email;
 
-    private CandidateType candidateType;
+//    private CandidateType candidateType;
 
     private ApplicationStatus applicationStatus;
 
@@ -31,13 +31,15 @@ public class HRDocumentReviewDto {
 
     private boolean uanVerified;
 
-    private long totalDocuments;
+//    private long totalDocuments;
 
     private long verifiedDocuments;
 
     private long pendingDocuments;
 
     private long rejectedDocuments;
+
+    private UanVerificationDto uanVerification;
 
     private List<DocumentReviewItemDto> documents;
 

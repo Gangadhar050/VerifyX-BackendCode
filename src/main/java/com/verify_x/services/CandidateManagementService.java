@@ -8,13 +8,8 @@ import java.util.List;
 
 public interface CandidateManagementService {
 
-//    PagedResponse<CandidateSummaryDto> getAllCandidates(
-//            String keyword,
-//            CandidateType candidateType,
-//            ApplicationStatus applicationStatus,
-//            int page,
-//            int size
-//    );
+
+
 List<CandidateSummaryDto> getAllCandidates();
 
     List<CandidateSummaryDto> searchCandidates(String keyword);

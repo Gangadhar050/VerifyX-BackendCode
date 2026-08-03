@@ -1,6 +1,7 @@
 package com.verify_x.services;
 
 import com.verify_x.dto.HRDocumentReviewDto;
+import com.verify_x.entity.CandidateDocument;
 import org.springframework.core.io.Resource;
 
 public interface HRDocumentReviewService {
@@ -16,4 +17,6 @@ public interface HRDocumentReviewService {
 
     // Reject one document
     void rejectDocument(Long documentId, String reason);
+
+    CandidateDocument getDocumentEntity(Long documentId);
 }

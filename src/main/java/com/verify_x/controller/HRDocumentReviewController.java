@@ -1,6 +1,7 @@
 package com.verify_x.controller;
 
 import com.verify_x.dto.HRDocumentReviewDto;
+import com.verify_x.entity.CandidateDocument;
 import com.verify_x.services.HRDocumentReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
@@ -37,11 +38,17 @@ public class HRDocumentReviewController {
     public ResponseEntity<Resource> viewDocument(
             @PathVariable Long documentId) {
 
-        Resource resource = hrDocumentReviewService.viewDocument(documentId);
+        CandidateDocument document =
+                hrDocumentReviewService.getDocumentEntity(documentId);
+
+        Resource resource =
+                hrDocumentReviewService.viewDocument(documentId);
 
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
-                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "inline; filename=\"" + document.getFileName() + "\"")
+                .contentType(MediaType.parseMediaType(document.getContentType()))
+                .contentLength(document.getDocumentData().length)
                 .body(resource);
     }
 
