@@ -19,6 +19,7 @@ public class HRDocumentReviewDto {
 
     private String email;
 
+
 //    private CandidateType candidateType;
 
     private ApplicationStatus applicationStatus;
@@ -40,6 +41,8 @@ public class HRDocumentReviewDto {
     private long rejectedDocuments;
 
     private UanVerificationDto uanVerification;
+
+    private List<CriticalDocumentDto> criticalDocuments;
 
     private List<DocumentReviewItemDto> documents;
 

@@ -1,15 +1,13 @@
 package com.verify_x.serviceImpl;
 
+import com.verify_x.dto.CriticalDocumentDto;
 import com.verify_x.dto.DocumentReviewItemDto;
 import com.verify_x.dto.HRDocumentReviewDto;
 import com.verify_x.dto.UanVerificationDto;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.entity.Employment;
-import com.verify_x.enums.ApplicationStatus;
-import com.verify_x.enums.CandidateType;
-import com.verify_x.enums.DocumentStatus;
-import com.verify_x.enums.OfferLetterStatus;
+import com.verify_x.enums.*;
 import com.verify_x.exception.BadRequestException;
 import com.verify_x.exception.ResourceNotFoundException;
 import com.verify_x.repository.CandidateDocumentRepository;
@@ -71,6 +69,47 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
 
         List<CandidateDocument> candidateDocuments =
                 candidateDocumentRepository.findByCandidate(candidate);
+        List<CriticalDocumentDto> criticalDocuments =
+                candidateDocuments.stream()
+
+                        .filter(document ->
+
+                                document.getDocumentType() == DocumentType.PAN_CARD ||
+
+                                        document.getDocumentType() == DocumentType.UAN_PROOF ||
+
+                                        document.getDocumentType() == DocumentType.OFFER_LETTER)
+
+                        .map(document -> {
+
+                            String message;
+
+                            switch (document.getStatus()) {
+
+                                case VERIFIED:
+                                    message = "Validated by HR";
+                                    break;
+
+                                case PENDING:
+                                    message = "Pending HR Validation";
+                                    break;
+
+                                default:
+                                    message = "Rejected by HR";
+                            }
+
+                            return CriticalDocumentDto.builder()
+
+                                    .documentType(document.getDocumentType())
+
+                                    .status(document.getStatus())
+
+                                    .statusMessage(message)
+
+                                    .build();
+                        })
+
+                        .toList();
 
         long total = candidateDocuments.size();
 
@@ -125,6 +164,8 @@ public class HRDocumentReviewServiceImpl implements HRDocumentReviewService {
                 .rejectedDocuments(rejected)
 
                 .documents(documents)
+
+                .criticalDocuments(criticalDocuments)
 
                 .build();
     }

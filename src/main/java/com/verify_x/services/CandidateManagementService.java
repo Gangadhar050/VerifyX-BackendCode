@@ -1,8 +1,7 @@
 package com.verify_x.services;
 
 import com.verify_x.dto.*;
-import com.verify_x.enums.ApplicationStatus;
-import com.verify_x.enums.CandidateType;
+import com.verify_x.enums.VerificationStatus;
 
 import java.util.List;
 
@@ -21,7 +20,10 @@ List<CandidateSummaryDto> getAllCandidates();
 
     void deleteCandidate(Long candidateId);
 
-    void verifyUan(Long candidateId, String verifiedBy);
+    void verifyUan(
+            Long candidateId, VerificationStatus status,
+            String verifiedBy
+    );
 
     void updateApplicationStatus(Long candidateId,
                                  ApplicationStatusUpdateDto dto,

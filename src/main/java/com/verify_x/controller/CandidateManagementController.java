@@ -82,14 +82,22 @@ public ResponseEntity<List<CandidateSummaryDto>> getAllCandidates() {
 
     @PutMapping("/{candidateId}/verify-uan")
     public ResponseEntity<String> verifyUan(
+
             @PathVariable Long candidateId,
+
+            @RequestBody UanVerificationRequestDto request,
+
             Authentication authentication) {
 
         candidateManagementService.verifyUan(
+
                 candidateId,
+
+                request.getStatus(),
+
                 authentication.getName());
 
-        return ResponseEntity.ok("UAN verified successfully.");
+        return ResponseEntity.ok("UAN status updated successfully.");
     }
 
     @PutMapping("/{candidateId}/status")

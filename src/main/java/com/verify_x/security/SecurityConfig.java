@@ -42,7 +42,8 @@ public class SecurityConfig {
                                 "/v3/api-docs/swagger-config",
                                 "/api/auth/candidateRegister",
                                 "/api/auth/candidateLogin",
-                                "/api/auth/candidateLogout"
+                                "/api/auth/candidateLogout",
+                                "/api/test"
                                 ).permitAll()
                                 .requestMatchers("/api/auth/hrLogin").permitAll()
                                 .requestMatchers("/api/auth/hrLogout").hasRole("ADMIN")

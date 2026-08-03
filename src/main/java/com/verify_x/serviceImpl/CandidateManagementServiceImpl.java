@@ -4,18 +4,16 @@ import com.verify_x.dto.*;
 import com.verify_x.entity.Candidate;
 import com.verify_x.entity.CandidateDocument;
 import com.verify_x.entity.Education;
-import com.verify_x.enums.DocumentType;
+import com.verify_x.enums.*;
 import com.verify_x.repository.EducationRepository;
 import com.verify_x.entity.Employment;
-import com.verify_x.enums.ApplicationStatus;
-import com.verify_x.enums.CandidateType;
-import com.verify_x.enums.DocumentStatus;
 import com.verify_x.exception.BadRequestException;
 import com.verify_x.exception.ResourceNotFoundException;
 import com.verify_x.repository.CandidateDocumentRepository;
 import com.verify_x.repository.CandidateRepository;
 import com.verify_x.repository.EmploymentRepository;
 import com.verify_x.services.CandidateManagementService;
+import com.verify_x.services.EmailService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +33,7 @@ public class CandidateManagementServiceImpl implements CandidateManagementServic
     private final EmploymentRepository employmentRepository;
     private final CandidateDocumentRepository candidateDocumentRepository;
     private final EducationRepository educationRepository;
+    private final EmailService emailService;
 
     private CandidateSummaryDto mapToSummary(Candidate candidate) {
         Employment employment = employmentRepository.findByCandidate(candidate).orElse(null);
@@ -283,7 +282,7 @@ public List<CandidateSummaryDto> getAllCandidates() {
     }
 
     @Override
-    public void verifyUan(Long candidateId, String verifiedBy) {
+    public void verifyUan(Long candidateId,VerificationStatus status, String verifiedBy) {
         Candidate candidate = candidateRepository.findById(candidateId)
                 .orElseThrow(() -> new ResourceNotFoundException("Candidate", candidateId));
 
@@ -299,10 +298,42 @@ public List<CandidateSummaryDto> getAllCandidates() {
         if (employment.getUanNumber() == null || !employment.getUanNumber().matches("^\\d{12}$")) {
             throw new BadRequestException("UAN number must contain exactly 12 digits before verification.");
         }
+        switch (status) {
 
-        employment.setUanVerified(true);
-        employment.setUanVerifiedBy(verifiedBy);
-        employment.setUanVerifiedAt(LocalDateTime.now());
+            case VERIFIED -> {
+
+                employment.setUanVerified(true);
+
+                employment.setUanVerificationStatus(VerificationStatus.VERIFIED);
+
+                employment.setUanVerifiedBy("HR");
+
+                employment.setUanVerifiedAt(LocalDateTime.now());
+            }
+
+            case REJECTED -> {
+
+                employment.setUanVerified(false);
+
+                employment.setUanVerificationStatus(VerificationStatus.REJECTED);
+
+                employment.setUanVerifiedBy("HR");
+
+                employment.setUanVerifiedAt(LocalDateTime.now());
+            }
+
+            case PENDING -> {
+
+                employment.setUanVerified(false);
+
+                employment.setUanVerificationStatus(VerificationStatus.PENDING);
+
+                employment.setUanVerifiedBy(null);
+
+                employment.setUanVerifiedAt(null);
+            }
+        }
+
         employmentRepository.save(employment);
 
         log.info("UAN verified for candidate {} by {}", candidateId, verifiedBy);
@@ -389,6 +420,62 @@ public List<CandidateSummaryDto> getAllCandidates() {
         candidate.setRemarks(dto.getRemarks());
         candidateRepository.save(candidate);
 
+        /*
+         * Send Email
+         */
+
+        switch (dto.getStatus()) {
+
+            case APPROVED -> emailService.sendApplicationApprovedEmail(
+
+                    candidate.getEmail(),
+
+                    candidate.getUsername(),
+
+                    dto.getRemarks());
+
+            case REJECTED -> emailService.sendApplicationRejectedEmail(
+
+                    candidate.getEmail(),
+
+                    candidate.getUsername(),
+
+                    dto.getRemarks());
+
+            case RE_UPLOAD_REQUIRED -> emailService.sendReUploadRequestEmail(
+
+                    candidate.getEmail(),
+
+                    candidate.getUsername(),
+
+                    dto.getRemarks());
+
+            default -> {
+                // No email
+            }
+        }
         log.info("Application status for candidate {} set to {} by {}", candidateId, dto.getStatus(), reviewedBy);
+    }
+
+    private void updateApplicationStatus(Candidate candidate) {
+
+        List<CandidateDocument> documents =
+                candidateDocumentRepository.findByCandidate(candidate);
+
+        boolean rejected = documents.stream()
+                .anyMatch(d -> d.getStatus() == DocumentStatus.REJECTED);
+
+        boolean pending = documents.stream()
+                .anyMatch(d -> d.getStatus() == DocumentStatus.PENDING);
+
+        if (rejected) {
+            candidate.setApplicationStatus(ApplicationStatus.RE_UPLOAD_REQUIRED);
+        } else if (pending) {
+            candidate.setApplicationStatus(ApplicationStatus.PENDING_VERIFICATION);
+        } else {
+            candidate.setApplicationStatus(ApplicationStatus.DOCUMENTS_VERIFIED);
+        }
+
+        candidateRepository.save(candidate);
     }
 }
