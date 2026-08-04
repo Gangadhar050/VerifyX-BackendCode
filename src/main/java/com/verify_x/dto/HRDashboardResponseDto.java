@@ -16,4 +16,5 @@ public class HRDashboardResponseDto {
     private long approved;
     private long rejected;
 
+//    
 }

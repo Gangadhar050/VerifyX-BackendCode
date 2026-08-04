@@ -1,0 +1,11 @@
+com\verify_x\serviceImpl\EducationServiceImplTest.class
+com\verify_x\VerifyXApplicationTests.class
+com\verify_x\serviceImpl\CandidateServiceImplTest.class
+com\verify_x\serviceImpl\HRDocumentServiceImplTest.class
+com\verify_x\serviceImpl\HRDocumentReviewServiceImplTest.class
+com\verify_x\serviceImpl\CandidateManagementServiceImplTest.class
+com\verify_x\serviceImpl\AuthServiceImplTest.class
+com\verify_x\serviceImpl\EmailServiceImplTest.class
+com\verify_x\serviceImpl\EmploymentServiceImplTest.class
+com\verify_x\serviceImpl\ReportServiceImplTest.class
+com\verify_x\serviceImpl\HRDashboardServiceImplTest.class

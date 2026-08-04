@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.verify_x.serviceImpl.AuthServiceImplTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.845 s -- in com.verify_x.serviceImpl.AuthServiceImplTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.033 s -- in com.verify_x.serviceImpl.AuthServiceImplTest
